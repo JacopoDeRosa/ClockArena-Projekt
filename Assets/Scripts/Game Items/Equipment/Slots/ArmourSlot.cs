@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Sirenix.OdinInspector;
+
+[System.Serializable]
+public class ArmourSlot : EquipmentSlot
+{
+    [SerializeField]
+    [ReadOnly]
+    private ArmourTypes _armourType;
+
+    public ArmourTypes ArmourType { get => _armourType; }
+    new public Armour Item { get => _item as Armour; }
+
+
+    public override void OnValidate()
+    {
+        base.OnValidate();
+        ForceItemType(ItemTypes.Armour);
+    }
+    public void SetArmourType(ArmourTypes type)
+    {
+        _armourType = type;
+    }
+    public override void SetItem(GameItem item)
+    {
+        var armour = item as Armour;
+        if (armour == null) return;
+        if (armour.Data.ArmourType != _armourType) return;
+        base.SetItem(item);
+    }
+}
