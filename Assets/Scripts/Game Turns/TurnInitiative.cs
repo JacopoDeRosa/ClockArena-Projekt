@@ -26,7 +26,7 @@ public class TurnInitiative : MonoBehaviour
         }
 
         _initiativeOrder = new Queue<Character>();
-        for (int i = MaxInitiative - 1; i >=  0; i--)
+        for (int i = MaxInitiative; i >=  0; i--)
         {
             foreach(Character character in characters)
             {

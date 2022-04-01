@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using System;
 
-public class CharacterMover : MonoBehaviour
+public class CharacterMover : MonoBehaviour, IAction
 {
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private float _stoppingDistance;
@@ -16,6 +17,9 @@ public class CharacterMover : MonoBehaviour
 
     private bool _moving;
     private Vector3 _targetPosition;
+
+    public event Action onActionStarted;
+    public event Action onActionEnded;
 
     private bool IsAtTarget { get => Vector3.Distance(transform.position, _targetPosition) <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
@@ -30,6 +34,7 @@ public class CharacterMover : MonoBehaviour
         _moving = true;
         _targetPosition = point;
         onMoveStart.Invoke();
+        onActionStarted?.Invoke();
     }
     public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out float length)
     {
@@ -55,6 +60,7 @@ public class CharacterMover : MonoBehaviour
             {
                 _moving = false;
                 onMoveEnd.Invoke();
+                onActionEnded?.Invoke();
             }
         }
     }

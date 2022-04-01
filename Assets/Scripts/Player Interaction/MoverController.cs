@@ -38,7 +38,6 @@ public class MoverController : MonoBehaviour
 
     private void OnLeftMouseDown(InputAction.CallbackContext context)
     {
-        if (_turnManager.ActiveCharacter.IsBusy) return;
         if (_targeting == false)
         {
             _targeting = true;
@@ -47,7 +46,6 @@ public class MoverController : MonoBehaviour
     }
     private void OnLeftMouseUp(InputAction.CallbackContext context)
     {
-        if (_turnManager.ActiveCharacter.IsBusy) return;
         if (_targeting)
         {
             _targeting = false;
