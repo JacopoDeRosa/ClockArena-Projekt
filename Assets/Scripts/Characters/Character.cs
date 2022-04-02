@@ -12,6 +12,10 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private ActionScheduler _actionScheduler;
 
+
+    [ShowInInspector][ReadOnly]
+    private bool _sleep;
+
     [ShowInInspector][ReadOnly]
     private int _initiativeLevel = 0;
 
@@ -28,6 +32,32 @@ public class Character : MonoBehaviour
         return _initiativeLevel;
     }
 
+    public void SetSleepState(bool state)
+    {
+        _sleep = state;
+        if(_sleep)
+        {
+            GoToSleep();
+        }
+        else
+        {
+            WakeUp();
+        }
+    }
 
+    private void GoToSleep()
+    {
+        foreach (var sleeper in GetComponents<ISleeper>())
+        {
+            sleeper.Sleep();
+        }
+    }
 
+    private void WakeUp()
+    {
+        foreach (var sleeper in GetComponents<ISleeper>())
+        {
+            sleeper.WakeUp();
+        }
+    }
 }

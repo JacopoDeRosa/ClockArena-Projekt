@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
-public class ActionScheduler : MonoBehaviour
+public interface ISleeper 
 {
-
+    public void Sleep();
+    public void WakeUp();
 }

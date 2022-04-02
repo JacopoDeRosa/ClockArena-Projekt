@@ -17,6 +17,8 @@ public class GameTurnManager : MonoBehaviour
     public UnityEvent<int> onTurnStarted;
     [FoldoutGroup("Events")]
     public UnityEvent onTurnEnded;
+    [FoldoutGroup("Events")]
+    public UnityEvent<Character> onNextCharacter;
 
     [ShowInInspector][ReadOnly][FoldoutGroup("Info")]
     private int _turnNumber = 0;
@@ -38,14 +40,22 @@ public class GameTurnManager : MonoBehaviour
     [Button]
     public void SetNextCharacter()
     {
-       if(_activeCharacter != null) _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+        if (_activeCharacter != null)
+        {
+            _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+            _activeCharacter.SetSleepState(true);
+        }
         _activeCharacter = _initiveHandler.GetNextCharacter();
+
+        // If there are no more characters in the queue the active character will be null
         if(_activeCharacter == null)
         {
             BeginNewTurn();
             return;
         }
         _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+        onNextCharacter.Invoke(_activeCharacter);
+        _activeCharacter.SetSleepState(false);
     }
 
     private void Start()

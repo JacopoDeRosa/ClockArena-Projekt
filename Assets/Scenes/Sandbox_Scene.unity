@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2026.7588, g: 1994.7988, b: 2405.371, a: 1}
+  m_IndirectSpecularColor: {r: 2026.4639, g: 1994.3984, b: 2404.2656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 259721491}
   - component: {fileID: 259721490}
   - component: {fileID: 259721489}
+  - component: {fileID: 259721493}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -589,7 +590,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259721488}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -617,6 +618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 259721489}
+  _obstacle: {fileID: 259721493}
   _stoppingDistance: 0.25
   onMoveStart:
     m_PersistentCalls:
@@ -639,6 +641,7 @@ MonoBehaviour:
   _name: Jim
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 259721490}
+  _actionScheduler: {fileID: 0}
 --- !u!4 &259721492
 Transform:
   m_ObjectHideFlags: 0
@@ -654,6 +657,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &259721493
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259721488}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 1.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &275327336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1115,7 @@ GameObject:
   - component: {fileID: 917769210}
   - component: {fileID: 917769209}
   - component: {fileID: 917769208}
+  - component: {fileID: 917769212}
   m_Layer: 0
   m_Name: Test Character (4)
   m_TagString: Untagged
@@ -1110,7 +1130,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917769207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -1138,6 +1158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 917769208}
+  _obstacle: {fileID: 917769212}
   _stoppingDistance: 0.25
   onMoveStart:
     m_PersistentCalls:
@@ -1160,6 +1181,7 @@ MonoBehaviour:
   _name: Javert
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 917769209}
+  _actionScheduler: {fileID: 0}
 --- !u!4 &917769211
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,6 +1197,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &917769212
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917769207}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 1.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1013902892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +1585,7 @@ GameObject:
   - component: {fileID: 1583067519}
   - component: {fileID: 1583067518}
   - component: {fileID: 1583067517}
+  - component: {fileID: 1583067521}
   m_Layer: 0
   m_Name: Test Character (3)
   m_TagString: Untagged
@@ -1561,7 +1600,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583067516}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -1589,6 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1583067517}
+  _obstacle: {fileID: 1583067521}
   _stoppingDistance: 0.25
   onMoveStart:
     m_PersistentCalls:
@@ -1611,6 +1651,7 @@ MonoBehaviour:
   _name: Francis
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 1583067518}
+  _actionScheduler: {fileID: 0}
 --- !u!4 &1583067520
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,6 +1667,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1583067521
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583067516}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 1.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1588742830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +2035,7 @@ GameObject:
   - component: {fileID: 1659295745}
   - component: {fileID: 1659295744}
   - component: {fileID: 1659295743}
+  - component: {fileID: 1659295747}
   m_Layer: 0
   m_Name: Test Character (2)
   m_TagString: Untagged
@@ -1992,7 +2050,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659295742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -2020,6 +2078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1659295743}
+  _obstacle: {fileID: 1659295747}
   _stoppingDistance: 0.25
   onMoveStart:
     m_PersistentCalls:
@@ -2042,6 +2101,7 @@ MonoBehaviour:
   _name: Dave
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 1659295744}
+  _actionScheduler: {fileID: 0}
 --- !u!4 &1659295746
 Transform:
   m_ObjectHideFlags: 0
@@ -2057,6 +2117,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1659295747
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659295742}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 1.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1766342595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2145,7 @@ GameObject:
   - component: {fileID: 1766342598}
   - component: {fileID: 1766342597}
   - component: {fileID: 1766342596}
+  - component: {fileID: 1766342600}
   m_Layer: 0
   m_Name: Test Character (1)
   m_TagString: Untagged
@@ -2083,7 +2160,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766342595}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -2111,6 +2188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1766342596}
+  _obstacle: {fileID: 1766342600}
   _stoppingDistance: 0.25
   onMoveStart:
     m_PersistentCalls:
@@ -2133,6 +2211,7 @@ MonoBehaviour:
   _name: Andy
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 1766342597}
+  _actionScheduler: {fileID: 0}
 --- !u!4 &1766342599
 Transform:
   m_ObjectHideFlags: 0
@@ -2148,6 +2227,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &1766342600
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766342595}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 1.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1806875349
 GameObject:
   m_ObjectHideFlags: 0

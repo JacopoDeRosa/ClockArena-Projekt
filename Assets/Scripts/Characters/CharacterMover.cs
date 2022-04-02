@@ -6,9 +6,10 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using System;
 
-public class CharacterMover : MonoBehaviour, IAction
+public class CharacterMover : MonoBehaviour,  ISleeper
 {
     [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private NavMeshObstacle _obstacle;
     [SerializeField] private float _stoppingDistance;
     [FoldoutGroup("Events")]
     public UnityEvent onMoveStart;
@@ -17,9 +18,6 @@ public class CharacterMover : MonoBehaviour, IAction
 
     private bool _moving;
     private Vector3 _targetPosition;
-
-    public event Action onActionStarted;
-    public event Action onActionEnded;
 
     private bool IsAtTarget { get => Vector3.Distance(transform.position, _targetPosition) <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
@@ -34,7 +32,6 @@ public class CharacterMover : MonoBehaviour, IAction
         _moving = true;
         _targetPosition = point;
         onMoveStart.Invoke();
-        onActionStarted?.Invoke();
     }
     public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out float length)
     {
@@ -60,8 +57,18 @@ public class CharacterMover : MonoBehaviour, IAction
             {
                 _moving = false;
                 onMoveEnd.Invoke();
-                onActionEnded?.Invoke();
             }
         }
+    }
+
+    public void Sleep()
+    { 
+        _agent.enabled = false;
+        _obstacle.enabled = true;
+    }
+    public void WakeUp()
+    {
+        _obstacle.enabled = false;
+        _agent.enabled = true;
     }
 }
