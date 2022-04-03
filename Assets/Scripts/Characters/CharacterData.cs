@@ -7,8 +7,8 @@ public class CharacterData : ScriptableObject
 {
     [SerializeField] private int _baseHP, _baseStamina, _baseAP, _baseSanity;
     [SerializeField] private Factions _faction;
-    [SerializeField] private Texture2D _defaultIcon;
+    [SerializeField] private Sprite _defaultIcon;
 
     public Factions Faction { get => _faction; }
-    public Texture2D DefaulIcon { get => _defaultIcon; }
+    public Sprite DefaulIcon { get => _defaultIcon; }
 }

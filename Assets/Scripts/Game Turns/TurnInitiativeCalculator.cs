@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
 
-public class TurnInitiative : MonoBehaviour
+public class TurnInitiativeCalculator : MonoBehaviour
 {
     public const int MaxInitiative = 12;
 

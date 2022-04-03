@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GameTurnManager : MonoBehaviour
 {
     [SerializeField] private List<Character> _playingCharacters;
-    [SerializeField] private TurnInitiative _initiveHandler;
+    [SerializeField] private TurnInitiativeCalculator _initiveHandler;
    
 
     
