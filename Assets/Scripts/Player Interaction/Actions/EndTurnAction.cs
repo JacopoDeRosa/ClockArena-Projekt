@@ -12,13 +12,20 @@ public class EndTurnAction : MonoBehaviour, IAction
     public event Action onEnd;
     public event Action onCancel;
 
+    private ActionsScheduler _actionsScheduler;
+
     private void Start()
     {
-        FindObjectOfType<ActionsScheduler>().AddAction(this);
+        _actionsScheduler = FindObjectOfType<ActionsScheduler>();
+        if(_actionsScheduler != null)
+        {
+            _actionsScheduler.AddAction(this);
+        }
     }
 
     public void Begin()
     {
+        if (_actionsScheduler.Busy) return;
         onBegin?.Invoke(this);
         _turnManager.SetNextCharacter();
         onEnd?.Invoke();

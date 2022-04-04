@@ -17,6 +17,7 @@ public class ActionsScheduler : MonoBehaviour
 
 
     public IEnumerable<IAction> Actions { get => _actions; }
+    [ShowInInspector]
     public bool Busy { get => _currentAction != null; }
 
     public event ActionEventHandler onActionAdded;
