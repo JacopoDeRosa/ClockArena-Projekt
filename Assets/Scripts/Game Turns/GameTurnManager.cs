@@ -42,7 +42,7 @@ public class GameTurnManager : MonoBehaviour
     {
         if (_activeCharacter != null)
         {
-            _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
+      //    _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
             _activeCharacter.SetSleepState(true);
         }
         _activeCharacter = _initiveHandler.GetNextCharacter();
@@ -53,7 +53,7 @@ public class GameTurnManager : MonoBehaviour
             BeginNewTurn();
             return;
         }
-        _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+    //    _activeCharacter.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
         onNextCharacter.Invoke(_activeCharacter);
         _activeCharacter.SetSleepState(false);
     }
