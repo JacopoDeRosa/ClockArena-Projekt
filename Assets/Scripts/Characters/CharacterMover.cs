@@ -19,17 +19,13 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     private bool _moving;
     private Vector3 _targetPosition;
 
-    private bool _shouldToggleNavmesh;
-    private bool _waitedForNavmeshUpdate = true;
+
 
     private bool IsAtTarget { get => Vector3.Distance(transform.position, _targetPosition) <= _stoppingDistance; }
+    private WaitForEndOfFrame waitForEnd { get => new WaitForEndOfFrame(); }
     public bool IsMoving { get => _moving; }
 
-    private void Awake()
-    {
-        _waitedForNavmeshUpdate = true;
-    }
-
+ 
     public void MoveToPoint(Vector3 point)
     {
         if (_moving) return;
@@ -59,20 +55,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     }
     private void Update()
     {
-        if(_shouldToggleNavmesh)
-        {
-            if (_waitedForNavmeshUpdate)
-            {
-                _waitedForNavmeshUpdate = false;
-            }
-            else
-            {
-                _shouldToggleNavmesh = false;
-                _agent.enabled = true;
-                _waitedForNavmeshUpdate = true;
-            }
-        }
-
         if (_moving)
         {
             if (IsAtTarget)
@@ -90,20 +72,14 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     }
     public void WakeUp()
     {
-        /*
-        _obstacle.enabled = false;
-        _shouldToggleNavmesh = true;
-        */
         StartCoroutine(OnWakeUp());
-   
     }
 
     private IEnumerator OnWakeUp()
     {
         _obstacle.enabled = false;
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
+        yield return waitForEnd;
+        yield return waitForEnd;
         _agent.enabled = true;
     }
-
 }

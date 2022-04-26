@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2158.0693, g: 2262.5684, b: 3286.25, a: 1}
+  m_IndirectSpecularColor: {r: 2157.626, g: 2261.957, b: 3285.6797, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1533,7 +1533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874679, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_Name
@@ -1857,7 +1861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874679, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_Name
@@ -2663,7 +2671,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874679, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_Name
@@ -3455,7 +3467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874679, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_Name
@@ -5506,7 +5522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_AutoRepath
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885556325499874678, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885556325499874679, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
       propertyPath: m_Name
