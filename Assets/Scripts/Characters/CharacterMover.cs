@@ -24,6 +24,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     private bool IsAtTarget { get => Vector3.Distance(transform.position, _targetPosition) <= _stoppingDistance; }
     private WaitForEndOfFrame waitForEnd { get => new WaitForEndOfFrame(); }
     public bool IsMoving { get => _moving; }
+    public Vector3 Velocity { get => _agent.velocity; }
 
  
     public void MoveToPoint(Vector3 point)
