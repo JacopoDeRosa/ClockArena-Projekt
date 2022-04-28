@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Main_Force_Field_Mat
+  m_Name: Range_Gizmo_Material
   m_Shader: {fileID: -6465566751694194690, guid: a8356f412c46f9b41bf9dab1bb1d488d, type: 3}
   m_ValidKeywords:
   - _ENABLE_FOG_ON_TRANSPARENT
@@ -66,13 +66,13 @@ Material:
     - Boolean_ee47d134b33445e4adcc612beadbe5a7: 1
     - Boolean_fceb7fffb99a499fb1c5d13d773bd0d8: 0
     - Vector1_10fbf8aa7a6141a0b327a1c2c69bfd07: 15
-    - Vector1_2c9ae8082ce04c6781b4f19b47d80ab1: 0.75
+    - Vector1_2c9ae8082ce04c6781b4f19b47d80ab1: 1.5
     - Vector1_395a14f240e34b108ecce161d15d1388: 5
-    - Vector1_49c034a1dbab4adea9ef9ad5318ccd5a: 1
-    - Vector1_49ddeb52d0444b21807280ed4a9f99b4: 0.5
-    - Vector1_63474f272f7f4e7a8fa38c6061780cff: 1
+    - Vector1_49c034a1dbab4adea9ef9ad5318ccd5a: 3
+    - Vector1_49ddeb52d0444b21807280ed4a9f99b4: 0.25
+    - Vector1_63474f272f7f4e7a8fa38c6061780cff: 0
     - Vector1_87d570ec71ad41b9803e4ac4b229b8df: 1
-    - Vector1_b920aa1abf094657a53f25259a0dad51: 0.1
+    - Vector1_b920aa1abf094657a53f25259a0dad51: 0
     - Vector1_decb32af6b8a48b09f810f062f15bfd9: 8
     - Vector1_df0cccbbf1a1460fadda7e63a5e17c9f: 0.1
     - Vector1_f34094f75c584555acf75c4e85f8225e: 5
@@ -121,7 +121,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color_84a6fddd37f4438092fa92ad61a051f6: {r: 128, g: 2.61387, b: 0, a: 1}
+    - Color_84a6fddd37f4438092fa92ad61a051f6: {r: 0, g: 13.449706, b: 51.377876, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

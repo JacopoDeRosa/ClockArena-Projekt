@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Basic_Line
+  m_Name: Basic_Line_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 848de26ee2ae3554880840544199ad71, type: 3}
   m_ValidKeywords:
   - _ENABLE_FOG_ON_TRANSPARENT

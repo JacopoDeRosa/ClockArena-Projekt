@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Sirenix.OdinInspector;
 
 public class ActiveCharacterMover : MonoBehaviour, IAction
 {
@@ -11,7 +8,7 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     [SerializeField] private GameTurnManager _turnManager;
     [SerializeField] private MousePointGetter _pointGetter;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private PathRenderer _pathRenderer;
+    [SerializeField] private WorldGizmos _worldGizmos;
     [SerializeField] private Gradient _validPathColor, _invalidPathColor;
 
     private bool _targeting = false;
@@ -70,7 +67,8 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                     onEnd?.Invoke();
                 }
             }
-            _pathRenderer.ClearPath();
+            _worldGizmos.ClearPath();
+            _worldGizmos.ResetPointer();
         }
     }
 
@@ -82,15 +80,15 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
             {
                 if (_turnManager.ActiveCharacter.Mover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
                 {
-                    _pathRenderer.SetGizmoColor(_validPathColor);
-                    _pathRenderer.RenderPath(points);
+                    _worldGizmos.RenderPath(points, _validPathColor);                   
                 }
                 else
                 {
-                    _pathRenderer.SetGizmoColor(_invalidPathColor);
+                    _worldGizmos.SetPathColor(_invalidPathColor);
                 }
 
             }
+            _worldGizmos.SetPointerPosition(hit);
         }
 
     }
@@ -110,7 +108,8 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     {
         _targeting = false;
         onCancel?.Invoke();
-        _pathRenderer.ClearPath();
+        _worldGizmos.ClearPath();
+        _worldGizmos.ResetPointer();
         return true;
     }
     private void InvokeOnMoveEnd()

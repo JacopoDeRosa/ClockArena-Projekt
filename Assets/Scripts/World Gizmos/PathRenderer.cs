@@ -5,7 +5,8 @@ using UnityEngine;
 public class PathRenderer : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
-    [SerializeField] private Vector3[] vector3s;
+    
+    private Vector3[] vector3s;
 
 
     public void RenderPath(Vector3[] points)
@@ -14,6 +15,12 @@ public class PathRenderer : MonoBehaviour
         vector3s = points;
         _lineRenderer.positionCount = points.Length;
         _lineRenderer.SetPositions(points);
+    }
+
+    public void RenderPath(Vector3[] points, Gradient gradient)
+    {
+        SetGizmoColor(gradient);
+        RenderPath(points);
     }
 
     public void ClearPath()
