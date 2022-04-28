@@ -10,12 +10,10 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     [SerializeField] private Sprite _actionSprite;
     [SerializeField] private GameTurnManager _turnManager;
     [SerializeField] private MousePointGetter _pointGetter;
-    [SerializeField] private Gradient _validPathColor, _invalidPathColor;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private Transform _gizmo;
     [SerializeField] private PathRenderer _pathRenderer;
+    [SerializeField] private Gradient _validPathColor, _invalidPathColor;
 
-    [ShowInInspector]
     private bool _targeting = false;
 
 
@@ -72,8 +70,6 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                     onEnd?.Invoke();
                 }
             }
-
-            _gizmo.gameObject.SetActive(false);
             _pathRenderer.ClearPath();
         }
     }
@@ -84,7 +80,6 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
         {
             if (_pointGetter.GetMousePoint(out Vector3 hit))
             {
-                _gizmo.position = hit;
                 if (_turnManager.ActiveCharacter.Mover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
                 {
                     _pathRenderer.SetGizmoColor(_validPathColor);
