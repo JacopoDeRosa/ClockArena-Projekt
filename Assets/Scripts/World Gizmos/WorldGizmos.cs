@@ -34,4 +34,18 @@ public class WorldGizmos : MonoBehaviour
     {
         if (_pointer.activeInHierarchy == true) _pointer.SetActive(false);
     }
+
+    public void SetRangeGizmo(Vector3 position, float radius)
+    {
+        _rangeGizmo.gameObject.SetActive(true);
+        _rangeGizmo.SetRange(radius);
+        _rangeGizmo.transform.position = new Vector3(position.x, position.y + 0.25f, position.z);
+    }
+
+    public void ResetRangegizmo()
+    {
+        _rangeGizmo.gameObject.SetActive(false);
+    }
+
+    
 }

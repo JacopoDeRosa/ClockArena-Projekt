@@ -11,6 +11,8 @@ public class FoldingBar : MonoBehaviour
     private bool _busy;
     private bool _open;
 
+    public bool Open { get => _open; }
+
 
     private void Awake()
     {
