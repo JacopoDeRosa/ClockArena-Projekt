@@ -42,9 +42,11 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     {
         pathPoints = new Vector3[0];
         length = 0;
+
         NavMeshPath path = new NavMeshPath();
         _agent.CalculatePath(position, path);
         bool pathComplete = path.status == NavMeshPathStatus.PathComplete;
+
         if (pathComplete)
         {
             //TODO: Implement Distance

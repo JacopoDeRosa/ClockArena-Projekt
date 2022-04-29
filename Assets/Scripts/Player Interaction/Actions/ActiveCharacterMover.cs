@@ -12,6 +12,8 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     [SerializeField] private Gradient _validPathColor, _invalidPathColor;
 
     private bool _targeting = false;
+    [SerializeField]
+    private LayerMask _movementMask;
 
 
     private ActionsScheduler _actionsScheduler;
@@ -31,7 +33,6 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     private void Awake()
     {
         _playerInput.actions["Confirm"].started += OnConfirmDown;
-
     }
     private void Start()
     {
@@ -58,7 +59,7 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
             {
                 if (_turnManager.ActiveCharacter.Mover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
                 {
-                    _turnManager.ActiveCharacter.Mover.MoveToPoint(hit);
+                    _turnManager.ActiveCharacter.Mover.MoveToPoint(points[points.Length-1]);
                     _turnManager.ActiveCharacter.Mover.onMoveEnd.AddListener(InvokeOnMoveEnd);
                    
                 }
@@ -67,6 +68,7 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                     onEnd?.Invoke();
                 }
             }
+           
             _worldGizmos.ClearPath();
             _worldGizmos.ResetPointer();
         }
@@ -86,9 +88,8 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                 {
                     _worldGizmos.SetPathColor(_invalidPathColor);
                 }
-
+                _worldGizmos.SetPointerPosition(hit);
             }
-            _worldGizmos.SetPointerPosition(hit);
         }
 
     }
@@ -106,6 +107,10 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     }
     public bool Cancel()
     {
+        if(_turnManager.ActiveCharacter.Mover.IsMoving)
+        {
+            return false;
+        }
         _targeting = false;
         onCancel?.Invoke();
         _worldGizmos.ClearPath();

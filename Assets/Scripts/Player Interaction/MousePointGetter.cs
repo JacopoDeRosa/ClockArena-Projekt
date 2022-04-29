@@ -54,6 +54,18 @@ public class MousePointGetter : MonoBehaviour
         return false;     
     }
 
+    public bool GetMousePoint(out Vector3 point, LayerMask layerMask)
+    {
+        point = Vector3.zero;
+        Ray ray = _eventCamera.ScreenPointToRay(_mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity,layerMask))
+        {
+            point = hit.point;
+            return true;
+        }
+        return false;
+    }
+
 
 
 
