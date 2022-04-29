@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FoldingBar : MonoBehaviour
 {
+    [SerializeField] private Directions _direction;
     [SerializeField] private float _sinkAmount;
     [SerializeField] private float _sinkSpeed = 1;
 
@@ -34,14 +35,38 @@ public class FoldingBar : MonoBehaviour
     private IEnumerator MoveToPosition(float position)
     {
         _busy = true;
-
         float t = 0;
-
         Vector3 start = transform.position;
-        Vector3 end = new Vector3(start.x, position, start.z);
+        Vector3 end = Vector3.zero;
 
-        var wait = new WaitForFixedUpdate();
-     
+        int open = -1;
+        if(_open == false)
+        {
+            open = 1;
+        }
+
+        switch (_direction)
+        {
+            case Directions.Top:
+                end = new Vector3(start.x, start.y + _sinkAmount * open, start.z);
+                break;
+
+            case Directions.Right:
+                end = new Vector3(start.x + _sinkAmount * open, start.y, start.z);
+                break;
+
+            case Directions.Bottom:
+                end = new Vector3(start.x, start.y - _sinkAmount * open, start.z);
+                break;
+
+            case Directions.Left:
+                end = new Vector3(start.x - _sinkAmount * open, start.y, start.z);
+                break;
+        }
+
+ 
+        // Declaring wait once reduces garbage
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();  
 
         while (t < 1)
         {
