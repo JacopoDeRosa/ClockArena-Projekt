@@ -2,9 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ActiveCharacterMover : MonoBehaviour, IAction
+public class ActiveCharacterMover : PermanentAction
 {
-    [SerializeField] private Sprite _actionSprite;
     [SerializeField] private GameTurnManager _turnManager;
     [SerializeField] private MousePointGetter _pointGetter;
     [SerializeField] private PlayerInput _playerInput;
@@ -12,36 +11,21 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
     [SerializeField] private Gradient _validPathColor, _invalidPathColor;
 
     private bool _targeting = false;
-    [SerializeField]
-    private LayerMask _movementMask;
 
-
-    private ActionsScheduler _actionsScheduler;
-
-
-    public event ActionEventHandler onBegin;
-    public event Action onEnd;
-    public event Action onCancel;
-
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (_playerInput == null)
         {
             _playerInput = FindObjectOfType<PlayerInput>();
         }
     }
+
     private void Awake()
     {
         _playerInput.actions["Confirm"].started += OnConfirmDown;
     }
-    private void Start()
-    {
-        _actionsScheduler = FindObjectOfType<ActionsScheduler>();
-        if (_actionsScheduler != null)
-        {
-            _actionsScheduler.AddAction(this);
-        }
-    }
+
     private void OnDestroy()
     {
         if (_playerInput != null)
@@ -60,12 +44,12 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                 if (_turnManager.ActiveCharacter.Mover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
                 {
                     _turnManager.ActiveCharacter.Mover.MoveToPoint(points[points.Length-1]);
-                    _turnManager.ActiveCharacter.Mover.onMoveEnd.AddListener(InvokeOnMoveEnd);
+                    _turnManager.ActiveCharacter.Mover.onMoveEnd.AddListener(OnMoveEnd);
                    
                 }
                 else
                 {
-                    onEnd?.Invoke();
+                    End();
                 }
             }
            
@@ -91,10 +75,9 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
                 _worldGizmos.SetPointerPosition(hit);
             }
         }
-
     }
 
-    public void Begin()
+    public override void Begin()
     {
         if (_actionsScheduler.Busy) return;
         if (_targeting)
@@ -105,25 +88,20 @@ public class ActiveCharacterMover : MonoBehaviour, IAction
         _targeting = true;
         onBegin?.Invoke(this);
     }
-    public bool Cancel()
+    public override bool Cancel()
     {
         if(_turnManager.ActiveCharacter.Mover.IsMoving)
         {
             return false;
         }
         _targeting = false;
-        onCancel?.Invoke();
         _worldGizmos.ClearPath();
         _worldGizmos.ResetPointer();
         return true;
-    }
-    private void InvokeOnMoveEnd()
+    } 
+    private void OnMoveEnd()
     {
-        onEnd?.Invoke();
-        _turnManager.ActiveCharacter.Mover.onMoveEnd.RemoveListener(InvokeOnMoveEnd);
-    }
-    public Sprite GetActionIcon()
-    {
-        return _actionSprite;
+        End();
+        _turnManager.ActiveCharacter.Mover.onMoveEnd.RemoveListener(OnMoveEnd);
     }
 }

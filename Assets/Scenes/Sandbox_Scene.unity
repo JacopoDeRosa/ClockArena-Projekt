@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2157.6104, g: 2261.6602, b: 3284.836, a: 1}
+  m_IndirectSpecularColor: {r: 2158.1553, g: 2262.7324, b: 3286.4688, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5336,6 +5336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionSprite: {fileID: 21300000, guid: efadf6a0432dc4342a4a0ffac9bfedd3, type: 3}
+  _actionsScheduler: {fileID: 552365875}
   _turnManager: {fileID: 1013902895}
   _pointGetter: {fileID: 1634858278}
   _playerInput: {fileID: 1588742831}
@@ -5398,9 +5399,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  _movementMask:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &1634858278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5442,7 +5440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d243114daeef4054c824cece4358a70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: c495118c1d350c94c8b0af8b8eb43cd8, type: 3}
+  _actionSprite: {fileID: 21300000, guid: c495118c1d350c94c8b0af8b8eb43cd8, type: 3}
+  _actionsScheduler: {fileID: 552365875}
   _turnManager: {fileID: 1013902895}
 --- !u!1 &1652742741
 GameObject:

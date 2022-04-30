@@ -9,7 +9,7 @@ public class ActionBarButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private Image _image;
 
     private bool _primed;
-    private IAction _action;
+    private CharacterAction _action;
 
 
     public void OnPointerClick(PointerEventData eventData)
@@ -27,11 +27,11 @@ public class ActionBarButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         _primed = false;
     }
-    public void Init(IAction action)
+    public void Init(CharacterAction action)
     {
         if (action == null) return;
         _action = action;
-        _image.sprite = action.GetActionIcon();
+        _image.sprite = action.GetActionSprite();
     }
 
     public ActionBarButton ResetButton()

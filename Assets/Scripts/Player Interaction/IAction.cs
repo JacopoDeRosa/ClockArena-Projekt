@@ -5,7 +5,7 @@ using System;
 
 public interface IAction
 {
-    public event ActionEventHandler onBegin;
+    public event IActionEventHandler onBegin;
     public event Action onEnd;
     public event Action onCancel;
 
@@ -20,4 +20,4 @@ public interface IAction
     public bool Cancel();
 }
 
-public delegate void ActionEventHandler(IAction action);
+public delegate void IActionEventHandler(IAction action);

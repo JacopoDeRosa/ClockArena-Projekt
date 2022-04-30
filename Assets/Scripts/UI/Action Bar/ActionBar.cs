@@ -17,7 +17,7 @@ public class ActionBar : MonoBehaviour
         _actionsScheduler.onActionAdded += AddActionButton;
     }
 
-    private void AddActionButton(IAction action)
+    private void AddActionButton(CharacterAction action)
     {
         var button = _freeButtons.Dequeue();
         button.gameObject.SetActive(true);
