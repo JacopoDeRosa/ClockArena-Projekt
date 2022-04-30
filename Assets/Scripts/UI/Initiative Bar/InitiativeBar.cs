@@ -10,6 +10,8 @@ public class InitiativeBar : MonoBehaviour
     private InitiativeBarSlot[] _slots = new InitiativeBarSlot[24];
     [SerializeField]
     private TurnInitiativeCalculator _initiativeCalculator;
+    [SerializeField]
+    private WorldGizmos _worldGizmos; 
 
     private void Awake()
     {
@@ -17,21 +19,13 @@ public class InitiativeBar : MonoBehaviour
     }
 
 
-    public void SetInitiativeSlotCharacters(Character[] characters)
+    private void SetInitiativeSlotCharacters(Character[] characters)
     {
-        ToggleAllSlots(true);
-
-        int overflow = (_slots.Length - characters.Length) - 1;
+        ToggleAllSlots(false);
         for (int i = 0; i < characters.Length; i++)
         {
+            _slots[i].gameObject.SetActive(true);
             _slots[i].SetCharacter(characters[i]);
-        }
-        if (overflow > 0)
-        {
-            for (int x = overflow; x < _slots.Length; x++)
-            {
-                _slots[x].gameObject.SetActive(false);         
-            }
         }
     }
     private void ToggleAllSlots(bool status)
