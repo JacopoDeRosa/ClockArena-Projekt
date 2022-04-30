@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ActionBarButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Image _image;
+    [SerializeField] private TooltipController _tooltip;
 
     private bool _primed;
     private CharacterAction _action;
@@ -31,6 +32,7 @@ public class ActionBarButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (action == null) return;
         _action = action;
+        if(_tooltip)  _tooltip.SetContents(action.GetName(), action.GetDescription());
         _image.sprite = action.GetActionSprite();
     }
 

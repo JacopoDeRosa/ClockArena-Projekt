@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FoldingBar : MonoBehaviour
 {
     [SerializeField] private Directions _direction;
     [SerializeField] private float _sinkAmount;
     [SerializeField] private float _sinkSpeed = 1;
+    [SerializeField] private CanvasScaler _scaler;
 
     private bool _busy;
     private bool _open;
@@ -17,6 +18,16 @@ public class FoldingBar : MonoBehaviour
     private void Awake()
     {
         _open = true;
+    }
+
+    private void Start()
+    {
+        _sinkAmount *= FindScale(); 
+    }
+
+    private float FindScale()
+    {
+       return Screen.width / _scaler.referenceResolution.x;
     }
     public void Toggle(bool status)
     {
