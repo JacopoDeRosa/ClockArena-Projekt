@@ -37,7 +37,6 @@ public class GameTurnManager : MonoBehaviour
         SetNextCharacter();
     }
 
-    [Button]
     public void SetNextCharacter()
     {
         if (_activeCharacter != null)

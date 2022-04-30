@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b3344d7af2f6848af964f9c3174551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Kanna
-  _customIcon: {fileID: 21300000, guid: 0754facfdd171ba4fb0f3bd93a1fc37a, type: 3}
+  _name: Truk
+  _customIcon: {fileID: 21300000, guid: 7a821340bb94bc6448253e713b341626, type: 3}
   _data: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _characterMover: {fileID: 5885556325499874677}
 --- !u!114 &5885556325499874677
@@ -95,7 +95,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.08
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!208 &5885556325499874674
