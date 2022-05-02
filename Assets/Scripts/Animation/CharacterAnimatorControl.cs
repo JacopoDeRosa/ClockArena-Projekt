@@ -4,7 +4,7 @@ using UnityEngine;
 using LightPhysics;
 
 
-public class CharacterAnimatorHandler : MonoBehaviour
+public class CharacterAnimatorControl : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
     [SerializeField] private KinematicVelocity _kineVelo;
