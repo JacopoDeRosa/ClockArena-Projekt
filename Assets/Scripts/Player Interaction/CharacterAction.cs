@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 
 public delegate void CharacterActionHandler(CharacterAction characterAction);
+public delegate void GenericEventHandler(params object[] args);
 
 public class CharacterAction : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CharacterAction : MonoBehaviour
 
     public CharacterActionHandler onBegin;
     public CharacterActionHandler onEnd;
+    public GenericEventHandler performed;
 
     public virtual string GetName()
     {

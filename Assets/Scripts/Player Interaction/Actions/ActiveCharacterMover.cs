@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class ActiveCharacterMover : PermanentAction
 {
@@ -41,11 +42,14 @@ public class ActiveCharacterMover : PermanentAction
             _targeting = false;
             if (_pointGetter.GetMousePoint(out Vector3 hit))
             {
-                if (_turnManager.ActiveCharacter.Mover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
+                Character activeCharacter = _turnManager.ActiveCharacter;
+                CharacterMover activeCharacterMover = _turnManager.ActiveCharacter.Mover;
+
+                if (activeCharacterMover.TryCalculatePath(hit, out Vector3[] points, out float lenght))
                 {
-                    _turnManager.ActiveCharacter.Mover.MoveToPoint(points[points.Length-1]);
-                    _turnManager.ActiveCharacter.Mover.onMoveEnd.AddListener(OnMoveEnd);
-                   
+                    activeCharacterMover.MoveToPoint(points.Last());
+                    activeCharacterMover.onMoveEnd.AddListener(OnMoveEnd);
+                    performed?.Invoke(activeCharacter);
                 }
                 else
                 {

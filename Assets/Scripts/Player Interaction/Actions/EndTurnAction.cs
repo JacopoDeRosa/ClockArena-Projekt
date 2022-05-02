@@ -11,6 +11,7 @@ public class EndTurnAction : PermanentAction
     {
         if (_actionsScheduler.Busy) return;
         base.Begin();
+        performed?.Invoke();
         _turnManager.SetNextCharacter();
         End();
     }
