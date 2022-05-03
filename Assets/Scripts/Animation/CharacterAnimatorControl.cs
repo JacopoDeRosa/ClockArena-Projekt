@@ -10,7 +10,6 @@ public class CharacterAnimatorControl : MonoBehaviour
     [SerializeField] private KinematicVelocity _kineVelo;
     [SerializeField] private Animator _animator;
 
-
     private void OnValidate()
     {
         if(_mover == null)
@@ -41,6 +40,4 @@ public class CharacterAnimatorControl : MonoBehaviour
     {
         _animator.SetFloat("Speed", 0);
     }
-
-
 }

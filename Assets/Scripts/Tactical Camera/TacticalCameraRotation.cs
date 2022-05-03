@@ -2,13 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.InputSystem;
 
 public class TacticalCameraRotation : MonoBehaviour
 {
     [SerializeField] private float _rotationStep;
     [SerializeField] private float _rotationSpeed;
+    [SerializeField] private PlayerInput _input;
 
     private bool _busy;
+
+    private void OnValidate()
+    {
+        if(_input == false)
+        {
+            _input = FindObjectOfType<PlayerInput>();
+        }
+    }
+
+    private void Awake()
+    {
+        _input.actions["Rotation"].started += OnRotation;
+    }
+
+    private void OnDestroy()
+    {
+        if(_input != null)
+        {
+            _input.actions["Rotation"].started -= OnRotation;
+        }
+    }
+
+    private void OnRotation(InputAction.CallbackContext context)
+    {
+        float value = context.ReadValue<float>();
+
+        if(value > 0)
+        {
+            RotateLeft();
+        }
+        else if(value < 0)
+        {
+            RotateRight();
+        }
+        
+    }
 
     [Button]
     public void RotateLeft()
