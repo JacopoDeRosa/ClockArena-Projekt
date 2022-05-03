@@ -10,7 +10,6 @@ Material:
   m_Name: Path_Material
   m_Shader: {fileID: -6465566751694194690, guid: ff277bc364af1cf449dbd5365c97f517, type: 3}
   m_ValidKeywords:
-  - _ENABLE_FOG_ON_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -62,7 +61,7 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 0
-    - _EnableFogOnTransparent: 1
+    - _EnableFogOnTransparent: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
     - _Speed: 2
@@ -86,14 +85,14 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestDepthEqualForOpaque: 0
     - _ZTestGBuffer: 4
-    - _ZTestTransparent: 4
+    - _ZTestTransparent: 0
     - _ZWrite: 0
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 95.87451, g: 95.87451, b: 95.87451, a: 1}
+    - _Main_Color: {r: 45.254833, g: 45.254833, b: 45.254833, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4189818424471445130
 MonoBehaviour:
