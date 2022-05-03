@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3878454925101543225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4510595373227242883}
+  - component: {fileID: 664000626559416870}
+  - component: {fileID: 3374311320678895340}
+  m_Layer: 0
+  m_Name: Elevator_Room_Arch_Wall_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4510595373227242883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878454925101543225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7651118506585166641}
+  - {fileID: 6675882244570183913}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &664000626559416870
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878454925101543225}
+  m_Mesh: {fileID: -2848314568587918498, guid: fefff925441b26a47a573eec222501ed, type: 3}
+--- !u!23 &3374311320678895340
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878454925101543225}
+  m_Enabled: 1
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dab74f5fc04061d458cf19f32fbc2bd7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1540219729104760001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4510595373227242883}
+    m_Modifications:
+    - target: {fileID: 8375040253887194442, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_Name
+      value: Elevator_Room_Arch_Bars
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+--- !u!4 &7651118506585166641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9183347685082234864, guid: ddb351e9f7bfc574d8c8784f972e247f, type: 3}
+  m_PrefabInstance: {fileID: 1540219729104760001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8892687700788948007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4510595373227242883}
+    m_Modifications:
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3208677786772541044, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+      propertyPath: m_Name
+      value: Elevator_Room_Arch_Stop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+--- !u!4 &6675882244570183913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2867759278997099726, guid: 14251c6169d85e04697ab1e10600ad3c, type: 3}
+  m_PrefabInstance: {fileID: 8892687700788948007}
+  m_PrefabAsset: {fileID: 0}
