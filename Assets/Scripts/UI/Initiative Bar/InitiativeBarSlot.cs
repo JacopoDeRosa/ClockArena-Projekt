@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InitiativeBarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Image _image;
+    [SerializeField] private TMP_Text _text;
+    [SerializeField] private WorldGizmos _gizmos;
+
+    private void OnValidate()
+    {
+        if (_gizmos == null) _gizmos = FindObjectOfType<WorldGizmos>();
+    }
 
     private Character _assignedCharacter;
     private bool _pointerIn = false;
@@ -37,7 +45,9 @@ public class InitiativeBarSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             SetImage(character.Data.DefaulIcon);
         }
+        _text.text = character.Name;
         _assignedCharacter = character;
+
     }
     private void SetImage(Sprite image)
     {

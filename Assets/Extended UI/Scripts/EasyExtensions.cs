@@ -7,7 +7,7 @@ namespace ExtendedUI
 {
     public static class EasyExtensions
     {
-        public static string ToClockFormat(float time)
+        public static string ToClockFormat(this float time)
         {
 
             int seconds = (int)time % 60;

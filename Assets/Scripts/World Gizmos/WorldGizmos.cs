@@ -8,6 +8,14 @@ public class WorldGizmos : MonoBehaviour
     [SerializeField] private PathRenderer _pathRenderer;
     [SerializeField] private GameObject _pointer;
 
+    private void OnValidate()
+    {
+        if(FindObjectsOfType<WorldGizmos>().Length > 1)
+        {
+            Debug.LogError("Too many world gizmos components in scene, There Can Be Only One");
+        }
+    }
+
 
     public void RenderPath(Vector3[] points, Gradient gradient)
     {
