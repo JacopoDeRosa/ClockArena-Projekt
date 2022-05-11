@@ -33,16 +33,16 @@ public class FoldingBar : MonoBehaviour
     }
 
 
-    public void Toggle(bool status)
+    public void Toggle(bool isClosed)
     {
         if (_busy) return;
-        if (status == true && _open == false)
+        if (isClosed == true && _open == false)
         {
             _open = true;
             StartCoroutine(MoveToPosition(0));
 
         }
-        else if (status == false && _open)
+        else if (isClosed == false && _open)
         {
             _open = false;
             StartCoroutine(MoveToPosition(_sinkAmount));
