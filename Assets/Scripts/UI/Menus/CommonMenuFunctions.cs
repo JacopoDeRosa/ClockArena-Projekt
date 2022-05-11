@@ -5,7 +5,6 @@ using Sirenix.OdinInspector;
 
 public class CommonMenuFunctions : MonoBehaviour
 {
-    [Button]
     public void FoldAllBars()
     {
         FoldingBar[] bars = FindObjectsOfType<FoldingBar>();
@@ -18,8 +17,6 @@ public class CommonMenuFunctions : MonoBehaviour
             }
         }
     }
-
-    [Button]
     public void UnFoldAllBars()
     {
         FoldingBar[] bars = FindObjectsOfType<FoldingBar>();
@@ -33,8 +30,14 @@ public class CommonMenuFunctions : MonoBehaviour
         }
     }
 
-    public void OpenURL(string url)
+    public void Quit()
     {
-        Application.OpenURL(url);
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.Beep();   
+#endif
     }
+  
+
 }

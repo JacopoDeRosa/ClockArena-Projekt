@@ -25,15 +25,19 @@ public class LogInScreen : MonoBehaviour
     [SerializeField] private GameObject _loadingWindow;
     [SerializeField] private TMP_Text _loadingText;
 
-
     private void Start()
     {
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteKey(LogInKey);
+#endif
+        _passwordResetButton.onClick.AddListener(OpenPasswordReset);
+        _emailResetButton.onClick.AddListener(OpenEmailReset);
+
         if(PlayerPrefs.HasKey(LogInKey))
         {
             if(PlayerPrefs.GetInt(LogInKey) == 1)
             {
                 //TODO: Deserialize the log in data Json here and set the returning data as the password and email field text 
-
                 TryLogIn();
             }
         }
@@ -60,19 +64,31 @@ public class LogInScreen : MonoBehaviour
     private IEnumerator LogIn()
     {
         _loadingWindow.SetActive(true);
+
         _loadingText.text = "Logging you in...";
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(1f);
+
         // All server logic goes here
+
         if(_keepLoginInfo.isOn)
         {
             //Serialize the login info here if autolog is on;
             _loadingText.text = "Saving Login Info...";
             PlayerPrefs.SetInt(LogInKey, 1);
         }
+
         // The waits are to simulate the lenght of the actual operation
-        yield return new WaitForSeconds(0.25f);
+
+        yield return new WaitForSeconds(1f);
+
+        _loadingText.text = "Welcome in...";
+        yield return new WaitForSeconds(1);
+
         _loadingWindow.SetActive(false);
+
+        yield return _screenBar.Toggle();
+
         _menuDoors.Open();
-        _screenBar.Toggle(false);
     }
 }

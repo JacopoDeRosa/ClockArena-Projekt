@@ -5,14 +5,15 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject _squadEditorCam;
     [SerializeField] private GameObject _mainMenuCam;
-
-
-
+    [SerializeField] private GameObject _buttons;
+    [SerializeField] private GameObject _logo;
 
     public void GoToSquadEditor()
     {
         if (_squadEditorCam.activeInHierarchy) return;
 
+        _buttons.SetActive(false);
+        _logo.SetActive(false);
         _squadEditorCam.SetActive(true);
         _mainMenuCam.SetActive(false);
     }
