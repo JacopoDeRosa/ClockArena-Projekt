@@ -7,23 +7,37 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject _squadEditorCam;
     [SerializeField] private GameObject _mainMenuCam;
-    [SerializeField] private GameObject _buttons;
-    [SerializeField] private GameObject _logo;
-    [SerializeField] private GameObject _loadingScreen;
-    [SerializeField] private TMP_Text _loadingText;
+    [SerializeField] private FoldingBar[] _mainMenuObjects;
+    [SerializeField] private FoldingBar[] _selectorObjects;
+    [SerializeField] private MenuPanelsController _mainMenuPanels;
+    [SerializeField] private LoadingScreen _loadingScreen;
 
     public void GoToSquadEditor()
     {
         if (_squadEditorCam.activeInHierarchy) return;
-
-        _buttons.SetActive(false);
-        _logo.SetActive(false);
+        foreach (FoldingBar menu in _mainMenuObjects)
+        {
+            menu.Toggle(false);
+        }
+        foreach (FoldingBar menu in _selectorObjects)
+        {
+            menu.Toggle(true);
+        }
+        StartCoroutine(_mainMenuPanels.CloseActiveMenu());
         _squadEditorCam.SetActive(true);
         _mainMenuCam.SetActive(false);
     }
     public void GoToMainMenu()
     {
         if (_mainMenuCam.activeInHierarchy) return;
+        foreach (FoldingBar menu in _mainMenuObjects)
+        {
+            menu.Toggle(true);
+        }
+        foreach (FoldingBar menu in _selectorObjects)
+        {
+            menu.Toggle(false);
+        }
         _squadEditorCam.SetActive(false);
         _mainMenuCam.SetActive(true);
     }
@@ -33,9 +47,13 @@ public class MainMenuController : MonoBehaviour
         StartCoroutine(QueueUp());
     }
 
+
+
     private IEnumerator QueueUp()
     {
-        _loadingScreen.SetActive(true);
+        yield return _mainMenuPanels.CloseActiveMenu();
+        _loadingScreen.gameObject.SetActive(true);      
+        _loadingScreen.SetText("In Queue...");
         yield return SceneManager.LoadSceneAsync(1);
     }
 }

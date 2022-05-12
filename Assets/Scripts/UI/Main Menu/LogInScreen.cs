@@ -22,8 +22,7 @@ public class LogInScreen : MonoBehaviour
 
     [SerializeField] private MenuDoors _menuDoors;
     [SerializeField] private FoldingBar _screenBar;
-    [SerializeField] private GameObject _loadingWindow;
-    [SerializeField] private TMP_Text _loadingText;
+    [SerializeField] private LoadingScreen _loadingWindow;
 
     private void Start()
     {
@@ -63,9 +62,9 @@ public class LogInScreen : MonoBehaviour
 
     private IEnumerator LogIn()
     {
-        _loadingWindow.SetActive(true);
+        _loadingWindow.gameObject.SetActive(true);
 
-        _loadingText.text = "Logging you in...";
+        _loadingWindow.SetText("Logging you in...");
 
         yield return new WaitForSeconds(1f);
 
@@ -74,7 +73,7 @@ public class LogInScreen : MonoBehaviour
         if(_keepLoginInfo.isOn)
         {
             //Serialize the login info here if autolog is on;
-            _loadingText.text = "Saving Login Info...";
+            _loadingWindow.SetText("Saving Login Info...");
             PlayerPrefs.SetInt(LogInKey, 1);
         }
 
@@ -82,10 +81,10 @@ public class LogInScreen : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        _loadingText.text = "Welcome in...";
+        _loadingWindow.SetText("Welcome in...");
         yield return new WaitForSeconds(1);
 
-        _loadingWindow.SetActive(false);
+        _loadingWindow.gameObject.SetActive(false);
 
         yield return _screenBar.Toggle();
 

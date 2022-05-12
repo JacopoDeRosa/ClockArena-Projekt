@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuPanelsController : MonoBehaviour
 {
     [SerializeField] private FoldingBar[] _menus;
-
+    [SerializeField]
     private FoldingBar _activeMenu;
     private bool _busy;
 
@@ -20,7 +20,7 @@ public class MenuPanelsController : MonoBehaviour
         StartCoroutine(SwitchToMenu(index));
     }   
 
-    private IEnumerator SwitchToMenu(int index)
+    public IEnumerator SwitchToMenu(int index)
     {
         _busy = true;
 
@@ -43,5 +43,16 @@ public class MenuPanelsController : MonoBehaviour
         yield return targetMenu.Toggle();
 
         _busy = false;
+    }
+
+    public IEnumerator CloseActiveMenu()
+    {
+        if(_activeMenu != null)
+        {
+            yield return _activeMenu.Toggle();
+            _activeMenu = null;
+        }
+        
+        yield return null;
     }
 }

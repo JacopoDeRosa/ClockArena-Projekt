@@ -10,17 +10,12 @@ public class FoldingBar : MonoBehaviour
     [SerializeField] private float _sinkAmount;
     [SerializeField] private float _sinkSpeed = 1;
     [SerializeField] private CanvasScaler _scaler;
+    [SerializeField] private bool _open;
 
     private bool _busy;
-    private bool _open;
+
 
     public bool Open { get => _open; }
-
-
-    private void Awake()
-    {
-        _open = true;
-    }
 
     private void Start()
     {
@@ -33,16 +28,16 @@ public class FoldingBar : MonoBehaviour
     }
 
 
-    public void Toggle(bool isClosed)
+    public void Toggle(bool open)
     {
         if (_busy) return;
-        if (isClosed == true && _open == false)
+        if (open == true && _open == false)
         {
             _open = true;
             StartCoroutine(MoveToPosition(0));
 
         }
-        else if (isClosed == false && _open)
+        else if (open == false && _open)
         {
             _open = false;
             StartCoroutine(MoveToPosition(_sinkAmount));
