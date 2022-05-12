@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 
 public class CommonMenuFunctions : MonoBehaviour
@@ -28,6 +29,10 @@ public class CommonMenuFunctions : MonoBehaviour
                 bar.Toggle(true);
             }
         }
+    }
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()

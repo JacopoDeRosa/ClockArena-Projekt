@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     private void Update()
     {
-        string time = Time.time.ToClockFormat();
+        string time = Time.timeSinceLevelLoad.ToClockFormat();
         _text.text = time;  
     }
 }

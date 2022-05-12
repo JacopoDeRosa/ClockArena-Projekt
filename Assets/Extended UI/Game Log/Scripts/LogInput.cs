@@ -35,14 +35,5 @@ namespace ExtendedUI
         {
             _senderName = name;
         }
-
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-             _inputField.ActivateInputField();
-            }
-        }
-
     }
 }
