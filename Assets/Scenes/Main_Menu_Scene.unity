@@ -1592,8 +1592,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Keep me logged in.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2763,8 +2763,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LOG-IN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12474,8 +12474,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Forgot Password?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14362,8 +14362,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Target Display
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14977,8 +14977,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PASSWORD:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16477,8 +16477,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'EMAIL:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18058,8 +18058,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Forgot Email?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19486,7 +19486,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.849711, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -21518,8 +21518,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: WELCOME TO THE ARENA
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22176,8 +22176,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resolution
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
-  m_sharedMaterial: {fileID: -1581581152116303940, guid: 8cbdedff52eecb4409cf86965c000733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -27178,7 +27178,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32020
+  m_Name: pb_Mesh32446
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
