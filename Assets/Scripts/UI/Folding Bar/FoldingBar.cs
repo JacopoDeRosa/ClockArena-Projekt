@@ -14,17 +14,25 @@ public class FoldingBar : MonoBehaviour
 
     private bool _busy;
 
+    private float _adjustedSinkAmount;
+
 
     public bool Open { get => _open; }
 
+
     private void Start()
     {
-        _sinkAmount *= FindScale();
+        FindSinkAmount();
     }
 
     private float FindScale()
     {
         return Screen.width / _scaler.referenceResolution.x;
+    }
+
+    private void FindSinkAmount()
+    {
+        _adjustedSinkAmount = _sinkAmount * FindScale();
     }
 
 
@@ -40,7 +48,7 @@ public class FoldingBar : MonoBehaviour
         else if (open == false && _open)
         {
             _open = false;
-            StartCoroutine(MoveToPosition(_sinkAmount));
+            StartCoroutine(MoveToPosition(_adjustedSinkAmount));
         }
     }
 
@@ -57,7 +65,7 @@ public class FoldingBar : MonoBehaviour
         else if (_open)
         {
             _open = false;
-            yield return MoveToPosition(_sinkAmount);
+            yield return MoveToPosition(_adjustedSinkAmount);
         }
     }
     private IEnumerator MoveToPosition(float position)
@@ -76,19 +84,19 @@ public class FoldingBar : MonoBehaviour
         switch (_direction)
         {
             case Directions.Top:
-                end = new Vector3(start.x, start.y + _sinkAmount * open, start.z);
+                end = new Vector3(start.x, start.y + _adjustedSinkAmount * open, start.z);
                 break;
 
             case Directions.Right:
-                end = new Vector3(start.x + _sinkAmount * open, start.y, start.z);
+                end = new Vector3(start.x + _adjustedSinkAmount * open, start.y, start.z);
                 break;
 
             case Directions.Bottom:
-                end = new Vector3(start.x, start.y - _sinkAmount * open, start.z);
+                end = new Vector3(start.x, start.y - _adjustedSinkAmount * open, start.z);
                 break;
 
             case Directions.Left:
-                end = new Vector3(start.x - _sinkAmount * open, start.y, start.z);
+                end = new Vector3(start.x - _adjustedSinkAmount * open, start.y, start.z);
                 break;
         }
 
