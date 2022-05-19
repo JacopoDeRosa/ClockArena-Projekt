@@ -24,7 +24,7 @@ public class MonitorDropdown : GameOptionSetter
     private IEnumerable<string> GetDisplays()
     {
         Display[] monitors =  Display.displays;
-        print(monitors[0].ToString());
+
         for (int i = 0; i < Display.displays.Length; i++)
         {
            

@@ -19020,6 +19020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681ccf1aca83b9944a2a4bdee8a881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deleteLogInAtStartInEditor: 0
   _emailField: {fileID: 632520895}
   _emailResetButton: {fileID: 1145997536}
   _emailResetUrl: https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop

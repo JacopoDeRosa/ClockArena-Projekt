@@ -4,10 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
+using System.Net.Mail;
 
 public class LogInScreen : MonoBehaviour
 {
+#if UNITY_EDITOR
+    [SerializeField] private bool _deleteLogInAtStartInEditor;
+#endif
+
     private const string LogInKey = "KeepLogIn";
+    private const string EmailKey = "LogInMail";
+    private const string PasswordKey = "LogInPass";
 
     // Use player prefs to check if player should save prefs, if so check if data exists, if it does auto log in
     [SerializeField] private TMP_InputField _emailField;
@@ -27,19 +34,31 @@ public class LogInScreen : MonoBehaviour
     private void Start()
     {
 #if UNITY_EDITOR
-        PlayerPrefs.DeleteKey(LogInKey);
+      if(_deleteLogInAtStartInEditor)  PlayerPrefs.DeleteKey(LogInKey);
 #endif
         _passwordResetButton.onClick.AddListener(OpenPasswordReset);
         _emailResetButton.onClick.AddListener(OpenEmailReset);
 
-        if(PlayerPrefs.HasKey(LogInKey))
+        if(PlayerPrefs.HasKey(LogInKey) && PlayerPrefs.GetInt(LogInKey) == 1)
         {
-            if(PlayerPrefs.GetInt(LogInKey) == 1)
-            {
-                //TODO: Deserialize the log in data Json here and set the returning data as the password and email field text 
-                TryLogIn();
-            }
+            TryAutoLogin();
         }
+    }
+
+    private void TryAutoLogin()
+    {
+        string mail = PlayerPrefs.GetString(EmailKey);
+        string password = PlayerPrefs.GetString(PasswordKey);
+
+        if (string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(password))
+        {
+            return;
+        }
+
+        _emailField.text = mail;
+        _passwordField.text = password; 
+
+        TryLogIn();
     }
 
     public void OpenPasswordReset()
@@ -73,6 +92,10 @@ public class LogInScreen : MonoBehaviour
         if(_keepLoginInfo.isOn)
         {
             //Serialize the login info here if autolog is on;
+            PlayerPrefs.SetString(EmailKey, _emailField.text);
+            print(_emailField.text);
+            print(_passwordField.text);
+            PlayerPrefs.SetString(PasswordKey, _passwordField.text);
             _loadingWindow.SetText("Saving Login Info...");
             PlayerPrefs.SetInt(LogInKey, 1);
         }
