@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField] private Sprite _customIcon;
     [SerializeField] private CharacterData _data;
     [SerializeField] private CharacterMover _characterMover;
+    [SerializeField] private Factions _faction;
 
     [ShowInInspector][ReadOnly]
     private bool _sleep;
