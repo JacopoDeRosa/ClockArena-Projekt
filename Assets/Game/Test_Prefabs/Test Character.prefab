@@ -2138,7 +2138,6 @@ GameObject:
   - component: {fileID: 5885556325499874674}
   - component: {fileID: 5885556325499874673}
   - component: {fileID: 4140656962453737558}
-  - component: {fileID: 1892721242240174514}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -2250,7 +2249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mover: {fileID: 5885556325499874677}
-  _kineVelo: {fileID: 1892721242240174514}
   _animator: {fileID: 4140656962453737558}
 --- !u!95 &4140656962453737558
 Animator:
@@ -2272,20 +2270,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1892721242240174514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5885556325499874679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13707c485d76ff48a7c09784935d050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _calculateVelocity: 0
-  _calculateAngularVelocity: 1
 --- !u!1 &5969752600020306423
 GameObject:
   m_ObjectHideFlags: 0

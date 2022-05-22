@@ -77,7 +77,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper
     {
         StartCoroutine(OnWakeUp());
     }
-
     private IEnumerator OnWakeUp()
     {
         _obstacle.enabled = false;

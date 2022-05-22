@@ -7,7 +7,6 @@ using LightPhysics;
 public class CharacterAnimatorControl : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
-    [SerializeField] private KinematicVelocity _kineVelo;
     [SerializeField] private Animator _animator;
 
     private void OnValidate()
@@ -31,8 +30,7 @@ public class CharacterAnimatorControl : MonoBehaviour
     {
         if(_mover.IsMoving)
         {
-            _animator.SetFloat("Speed", _mover.Velocity.magnitude);
-         
+            _animator.SetFloat("Speed", _mover.Velocity.magnitude);        
         }
     }
 
