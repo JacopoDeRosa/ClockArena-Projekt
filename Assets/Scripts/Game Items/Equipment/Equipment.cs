@@ -16,22 +16,12 @@ public class Equipment : MonoBehaviour
 
     private void OnValidate()
     {
-        ValidateUtilitySlots();
         ValidateArmourSlots();
     }
 
-    private void ValidateUtilitySlots()
-    {
-        _weaponSlot.OnValidate();
-        _gadgetSlot.OnValidate();       
-    }
 
     private void ValidateArmourSlots()
     {
-        _handsSlot.OnValidate();
-        _bodySlot.OnValidate();
-        _handsSlot.OnValidate();
-
         _handsSlot.SetArmourType(ArmourTypes.Hands);
         _bodySlot.SetArmourType(ArmourTypes.Body);
         _handsSlot.SetArmourType(ArmourTypes.Hands);

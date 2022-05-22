@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [System.Serializable]
-public class ArmourSlot : EquipmentSlot
+public class ArmourSlot : EquipmentSlot<Armour>
 {
     [SerializeField]
     [ReadOnly]
@@ -13,17 +13,11 @@ public class ArmourSlot : EquipmentSlot
     public ArmourTypes ArmourType { get => _armourType; }
     new public Armour Item { get => _item as Armour; }
 
-
-    public override void OnValidate()
-    {
-        base.OnValidate();
-        ForceItemType(ItemTypes.Armour);
-    }
     public void SetArmourType(ArmourTypes type)
     {
         _armourType = type;
     }
-    public override void SetItem(GameItem item)
+    public override void SetItem(Armour item)
     {
         var armour = item as Armour;
         if (armour == null) return;

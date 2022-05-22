@@ -4,29 +4,18 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [System.Serializable]
-public class EquipmentSlot
+public class EquipmentSlot<T> where T: GameItem
 {
-    [SerializeField] protected GameItem _item;
-    [SerializeField][ReadOnly]
-    private ItemTypes _itemType;
+    [SerializeField] protected T _item;
 
     public GameItem Item { get => _item; }
 
-    public virtual void SetItem(GameItem item)
+    public virtual void SetItem(T item)
     {
-        if (_item.Data.ItemType != _itemType) return;
         _item = item;
     }
     public bool IsValidFactionItem(Factions faction)
     {
         return Item.Data.UsableByFaction(faction);
-    }
-    public virtual void OnValidate()
-    {
-
-    }
-    protected void ForceItemType(ItemTypes itemType)
-    {
-        if (_itemType != itemType) _itemType = itemType;
     }
 }

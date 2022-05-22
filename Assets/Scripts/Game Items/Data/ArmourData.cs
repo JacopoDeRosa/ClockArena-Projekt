@@ -15,10 +15,5 @@ public class ArmourData : ItemData
     public int Protection { get => _protection; }
     public int Weight { get => _weight; }
     public ArmourTypes ArmourType { get => _armourType; }
-
-    protected virtual void OnValidate()
-    {
-        ForceItemType(ItemTypes.Armour);
-    }
 }
 

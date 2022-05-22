@@ -14,9 +14,8 @@ public class MeleeWeaponData : WeaponData
 
     public float HitChance { get => _hitChance; }
 
-    protected override void OnValidate()
+    protected void OnValidate()
     {
-        base.OnValidate();
         ForceWeaponType(WeaponTypes.Melee);
     }
 }

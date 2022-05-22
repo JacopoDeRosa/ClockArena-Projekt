@@ -7,10 +7,4 @@ public class GadgetData : ItemData
     [SerializeField] private int _maxUses;
     [SerializeField] private bool _needRestock;
     [SerializeField] private int _restockPrice;
-
-
-    protected virtual void OnValidate()
-    {
-        ForceItemType(ItemTypes.Gadget);
-    }
 }

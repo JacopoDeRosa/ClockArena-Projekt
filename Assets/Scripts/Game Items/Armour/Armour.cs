@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Armour : GameItem
+public class Armour : GameItem<ArmourData>
 {
-    [SerializeField] private ItemTypes _targetSlot;
-
-    new public ArmourData Data { get => (ArmourData) _data; }
-    public ItemTypes TargetSlot { get => _targetSlot; }
+    [SerializeField] new protected ArmourData _data;
 }

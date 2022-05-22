@@ -11,9 +11,8 @@ public class RangedWeaponData : WeaponData
 
     public float Deviation { get => _deviation; }
 
-    protected override void OnValidate()
+    protected void OnValidate()
     {
-        base.OnValidate();
         ForceWeaponType(WeaponTypes.Ranged);
     }
 }

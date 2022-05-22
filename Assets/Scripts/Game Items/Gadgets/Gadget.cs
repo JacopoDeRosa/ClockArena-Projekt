@@ -2,12 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gadget : GameItem
+public class Gadget : GameItem<GadgetData>
 {
-    new public GadgetData Data { get => (GadgetData) _data; }
-
-    private void OnValidate()
-    {
-        ForceDatatype<GadgetData>();
-    }
+    [SerializeField] new private GadgetData _data;
 }

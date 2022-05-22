@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameItem : MonoBehaviour
 {
-    [SerializeField] protected ItemData _data;
+    protected ItemData _data;
+
     [SerializeField] private Character _user;
 
     public ItemData Data { get => _data; }
@@ -14,15 +15,5 @@ public class GameItem : MonoBehaviour
     {
         _user = user;
     }
-
-    protected void ForceDatatype<T>() where T: ItemData
-    {
-        if (_data == null) return;
-        var test = _data as T;
-        if(test == null)
-        {
-            _data = null;
-            return;
-        }
-    }
 }
+

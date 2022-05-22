@@ -14,11 +14,6 @@ public class WeaponData : ItemData
 
     public Vector2 DamageRange { get => _damageRange; }
 
-    protected virtual void OnValidate()
-    {
-        ForceItemType(ItemTypes.Weapon);
-    }
-
     protected void ForceWeaponType(WeaponTypes type)
     {
         _weaponType = type;

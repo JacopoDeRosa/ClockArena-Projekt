@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : Weapon
+public class MeleeWeapon : Weapon<MeleeWeaponData>
 {
-    new public MeleeWeaponData Data { get => _data as MeleeWeaponData; }
-
     public override void Attack()
     {
       
-    }
-
-    private void OnValidate()
-    {
-        ForceDatatype<MeleeWeaponData>();
     }
 }
