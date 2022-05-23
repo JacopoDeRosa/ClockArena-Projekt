@@ -7,4 +7,9 @@ public class GadgetData : ItemData
     [SerializeField] private int _maxUses;
     [SerializeField] private bool _needRestock;
     [SerializeField] private int _restockPrice;
+
+    public override string GetItemClass()
+    {
+        return "Gadget";
+    }
 }

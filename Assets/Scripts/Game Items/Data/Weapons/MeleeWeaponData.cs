@@ -13,4 +13,9 @@ public class MeleeWeaponData : WeaponData
     private float _range;
 
     public float HitChance { get => _hitChance; }
+
+    public override string GetItemClass()
+    {
+        return "Melee";
+    }
 }

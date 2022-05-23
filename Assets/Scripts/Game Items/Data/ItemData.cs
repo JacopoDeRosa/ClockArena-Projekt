@@ -20,6 +20,10 @@ public class ItemData : ScriptableObject
     public bool UsableByFaction(Factions faction)
     {
         return _enabledFactions.HasFlag(faction);
+    }
 
+    public virtual string GetItemClass()
+    {
+        return "Unknown";
     }
 }

@@ -15,5 +15,10 @@ public class ArmourData : ItemData
     public int Protection { get => _protection; }
     public int Weight { get => _weight; }
     public ArmourTypes ArmourType { get => _armourType; }
+
+    public override string GetItemClass()
+    {
+        return _armourType.ToString() + " Armour";
+    }
 }
 

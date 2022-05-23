@@ -10,4 +10,9 @@ public class RangedWeaponData : WeaponData
     private float _deviation;
 
     public float Deviation { get => _deviation; }
+
+    public override string GetItemClass()
+    {
+        return "Ranged";
+    }
 }
