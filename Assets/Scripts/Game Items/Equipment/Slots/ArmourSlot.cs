@@ -17,11 +17,10 @@ public class ArmourSlot : EquipmentSlot<Armour>
     {
         _armourType = type;
     }
-    public override void SetItem(Armour item)
+    public override void SetItem(Armour armour)
     {
-        var armour = item as Armour;
         if (armour == null) return;
         if (armour.Data.ArmourType != _armourType) return;
-        base.SetItem(item);
+        base.SetItem(armour);
     }
 }

@@ -6,4 +6,10 @@ using UnityEngine.UI;
 public class Armour : GameItem<ArmourData>
 {
     [SerializeField] new protected ArmourData _data;
+    [SerializeField] private SkinnedMeshRenderer[] _meshRenderers;
+
+    public void AssignBones()
+    {
+
+    }
 }

@@ -18,12 +18,35 @@ public class Equipment : MonoBehaviour
     {
         ValidateArmourSlots();
     }
-
-
     private void ValidateArmourSlots()
     {
         _handsSlot.SetArmourType(ArmourTypes.Hands);
         _bodySlot.SetArmourType(ArmourTypes.Body);
         _handsSlot.SetArmourType(ArmourTypes.Hands);
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        _weaponSlot.SetItem(weapon);
+    }
+
+    public void SetGadget(Gadget gadget)
+    {
+        gadget.Data.UsableByFaction(Factions.DeathRow);
+    }
+
+    public void SetHeadArmour(Armour armour)
+    {
+        _headSlot.SetItem(armour);
+    }
+
+    public void SetBodyArmour(Armour armour)
+    {
+        _bodySlot.SetItem(armour);
+    }
+
+    public void SetHandsArmour(Armour armour)
+    {
+        _handsSlot.SetItem(armour);
     }
 }
