@@ -10,9 +10,4 @@ public class RangedWeaponData : WeaponData
     private float _deviation;
 
     public float Deviation { get => _deviation; }
-
-    protected void OnValidate()
-    {
-        ForceWeaponType(WeaponTypes.Ranged);
-    }
 }
