@@ -13,17 +13,15 @@ public class TacticalCameraMover : MonoBehaviour
     private Vector2 _currentInput;
     private float _inputSmoothReal;
 
-    private void OnValidate()
+  
+    private void Start()
     {
-        if(_input == null)
-        {
-            _input = FindObjectOfType<PlayerInput>();
-        }
-    }
+        if (_input == null) _input = FindObjectOfType<PlayerInput>();
 
-    private void Awake()
-    {
-        _input.actions["Move"].performed += OnMove;
+        if (_input != null)
+        {
+            _input.actions["Move"].performed += OnMove;
+        }
         _inputSmoothReal = Mathf.Clamp01(_inputSmoothing * Time.deltaTime);
     }
 

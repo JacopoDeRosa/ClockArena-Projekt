@@ -20,9 +20,13 @@ public class TacticalCameraRotation : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
-        _input.actions["Rotation"].started += OnRotation;
+        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+        if (_input != null)
+        {
+            _input.actions["Rotation"].started += OnRotation;
+        }
     }
 
     private void OnDestroy()

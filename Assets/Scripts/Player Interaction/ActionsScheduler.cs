@@ -26,8 +26,24 @@ public class ActionsScheduler : MonoBehaviour
 
     private void Awake()
     {
-        _input.actions["Cancel"].started += OnCancel;
         _actions = new List<CharacterAction>();
+    }
+
+    private void Start()
+    {
+        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+
+        if(_input != null)
+        {
+            _input.actions["Cancel"].started += OnCancel;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (_input != null)
+        {
+            _input.actions["Cancel"].started -= OnCancel;
+        }
     }
 
     private void OnCancel(InputAction.CallbackContext context)

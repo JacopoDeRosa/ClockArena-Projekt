@@ -21,21 +21,29 @@ public class TacticalCameraHeight : MonoBehaviour
         }
     }
 
-    private void Awake()
+
+    private void Start()
     {
-        _input.actions["MouseWheel"].started += OnMouseWheel;
+        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+
+        if (_input)
+        {
+            _input.actions["MouseWheel"].started += OnMouseWheel;
+        }
     }
     private void OnDestroy()
     {
         if(_input)
         {
-            _input.actions["MouseWheel"].performed += OnMouseWheel;
+            _input.actions["MouseWheel"].started -= OnMouseWheel;
         }
     }
 
     private void OnMouseWheel(InputAction.CallbackContext context)
-    {    
+    {
+        print("Mouse Wheel");
         Vector2 wheel = context.ReadValue<Vector2>();
+
         if (_busy) return;
 
         StartCoroutine(ChangeLevel(wheel.y));
