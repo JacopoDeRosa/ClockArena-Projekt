@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 
 public class TacticalCameraRotation : MonoBehaviour
 {
-    [SerializeField] private float _rotationStep;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private PlayerInput _input;
 
     private bool _busy;
-
+    private float _rotationStep;
     private void OnValidate()
     {
         if(_input == false)

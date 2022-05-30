@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class ActionsScheduler : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _input;
+    private PlayerInput _input;
 
     [ShowInInspector]
     private List<CharacterAction> _actions = new List<CharacterAction>();

@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 
 public class TacticalCameraHeight : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _input;
+    
     [SerializeField] private int _currentLayer;
     [SerializeField] private int _maxLayers;
     [SerializeField] private float _step;
     [SerializeField] private float _speed;
 
+    private PlayerInput _input;
     private bool _busy;
 
     private void OnValidate()

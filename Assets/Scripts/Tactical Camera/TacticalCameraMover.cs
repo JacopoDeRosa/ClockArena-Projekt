@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class TacticalCameraMover : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _input;
+   
     [SerializeField] private float _speed;
     [SerializeField] private float _inputSmoothing;
 
+    private PlayerInput _input;
     private Vector2 _moveInput;
     private Vector2 _currentInput;
     private float _inputSmoothReal;
