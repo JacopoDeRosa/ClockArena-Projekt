@@ -7,14 +7,18 @@ using Sirenix.OdinInspector;
 public class MousePointGetter : MonoBehaviour
 {
     [SerializeField] private Camera _eventCamera;
-    [SerializeField] private PlayerInput _playerInput;
+
     [ShowInInspector] 
     [ReadOnly]
     private Vector2 _mousePosition;
 
 
-    private void Awake()
+    private PlayerInput _playerInput;
+
+    private void Start()
     {
+        if (_playerInput == null) _playerInput = FindObjectOfType<PlayerInput>();
+
         _playerInput.actions["Mouse Position"].performed += OnMousePosition;
     }
     private void OnDestroy()

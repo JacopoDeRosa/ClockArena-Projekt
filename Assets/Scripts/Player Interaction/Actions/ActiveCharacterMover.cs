@@ -7,24 +7,22 @@ public class ActiveCharacterMover : PermanentAction
 {
     [SerializeField] private GameTurnManager _turnManager;
     [SerializeField] private MousePointGetter _pointGetter;
-    [SerializeField] private PlayerInput _playerInput;
+   
     [SerializeField] private WorldGizmos _worldGizmos;
     [SerializeField] private Gradient _validPathColor, _invalidPathColor;
 
     private bool _targeting = false;
+    private PlayerInput _playerInput;
 
-    protected override void OnValidate()
+    protected override void Start()
     {
-        base.OnValidate();
         if (_playerInput == null)
         {
             _playerInput = FindObjectOfType<PlayerInput>();
         }
-    }
-
-    private void Awake()
-    {
         _playerInput.actions["Confirm"].started += OnConfirmDown;
+
+        base.Start();
     }
 
     private void OnDestroy()

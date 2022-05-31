@@ -7,17 +7,11 @@ using UnityEngine.InputSystem;
 public class TacticalCameraRotation : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed;
-    [SerializeField] private PlayerInput _input;
+    [SerializeField] private float _rotationStep;
 
+    private PlayerInput _input;
     private bool _busy;
-    private float _rotationStep;
-    private void OnValidate()
-    {
-        if(_input == false)
-        {
-            _input = FindObjectOfType<PlayerInput>();
-        }
-    }
+
 
     private void Start()
     {
@@ -54,7 +48,10 @@ public class TacticalCameraRotation : MonoBehaviour
     [Button]
     public void RotateLeft()
     {
-        if (_busy) return;
+        if (_busy)
+        {
+            return;
+        }
         _busy = true;
         StartCoroutine(SmoothRotation(_rotationStep));
     }
@@ -62,10 +59,12 @@ public class TacticalCameraRotation : MonoBehaviour
     [Button]
     public void RotateRight()
     {
-        if (_busy) return;
+        if (_busy)
+        {
+            return;
+        }
         _busy = true;
         StartCoroutine(SmoothRotation(-_rotationStep));
-
     }
 
 
@@ -73,7 +72,7 @@ public class TacticalCameraRotation : MonoBehaviour
     {
         float totalRotation = 0;
         float direction = Mathf.Sign(rotation);
-        Vector3 finalRotation = transform.rotation.eulerAngles + new Vector3(0, rotation, 0);
+        Vector3 finalRotation = transform.localRotation.eulerAngles + new Vector3(0, rotation, 0);
 
         WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
@@ -84,7 +83,7 @@ public class TacticalCameraRotation : MonoBehaviour
             totalRotation += Mathf.Abs(rotateBy);
             yield return waitForEndOfFrame;
         }
-        transform.rotation = Quaternion.Euler(finalRotation);
+        transform.localRotation = Quaternion.Euler(finalRotation);
         _busy = false;
     }
 }

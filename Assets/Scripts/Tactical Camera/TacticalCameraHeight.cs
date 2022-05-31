@@ -14,14 +14,6 @@ public class TacticalCameraHeight : MonoBehaviour
     private PlayerInput _input;
     private bool _busy;
 
-    private void OnValidate()
-    {
-        if(_input == null)
-        {
-            _input = FindObjectOfType<PlayerInput>();
-        }
-    }
-
 
     private void Start()
     {
