@@ -78,7 +78,7 @@ MonoBehaviour:
       maxLocalVolumetricFogOnScreen: 64
     hdShadowInitParams:
       maxShadowRequests: 128
-      directionalShadowsDepthBits: 32
+      directionalShadowsDepthBits: 16
       shadowFilteringQuality: 0
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
@@ -91,7 +91,7 @@ MonoBehaviour:
       cachedPunctualLightShadowAtlas: 2048
       cachedAreaLightShadowAtlas: 1024
       shadowResolutionDirectional:
-        m_Values: 00010000000200000004000000080000
+        m_Values: 40000000800000000001000000020000
         m_SchemaId:
           m_Id: With4Levels
       shadowResolutionPunctual:
@@ -99,12 +99,12 @@ MonoBehaviour:
         m_SchemaId:
           m_Id: With4Levels
       shadowResolutionArea:
-        m_Values: 00010000000200000004000000080000
+        m_Values: 40000000800000000001000000020000
         m_SchemaId:
           m_Id: With4Levels
-      maxDirectionalShadowMapResolution: 2048
+      maxDirectionalShadowMapResolution: 512
       maxPunctualShadowMapResolution: 2048
-      maxAreaShadowMapResolution: 2048
+      maxAreaShadowMapResolution: 512
       supportScreenSpaceShadows: 0
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
