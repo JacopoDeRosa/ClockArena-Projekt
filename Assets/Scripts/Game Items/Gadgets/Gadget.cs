@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Gadget : GameItem<GadgetData>
 {
-    [SerializeField] new private GadgetData _data;
+
 }
