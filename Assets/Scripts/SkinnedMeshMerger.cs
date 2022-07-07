@@ -70,10 +70,10 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.boneWeights = finalBoneWeights;
         #endregion
 
-        // TODO: Reassing sub meshes with "finalMesh.SetSubMeshes();"
+        #region Instantiate the final skinned mesh
 
         finalMesh.RecalculateBounds();
-        #region Instantiate the final skinned mesh
+
         var finalObject = new GameObject("Merged Mesh of " + targets[0].gameObject.name);
 
         finalObject.transform.position = targets[0].transform.position;
@@ -84,6 +84,7 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalRenderer.sharedMesh = finalMesh;
         finalRenderer.bones = bones;
         finalRenderer.material =  new Material(_defaultMaterial);
+        finalRenderer.rootBone = targets[0].rootBone;
         #endregion
     }
 
