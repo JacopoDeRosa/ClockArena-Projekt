@@ -7,8 +7,11 @@ public class Armour : GameItem<ArmourData>
 {
     [SerializeField] private SkinnedMeshRenderer[] _meshRenderers;
 
-    public void AssignBones()
+    public void AssignBones(Transform[] bones)
     {
-
+        foreach (SkinnedMeshRenderer renderer in _meshRenderers)
+        {
+            renderer.bones = bones;
+        }
     }
 }

@@ -11,18 +11,17 @@ public class Equipment : MonoBehaviour
     [SerializeField] private GadgetSlot _gadgetSlot;
     [SerializeField] private ArmourSlot _headSlot;
     [SerializeField] private ArmourSlot _bodySlot;
-    [SerializeField] private ArmourSlot _handsSlot;
 
 
     private void OnValidate()
     {
         ValidateArmourSlots();
     }
+
     private void ValidateArmourSlots()
     {
-        _handsSlot.SetArmourType(ArmourTypes.Hands);
+        _headSlot.SetArmourType(ArmourTypes.Head);
         _bodySlot.SetArmourType(ArmourTypes.Body);
-        _handsSlot.SetArmourType(ArmourTypes.Hands);
     }
 
     public void SetWeapon(Weapon weapon)
@@ -43,10 +42,5 @@ public class Equipment : MonoBehaviour
     public void SetBodyArmour(Armour armour)
     {
         _bodySlot.SetItem(armour);
-    }
-
-    public void SetHandsArmour(Armour armour)
-    {
-        _handsSlot.SetItem(armour);
     }
 }
