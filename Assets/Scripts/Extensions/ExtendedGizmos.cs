@@ -1,8 +1,5 @@
 using UnityEngine;
 
-
-namespace GizmosExtensions
-{
     public static class ExtendedGizmos
     {
         /// <summary>
@@ -44,5 +41,4 @@ namespace GizmosExtensions
             Gizmos.DrawLine(start + new Vector3(0, radius, -radius), start + new Vector3(0, height - radius, -radius));
         }
     }
-}
 

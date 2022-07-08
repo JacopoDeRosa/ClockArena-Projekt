@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace VectorExtensions
-{
     public static class ExtendedVectors
     {
         public static Vector3 DistanceVector(this Vector3 vector, Vector3 target)
@@ -14,5 +12,5 @@ namespace VectorExtensions
             return target - vector;
         }
     }
-}
+
 

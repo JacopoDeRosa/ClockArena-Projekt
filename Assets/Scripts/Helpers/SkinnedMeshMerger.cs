@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 public class SkinnedMeshMerger : MonoBehaviour
 {
-    
+
     [SerializeField] private SkinnedMeshRenderer[] _targets;
     [SerializeField] private Material _defaultMaterial;
 
@@ -15,6 +15,20 @@ public class SkinnedMeshMerger : MonoBehaviour
     {
         MergeSkinnedMeshes(_targets);
     }
+
+    /*
+
+    First create the new mesh.
+    create new meshes from the target meshes.
+    calculate how many uv tiles will be needed. 
+    offset each mesh on its uv tile.
+    create the merged maps.
+    create the merged material.
+    assign bind pos to the new mesh.
+    assign the bones to the new mesh.
+    recalculate bounds.
+
+    */
 
     private void MergeSkinnedMeshes(SkinnedMeshRenderer[] targets)
     {
@@ -32,14 +46,15 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.name = "Merged Mesh Test";
 
         CombineInstance[] combineInstances = new CombineInstance[targets.Length];
+       
 
         for (int i = 0; i < targets.Length; i++)
         {
-                combineInstances[i].mesh = targets[i].sharedMesh;
-                combineInstances[i].transform = targets[i].transform.localToWorldMatrix;
+            combineInstances[i].mesh = targets[i].sharedMesh;
+            combineInstances[i].transform = targets[i].transform.localToWorldMatrix;
         }
 
-        finalMesh.CombineMeshes(combineInstances, true, false);
+        finalMesh.CombineMeshes(combineInstances, false, false);
         #endregion
 
         #region Set the bindposes for the new mesh
@@ -48,7 +63,7 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.bindposes = bindPoses;
         #endregion
 
-        #region Recaulculate bone weights
+        #region Recalculate bone weights
         Transform[] bones = targets[0].bones;
 
         BoneWeight[] finalBoneWeights = finalMesh.boneWeights;
@@ -78,12 +93,20 @@ public class SkinnedMeshMerger : MonoBehaviour
 
         finalObject.transform.position = targets[0].transform.position;
         finalObject.transform.parent = targets[0].transform.parent;
-       
+
         SkinnedMeshRenderer finalRenderer = finalObject.AddComponent<SkinnedMeshRenderer>();
 
         finalRenderer.sharedMesh = finalMesh;
+
+
+        Material[] finalMats = new Material[finalMesh.subMeshCount];
+        for (int i = 0; i < targets.Length; i++)
+        {
+            finalMats[i] = targets[i].sharedMaterial;
+        }
+        finalRenderer.materials = finalMats;
+
         finalRenderer.bones = bones;
-        finalRenderer.material =  new Material(_defaultMaterial);
         finalRenderer.rootBone = targets[0].rootBone;
         #endregion
     }

@@ -1,8 +1,6 @@
 using UnityEngine;
 
 
-namespace RaycastExtensions
-{
     public static class ExtendedRaycast
     {
         public static float GetSurfaceAngle(Ray ray, float distance, LayerMask layerMask)
@@ -32,5 +30,3 @@ namespace RaycastExtensions
             }
         }
     }
-
-}
