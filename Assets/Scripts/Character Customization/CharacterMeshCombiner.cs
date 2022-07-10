@@ -2,34 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using UnityEngine.Rendering;
 
-public class SkinnedMeshMerger : MonoBehaviour
+public class CharacterMeshCombiner : MonoBehaviour
 {
+    [SerializeField] private Equipment _characterEquipment;
+    [SerializeField] private SkinnedMeshRenderer _meshRenderer;
+    [SerializeField] private Transform _meshesContainer;
 
-    [SerializeField] private SkinnedMeshRenderer[] _targets;
-    [SerializeField] private Material _defaultMaterial;
-
-
-    [Button("Merge Meshes")]
-    private void Merge()
+    private void Awake()
     {
-        MergeSkinnedMeshes(_targets);
+        _characterEquipment.onArmourChanged += UpdateCharacterMesh;
     }
 
-    /* Pseudo Code
-
-    First create the new mesh.
-    create new meshes from the target meshes.
-    calculate how many uv tiles will be needed. 
-    offset each mesh on its uv tile.
-    create the merged maps.
-    create the merged material.
-    assign bind pos to the new mesh.
-    assign the bones to the new mesh.
-    recalculate bounds.
-
-    */
+    [Button]
+    public void UpdateCharacterMesh()
+    {
+        SkinnedMeshRenderer[] renderers = _meshesContainer.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+        MergeSkinnedMeshes(renderers);
+    }
 
     private void MergeSkinnedMeshes(SkinnedMeshRenderer[] targets)
     {
@@ -48,7 +38,7 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.name = "Merged Mesh Test";
 
         CombineInstance[] combineInstances = new CombineInstance[targets.Length];
-       
+
 
         for (int i = 0; i < targets.Length; i++)
         {
@@ -59,7 +49,7 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.CombineMeshes(combineInstances, false, false);
 
         #endregion
-
+    
         #region Set the bindposes for the new mesh
 
         Matrix4x4[] bindPoses = targets[0].sharedMesh.bindposes;
@@ -67,9 +57,8 @@ public class SkinnedMeshMerger : MonoBehaviour
         finalMesh.bindposes = bindPoses;
 
         #endregion
-
+        
         #region Recalculate bone weights
-        Transform[] bones = targets[0].bones;
 
         BoneWeight[] finalBoneWeights = finalMesh.boneWeights;
 
@@ -79,43 +68,33 @@ public class SkinnedMeshMerger : MonoBehaviour
         {
             for (int v = 0; v < targets[i].sharedMesh.vertexCount; v++)
             {
-                finalBoneWeights[offset + v].boneIndex0 -= bones.Length * i;
-                finalBoneWeights[offset + v].boneIndex1 -= bones.Length * i;
-                finalBoneWeights[offset + v].boneIndex2 -= bones.Length * i;
-                finalBoneWeights[offset + v].boneIndex3 -= bones.Length * i;
+                finalBoneWeights[offset + v].boneIndex0 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[offset + v].boneIndex1 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[offset + v].boneIndex2 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[offset + v].boneIndex3 -= _meshRenderer.bones.Length * i;
             }
-            offset += _targets[i].sharedMesh.vertexCount;
+            offset += targets[i].sharedMesh.vertexCount;
         }
 
         finalMesh.boneWeights = finalBoneWeights;
+
         #endregion
 
         #region Finalize Mesh
-
         finalMesh.RecalculateBounds();
-
         #endregion
 
-        #region Instantiate the final skinned mesh
-
-        var finalObject = new GameObject("Merged Mesh of " + targets[0].gameObject.name);
-
-        finalObject.transform.position = targets[0].transform.position;
-        finalObject.transform.parent = targets[0].transform.parent;
-
-        SkinnedMeshRenderer finalRenderer = finalObject.AddComponent<SkinnedMeshRenderer>();
-
-        finalRenderer.sharedMesh = finalMesh;
-
-
+        #region Generate New Materials Array
         Material[] finalMats = new Material[finalMesh.subMeshCount];
         for (int i = 0; i < targets.Length; i++)
         {
             finalMats[i] = targets[i].sharedMaterial;
         }
-        finalRenderer.materials = finalMats;
-        finalRenderer.bones = bones;
-        finalRenderer.rootBone = targets[0].rootBone;
+        #endregion
+
+        #region Set the final skinned mesh
+        _meshRenderer.sharedMesh = finalMesh;
+        _meshRenderer.materials = finalMats;
         #endregion
     }
 }

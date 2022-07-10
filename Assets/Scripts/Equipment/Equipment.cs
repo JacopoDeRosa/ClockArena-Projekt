@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using System;
 
 public class Equipment : MonoBehaviour
@@ -12,6 +11,7 @@ public class Equipment : MonoBehaviour
     [SerializeField] private ArmourSlot _headSlot;
     [SerializeField] private ArmourSlot _bodySlot;
 
+    public event Action onArmourChanged;
 
     private void OnValidate()
     {
