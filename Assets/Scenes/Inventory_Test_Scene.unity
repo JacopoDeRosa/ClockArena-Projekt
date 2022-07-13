@@ -176,8 +176,8 @@ Transform:
   m_Children:
   - {fileID: 1225666468}
   - {fileID: 43138793}
-  - {fileID: 194470087}
   - {fileID: 1989120050}
+  - {fileID: 194470087}
   m_Father: {fileID: 1672577024}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0.7
   m_Data:
-    m_ConstrainedObject: {fileID: 0}
+    m_ConstrainedObject: {fileID: 4632857757905144421}
     m_SourceObjects:
       m_Length: 1
       m_Item0:
@@ -865,8 +865,6 @@ Transform:
   m_Children:
   - {fileID: 1290917210}
   - {fileID: 1646603856}
-  - {fileID: 1860387138}
-  - {fileID: 629405951}
   m_Father: {fileID: 1672577024}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1047,7 +1045,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 26437535}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279947226
 GameObject:
@@ -1708,80 +1706,6 @@ Transform:
   m_Father: {fileID: 1672577024}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &629405950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 629405951}
-  - component: {fileID: 629405952}
-  m_Layer: 0
-  m_Name: Right Leg Twist
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &629405951
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629405950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 156558801}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &629405952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629405950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4834896bd86034eb2aacc65cb0c593, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data:
-    m_Source: {fileID: 0}
-    m_TwistAxis: 2
-    m_TwistNodes:
-      m_Length: 0
-      m_Item0:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item1:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item2:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item3:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item4:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item5:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item6:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item7:
-        transform: {fileID: 0}
-        weight: 0
 --- !u!1 &723192244
 GameObject:
   m_ObjectHideFlags: 19
@@ -1811,6 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 1084490518}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &723192246
 Transform:
   m_ObjectHideFlags: 19
@@ -3458,7 +3383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0.3
   m_Data:
-    m_ConstrainedObject: {fileID: 0}
+    m_ConstrainedObject: {fileID: 2797106261578654817}
     m_SourceObjects:
       m_Length: 1
       m_Item0:
@@ -3544,16 +3469,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Source: {fileID: 0}
-    m_TwistAxis: 2
+    m_Source: {fileID: 4858073332028452723}
+    m_TwistAxis: 1
     m_TwistNodes:
-      m_Length: 0
+      m_Length: 2
       m_Item0:
-        transform: {fileID: 0}
-        weight: 0
+        transform: {fileID: 7535779519455664470}
+        weight: 0.7
       m_Item1:
-        transform: {fileID: 0}
-        weight: 0
+        transform: {fileID: 7294219146421009615}
+        weight: 0.35
       m_Item2:
         transform: {fileID: 0}
         weight: 0
@@ -4303,16 +4228,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Source: {fileID: 0}
-    m_TwistAxis: 2
+    m_Source: {fileID: 4755670070541978356}
+    m_TwistAxis: 1
     m_TwistNodes:
-      m_Length: 0
+      m_Length: 2
       m_Item0:
-        transform: {fileID: 0}
-        weight: 0
+        transform: {fileID: 4341556614518399323}
+        weight: 0.75
       m_Item1:
-        transform: {fileID: 0}
-        weight: 0
+        transform: {fileID: 641545617368418576}
+        weight: 0.35
       m_Item2:
         transform: {fileID: 0}
         weight: 0
@@ -4341,14 +4266,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1672577024}
   - component: {fileID: 1672577023}
+  - component: {fileID: 1672577015}
   - component: {fileID: 1672577022}
   - component: {fileID: 1672577021}
   - component: {fileID: 1672577020}
   - component: {fileID: 1672577019}
   - component: {fileID: 1672577018}
+  - component: {fileID: 1672577025}
   - component: {fileID: 1672577017}
   - component: {fileID: 1672577016}
-  - component: {fileID: 1672577015}
   - component: {fileID: 1672577014}
   m_Layer: 0
   m_Name: Test Character The Final
@@ -4617,85 +4543,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1684941677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 466820076, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
-  m_PrefabInstance: {fileID: 115926986}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1860387137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1860387138}
-  - component: {fileID: 1860387139}
-  m_Layer: 0
-  m_Name: Left Leg Twist
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1860387138
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860387137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 156558801}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1860387139
+--- !u!114 &1672577025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860387137}
+  m_GameObject: {fileID: 1672577013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4834896bd86034eb2aacc65cb0c593, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cb6e3c47492b7e4d849390f7d7b7e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data:
-    m_Source: {fileID: 0}
-    m_TwistAxis: 2
-    m_TwistNodes:
-      m_Length: 0
-      m_Item0:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item1:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item2:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item3:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item4:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item5:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item6:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item7:
-        transform: {fileID: 0}
-        weight: 0
+  _aimRig: {fileID: 26437534}
+--- !u!4 &1684941677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 466820076, guid: bf958c520491b6d4a9d9b56a5b7438b8, type: 3}
+  m_PrefabInstance: {fileID: 115926986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1865857633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,7 +4763,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 26437535}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1989120051
 MonoBehaviour:
@@ -4914,7 +4779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_ConstrainedObject: {fileID: 0}
+    m_ConstrainedObject: {fileID: 6686292253972148052}
     m_SourceObjects:
       m_Length: 1
       m_Item0:
