@@ -35,7 +35,7 @@ public class GameItemsDbsWindow : EditorWindow
         T DB = GameItemDB.GetDbOfType<T>(name);
         if (DB == null)
         {
-            EditorGUILayout.LabelField(name + " Database does not exist");
+            EditorGUILayout.LabelField(name + "Local Database does not exist");
             if (GUILayout.Button("Create DB?"))
             {
                 T newDB = ScriptableObject.CreateInstance<T>();
@@ -48,7 +48,7 @@ public class GameItemsDbsWindow : EditorWindow
         }
         else
         {
-            EditorGUILayout.LabelField(name + " Database exist, you are good to go");
+            EditorGUILayout.LabelField(name + "Local Database exist, you are good to go");
             if (GUILayout.Button("Ping It"))
             {
                 EditorGUIUtility.PingObject(DB);
@@ -62,20 +62,4 @@ public class GameItemsDbsWindow : EditorWindow
         }
         EditorGUILayout.EndVertical();
     }
-
-    /*
-    private void RefreshItemTypes()
-    {
-        Type baseType = typeof(GameItemDB);
-
-        Type[] allTypes = Assembly.Load("Assembly-CSharp").GetTypes();
-
-        IEnumerable<Type> childTypes = allTypes.Where(t => baseType.IsAssignableFrom(t));
-
-        foreach (Type child in childTypes)
-        {         
-            Debug.Log(child.GetName());
-        }
-    }
-    */
 }
