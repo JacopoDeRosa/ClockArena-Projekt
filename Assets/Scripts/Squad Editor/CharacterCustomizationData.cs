@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmourDB : GameItemDB<Armour>
+public class CharacterCustomizationData : MonoBehaviour
 {
-   
+
 }

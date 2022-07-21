@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GadgetsDB : GameItemDB<Gadget>
+public class ArmourDB : GameItemDB<Armour>
 {
-  
+    public const string Name = "Armour";
 }

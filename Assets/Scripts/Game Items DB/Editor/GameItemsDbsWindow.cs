@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using System.Linq;
-using System.Reflection;
-using System;
+
 
 public class GameItemsDbsWindow : EditorWindow
 {
@@ -22,9 +20,9 @@ public class GameItemsDbsWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal();
 
-        CheckDB<WeaponsDB>("Weapons");
-        CheckDB<ArmourDB>("Armour");
-        CheckDB<GadgetsDB>("Gadgets");
+        CheckDB<WeaponsDB>(WeaponsDB.Name);
+        CheckDB<ArmourDB>(ArmourDB.Name);
+        CheckDB<GadgetsDB>(GadgetsDB.Name);
 
         EditorGUILayout.EndHorizontal();
     }
@@ -41,14 +39,13 @@ public class GameItemsDbsWindow : EditorWindow
                 T newDB = ScriptableObject.CreateInstance<T>();
                 AssetDatabase.CreateAsset(newDB, "Assets/Resources/" + GameItemDB.Path + "/" + name + ".asset");
                 DB = GameItemDB.GetDbOfType<T>(name);
-                DB.OnValidate();
                 Selection.activeObject = DB;
                 AssetDatabase.SaveAssets();
             }
         }
         else
         {
-            EditorGUILayout.LabelField(name + "Local Database exist, you are good to go");
+            EditorGUILayout.LabelField(name + " Local Database exist, you are good to go");
             if (GUILayout.Button("Ping It"))
             {
                 EditorGUIUtility.PingObject(DB);

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc700903e28424186f6f0c6a750e95, type: 3}
+  m_Name: Nick_Normal
+  m_EditorClassIdentifier: 
+  _name: British 01
+  _validFactions: 12
+  _acknowledge:
+  - {fileID: 8300000, guid: 4c1ec2575e8e27343bc44f5394552857, type: 3}
+  - {fileID: 8300000, guid: 92cc7ccc871b28a4183ce3fe580491fd, type: 3}
+  - {fileID: 8300000, guid: 6d56fc99bb7c8354a977dfd81cb4c9a3, type: 3}
+  - {fileID: 8300000, guid: 12a3d970ccd2ffd47b8add5c0dc6feed, type: 3}
+  _movement:
+  - {fileID: 8300000, guid: 7687157ed0221f84ca590f1134aea483, type: 3}
+  - {fileID: 8300000, guid: cca4a13ae0f63c24f84d7f67c428f0e9, type: 3}
+  - {fileID: 8300000, guid: 168318a11744f8e439b9495f9f7892f9, type: 3}
+  _pain:
+  - {fileID: 8300000, guid: 0ae9c3325f5fc554eaafbbc59a632762, type: 3}
+  - {fileID: 8300000, guid: a11bc1c7c813d944e8fd434ae8c9d2aa, type: 3}
+  - {fileID: 8300000, guid: 8c30779379010a74cacd7a030c80f919, type: 3}
+  - {fileID: 8300000, guid: cd80ca4e375b6404dae5c7b11783a461, type: 3}
+  - {fileID: 8300000, guid: d237d911df3d7684689db789d0d71127, type: 3}
+  - {fileID: 8300000, guid: 33832b8b011b4c54aa29f56d57757e3b, type: 3}
+  _special:
+  - {fileID: 8300000, guid: 8c51b9318895d2b4d96426ec4f0af1e6, type: 3}
+  - {fileID: 8300000, guid: a9e3b41bbca151d4d9ba9113d1dc0991, type: 3}
+  _attack:
+  - {fileID: 8300000, guid: 12a3d970ccd2ffd47b8add5c0dc6feed, type: 3}
+  - {fileID: 8300000, guid: a9e3b41bbca151d4d9ba9113d1dc0991, type: 3}
+  - {fileID: 8300000, guid: e0901965e39d4324da3bca6d2b81ac93, type: 3}
+  _reload:
+  - {fileID: 8300000, guid: 66ecd8851ae392146a3ad81e2034c463, type: 3}
+  _outOfAmmo:
+  - {fileID: 8300000, guid: 27e28da00e54d794f84c18bdb96aed01, type: 3}
+  - {fileID: 8300000, guid: 539d3b0dbf6cf8a498f5402f4a4fa975, type: 3}
+  _enemySpotted:
+  - {fileID: 8300000, guid: 6fd307707da25aa4183dd46160567c58, type: 3}
+  - {fileID: 8300000, guid: e3376828474c97448895cabd7056bf4e, type: 3}
+  - {fileID: 8300000, guid: 6cca839eaa9d1594aa9827b349d90522, type: 3}
+  - {fileID: 8300000, guid: 3011a077d622e4c4cb1183863b586b7d, type: 3}
+  - {fileID: 8300000, guid: dd0247360c8dcb24f88474ea6f3546cb, type: 3}
+  - {fileID: 8300000, guid: c7b7b174492f67841a07f3deb9b10ab8, type: 3}
