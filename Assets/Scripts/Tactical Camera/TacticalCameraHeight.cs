@@ -68,7 +68,7 @@ public class TacticalCameraHeight : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        transform.position = new Vector3(transform.position.x, startY + (_step * directionSign), transform.position.z);
+        transform.position.Set(transform.position.x, startY + (_step * directionSign), transform.position.z);
 
         _currentLayer += (int) directionSign;
         _busy = false;

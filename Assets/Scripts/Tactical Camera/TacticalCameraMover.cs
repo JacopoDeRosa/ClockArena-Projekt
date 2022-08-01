@@ -12,11 +12,13 @@ public class TacticalCameraMover : MonoBehaviour
     private PlayerInput _input;
     private Vector2 _moveInput;
     private Vector2 _currentInput;
+    private Vector3 _translateVector;
     private float _inputSmoothReal;
 
   
     private void Start()
     {
+        _translateVector = Vector3.zero;
         if (_input == null) _input = FindObjectOfType<PlayerInput>();
 
         if (_input != null)
@@ -40,7 +42,8 @@ public class TacticalCameraMover : MonoBehaviour
         {
             _currentInput = Vector2.Lerp(_currentInput, _moveInput, _inputSmoothReal);
         }
-        transform.Translate(new Vector3(_currentInput.x, 0, _currentInput.y) * _speed * Time.deltaTime);
+        _translateVector.Set(_currentInput.x, 0, _currentInput.y);
+        transform.Translate(_translateVector * _speed * Time.deltaTime);
     }
 
     private void OnMove(InputAction.CallbackContext context)
