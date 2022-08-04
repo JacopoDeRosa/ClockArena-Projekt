@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameItemDB<T> : GameItemDB where T: GameItem
+public class GameItemDB<T> : GameItemDB
 {
     [SerializeField] private T _defaultItem;
     [SerializeField] private T[] _items;

@@ -24,23 +24,37 @@ public class Equipment : MonoBehaviour
         _bodySlot.SetArmourType(ArmourTypes.Body);
     }
 
-    public void SetWeapon(Weapon weapon)
+    public void SetWeapon(int weapon)
     {
-        _weaponSlot.SetItem(weapon);
+       // _weaponSlot.SetItem(weapon);
+    }
+    public void SetGadget(int gadget)
+    {
+       // _gadgetSlot.SetItem(gadget);
+    }
+    public void SetHeadArmour(int armour)
+    {
+       // _headSlot.SetItem(armour);
+    }
+    public void SetBodyArmour(int armour)
+    {
+       // _bodySlot.SetItem(armour);
     }
 
-    public void SetGadget(Gadget gadget)
+    public void ClearWeapon()
     {
-        gadget.Data.UsableByFaction(Factions.DeathRow);
+        _weaponSlot.ClearItem();
     }
-
-    public void SetHeadArmour(Armour armour)
+    public void ClearGadget()
     {
-        _headSlot.SetItem(armour);
+        _gadgetSlot.ClearItem();
     }
-
-    public void SetBodyArmour(Armour armour)
+    public void ClearHeadArmour()
     {
-        _bodySlot.SetItem(armour);
+        _headSlot.ClearItem();
+    }
+    public void ClearBodyArmour()
+    {
+        _bodySlot.ClearItem();
     }
 }

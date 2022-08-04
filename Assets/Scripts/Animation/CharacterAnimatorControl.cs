@@ -7,7 +7,7 @@ using LightPhysics;
 public class CharacterAnimatorControl : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator[] _animators;
 
     private void OnValidate()
     {
@@ -15,9 +15,9 @@ public class CharacterAnimatorControl : MonoBehaviour
         {
             _mover = GetComponent<CharacterMover>();
         }
-        if(_animator == null)
+        if(_animators == null)
         {
-            _animator = GetComponent<Animator>();
+            UpdateAnimatorArray();
         }
     }
 
@@ -30,12 +30,23 @@ public class CharacterAnimatorControl : MonoBehaviour
     {
         if(_mover.IsMoving)
         {
-            _animator.SetFloat("Speed", _mover.Velocity.magnitude);        
+            foreach (Animator animator in _animators)
+            {
+                animator.SetFloat("Speed", _mover.Velocity.magnitude);
+            }
         }
     }
 
     private void OnMoveEnd()
     {
-        _animator.SetFloat("Speed", 0);
+        foreach (Animator animator in _animators)
+        {
+            animator.SetFloat("Speed", 0);
+        }
+    }
+
+    public void UpdateAnimatorArray()
+    {
+        _animators = GetComponentsInChildren<Animator>();
     }
 }

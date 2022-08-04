@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterData _data;
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private Factions _faction;
+    [SerializeField] private CharacterVoice _voice;
+    [SerializeField] private int _exp;
 
     [ShowInInspector][ReadOnly]
     private bool _sleep;
@@ -52,7 +54,6 @@ public class Character : MonoBehaviour
             sleeper.Sleep();
         }
     }
-
     private void WakeUp()
     {
         foreach (var sleeper in GetComponents<ISleeper>())
@@ -60,4 +61,30 @@ public class Character : MonoBehaviour
             sleeper.WakeUp();
         }
     }
+
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+    public void SetIcon(int icon)
+    {
+       // TODO: Build icons db and take icon from there.
+    }
+    public void SetData(int dataType)
+    {
+       // TODO: Build data db and take icon from there.
+    }
+    public void SetVoice(int voice)
+    {
+        // TODO: Build voice db and take icon from there.
+    }
+    public void SetFaction(Factions faction)
+    {
+        _faction = faction;
+    }
+    public void SetExp(int exp)
+    {
+        _exp = exp;
+    }
 }
+
