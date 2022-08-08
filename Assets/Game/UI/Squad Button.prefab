@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4704732232686534227}
   - component: {fileID: 7965121844849130240}
   - component: {fileID: 9203314253577140943}
-  - component: {fileID: 2489504409087251542}
+  - component: {fileID: 8248981215102234168}
   m_Layer: 5
   m_Name: Squad Button
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
---- !u!114 &2489504409087251542
+--- !u!114 &8248981215102234168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,41 +223,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2022349322797987924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e47ff55b08e74941b5da1ef8a0f329a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 9203314253577140943}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
+  _graphic: {fileID: 9203314253577140943}
+  _normalColor: {r: 0.33333334, g: 0.36862746, b: 0.41568628, a: 1}
+  _highlightedColor: {r: 0.378471, g: 0.4667809, b: 0.5943396, a: 1}
+  _clickColor: {r: 0.23317908, g: 0.29725882, b: 0.3773585, a: 1}
+  _editor: {fileID: 0}
+  _index: 0
+  _filledView: {fileID: 5048603517620412228}
+  _emptyView: {fileID: 8417474324411452451}
+  _nameText: {fileID: 7657042679766973950}
+  _levelText: {fileID: 6486269064374927603}
 --- !u!1 &4211260850009953547
 GameObject:
   m_ObjectHideFlags: 0

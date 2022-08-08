@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nick_Crazy
   m_EditorClassIdentifier: 
   _name: Insane 01
-  _validFactions: 12
+  _validFactions: 2
   _acknowledge:
   - {fileID: 8300000, guid: e4c4f66d020c17148b9a470e3efd3c21, type: 3}
   - {fileID: 8300000, guid: 0cb557369de318244a248a2419342768, type: 3}

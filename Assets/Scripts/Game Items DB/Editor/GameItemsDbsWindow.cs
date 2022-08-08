@@ -18,11 +18,19 @@ public class GameItemsDbsWindow : EditorWindow
 
     private void OnGUI()
     {
+
         EditorGUILayout.BeginHorizontal();
 
         CheckDB<WeaponsDB>(WeaponsDB.Name);
         CheckDB<ArmourDB>(ArmourDB.Name);
         CheckDB<GadgetsDB>(GadgetsDB.Name);
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+
+        CheckDB<VoiceDB>(VoiceDB.Name);
+        CheckDB<IconsDB>(IconsDB.Name);
 
         EditorGUILayout.EndHorizontal();
     }

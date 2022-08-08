@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dc700903e28424186f6f0c6a750e95, type: 3}
+  m_Name: Jack_Normal
+  m_EditorClassIdentifier: 
+  _name: American 01
+  _validFactions: 14
+  _acknowledge:
+  - {fileID: 8300000, guid: 05eae5c0d09576341a0dc744db5afa19, type: 3}
+  - {fileID: 8300000, guid: 4f59ba5fa28f06e4da2a3ac5c4a89df1, type: 3}
+  - {fileID: 8300000, guid: 650d4dbf69b89c046927995fa106e982, type: 3}
+  _movement:
+  - {fileID: 8300000, guid: 650d4dbf69b89c046927995fa106e982, type: 3}
+  - {fileID: 8300000, guid: 4f59ba5fa28f06e4da2a3ac5c4a89df1, type: 3}
+  - {fileID: 8300000, guid: 195bc774a8ee33a49ac0148038f438bb, type: 3}
+  - {fileID: 8300000, guid: 5112d34ec57e2c2418baf8af7aeb174d, type: 3}
+  _pain:
+  - {fileID: 8300000, guid: 644e89fe570094d48b610d09325be7b2, type: 3}
+  - {fileID: 8300000, guid: f2dd583fa537fd94e9f502b5dd9d0149, type: 3}
+  - {fileID: 8300000, guid: ea390263b1e9e7b40a35096861de6ff2, type: 3}
+  - {fileID: 8300000, guid: cbdd372e64546c548b12a6fbab3f7fe1, type: 3}
+  - {fileID: 8300000, guid: f69db0e84fc85a04d829beaa2e14bcc7, type: 3}
+  - {fileID: 8300000, guid: 6952467296b5acc40a762597904ae542, type: 3}
+  - {fileID: 8300000, guid: 2be72ded39591fc4684f51f1870f2285, type: 3}
+  - {fileID: 8300000, guid: fa021746c8fd8ff48bd567aa92748534, type: 3}
+  - {fileID: 8300000, guid: 66dff4457e699c748848f497812b7334, type: 3}
+  _special:
+  - {fileID: 8300000, guid: e9686e798588c66468d6183d9765f4d8, type: 3}
+  - {fileID: 8300000, guid: 584056efc593616429c7784eaef9c994, type: 3}
+  - {fileID: 8300000, guid: 7c87bf1ad232f38499b496682d6bbcc1, type: 3}
+  - {fileID: 8300000, guid: 070bb97fad45c464d89f29b220f8f905, type: 3}
+  _attack:
+  - {fileID: 8300000, guid: 933e3662d283ece41950c4831ec6a048, type: 3}
+  - {fileID: 8300000, guid: 584056efc593616429c7784eaef9c994, type: 3}
+  - {fileID: 8300000, guid: 03f21454d81d29f489d0d10238a652b5, type: 3}
+  _reload:
+  - {fileID: 8300000, guid: d9aebd51ca50b3c45b818ca565d39669, type: 3}
+  - {fileID: 8300000, guid: e59cbefb038420e4ba1dbecff9eddcea, type: 3}
+  - {fileID: 8300000, guid: dfd6fcf74bb17394cb2d04d41623decd, type: 3}
+  _outOfAmmo:
+  - {fileID: 8300000, guid: cfc432e764c6ede478648e412b5fdb14, type: 3}
+  - {fileID: 8300000, guid: ce3539d00c5d80e42957628782bc59ac, type: 3}
+  - {fileID: 8300000, guid: 06ede5fe37893ab45b2cadfe72f64d00, type: 3}
+  - {fileID: 8300000, guid: 443869b2fd189b244a3ac7cbc52cef00, type: 3}
+  - {fileID: 8300000, guid: 725fcbf4661582f4c99799a834a5a338, type: 3}
+  _enemySpotted:
+  - {fileID: 8300000, guid: e0404da8160e449448004478659442d8, type: 3}
+  - {fileID: 8300000, guid: 7ac6222cc7c06bc4daff4767e74bf59e, type: 3}
+  - {fileID: 8300000, guid: d0d94fb33406a034fa1916a4a61fa811, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nick_Normal
   m_EditorClassIdentifier: 
   _name: British 01
-  _validFactions: 12
+  _validFactions: 14
   _acknowledge:
   - {fileID: 8300000, guid: 4c1ec2575e8e27343bc44f5394552857, type: 3}
   - {fileID: 8300000, guid: 92cc7ccc871b28a4183ce3fe580491fd, type: 3}

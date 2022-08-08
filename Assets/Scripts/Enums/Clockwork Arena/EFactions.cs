@@ -9,3 +9,10 @@ public enum Factions
     Traitors = 8,
     All = DeathRow | Slummers | Traitors,
 }
+
+public enum Faction
+{ 
+    DeathRow = 2,
+    Slummers = 4,
+    Traitors = 8
+}

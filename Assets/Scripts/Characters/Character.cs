@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private Factions _faction;
     [SerializeField] private CharacterVoice _voice;
-    [SerializeField] private int _exp;
+    [SerializeField] private int _exp = 1000;
 
     [ShowInInspector][ReadOnly]
     private bool _sleep;
@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     public CharacterData Data { get => _data; }
     public CharacterMover Mover { get => _characterMover; }
     public int InitiativeLevel { get => _initiativeLevel; }
+    public int Level { get => Mathf.FloorToInt(_exp / 1000); }
 
   
     public int RollInitiative()
