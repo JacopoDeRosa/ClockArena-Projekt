@@ -494,7 +494,7 @@ ModelImporter:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Human_Base
+    - name: Human_Eyes
       parentName: Naked Fighter(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.00000015695824, y: 0, z: -0, w: 1}
@@ -546,14 +546,14 @@ ModelImporter:
       scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
     - name: Def-Forearm-Twist-A.L
       parentName: Def-Forearm.L
-      position: {x: 0.000000027008355, y: 0.10435248, z: -0.00000006998016}
-      rotation: {x: 0.000000760085, y: 0.10711387, z: 0.0000003231271, w: 0.9942468}
-      scale: {x: 1.0001734, y: 1.0000012, z: 0.9998283}
+      position: {x: 0.000000016763806, y: 0.10435255, z: 0.00000007926428}
+      rotation: {x: 0.0000018978168, y: 0.0028272981, z: -0.000005302119, w: 0.999996}
+      scale: {x: 0.99998534, y: 0.9999852, z: 0.99999905}
     - name: Def-Forearm-Twist-B.L
       parentName: Def-Forearm.L
-      position: {x: -0.00000012526289, y: 0.17982894, z: -0.00000020506559}
-      rotation: {x: -0.000000015933777, y: 0.112145044, z: -0.000000010310215, w: 0.99369186}
-      scale: {x: 1.0001688, y: 1, z: 0.9998324}
+      position: {x: -0.000000026077032, y: 0.17982888, z: 0.000000060812454}
+      rotation: {x: 0.000001128479, y: 0.0035351166, z: -0.000005759423, w: 0.99999374}
+      scale: {x: 0.99998474, y: 0.99998456, z: 0.9999989}
     - name: Def-Hand.L
       parentName: Def-Forearm.L
       position: {x: -0.000000020489097, y: 0.25921848, z: 0.000000033993274}
@@ -651,14 +651,14 @@ ModelImporter:
       scale: {x: 1, y: 0.99999976, z: 0.99999994}
     - name: Def-Forearm-Twist-A.R
       parentName: Def-Forearm.R
-      position: {x: -0.000000014901161, y: 0.10435235, z: 0.00000013658428}
-      rotation: {x: 0.00000081292535, y: -0.01671661, z: -0.00000027570982, w: 0.9998603}
-      scale: {x: 1.0000008, y: 1.0000005, z: 0.99999964}
+      position: {x: 0.0000000027939677, y: 0.10435248, z: -0.00000007082417}
+      rotation: {x: 0.000001949273, y: -0.0028274811, z: 0.000005322609, w: 0.999996}
+      scale: {x: 0.9999852, y: 0.9999851, z: 0.9999991}
     - name: Def-Forearm-Twist-B.R
       parentName: Def-Forearm.R
       position: {x: 0.000000022817403, y: 0.17982891, z: 0.00000006535265}
-      rotation: {x: 0.00000004069376, y: -0.018002933, z: -0.0000001285433, w: 0.99983793}
-      scale: {x: 1.0000006, y: 1.0000002, z: 0.9999995}
+      rotation: {x: 0.0000011671298, y: -0.0035352658, z: 0.000005771533, w: 0.99999374}
+      scale: {x: 0.9999845, y: 0.9999842, z: 0.9999988}
     - name: Def-Hand.R
       parentName: Def-Forearm.R
       position: {x: 0.000000007450581, y: 0.25921854, z: 0.00000004429603}
@@ -779,6 +779,11 @@ ModelImporter:
       position: {x: 0.0000000041909516, y: 0.17899612, z: -0.000000004656613}
       rotation: {x: 0.12561023, y: -0.05545561, z: 0.040638234, w: 0.98969454}
       scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Human_Base
+      parentName: Naked Fighter(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.00000015695824, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
