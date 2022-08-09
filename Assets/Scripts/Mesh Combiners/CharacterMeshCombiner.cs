@@ -10,8 +10,6 @@ public class CharacterMeshCombiner : MonoBehaviour
     [SerializeField] private Equipment _characterEquipment;
     [SerializeField] private SkinnedMeshRenderer _meshRenderer;
     [SerializeField] private Transform _meshesContainer;
-    [SerializeField] private Mesh[] _meshes;
-    [SerializeField] private Mesh _finalMesh;
 
     private void Awake()
     {
@@ -54,7 +52,7 @@ public class CharacterMeshCombiner : MonoBehaviour
 
         // Get Material Array
         Material[] allMaterials = new Material[totalSubmeshes];
-        
+
         int submeshOffset = 0;
         for (int i = 0; i < targets.Length; i++)
         {
@@ -68,7 +66,6 @@ public class CharacterMeshCombiner : MonoBehaviour
 
         // Get Meshes Array
         Mesh[] allMeshes = new Mesh[targets.Length];
-        _meshes = allMeshes;
 
         for (int i = 0; i < targets.Length; i++)
         {
@@ -93,15 +90,14 @@ public class CharacterMeshCombiner : MonoBehaviour
 
         finalMesh.CombineMeshes(combineInstances, false, true);
 
-        _finalMesh = finalMesh;
-      //  Debug.Log("Finalmesh Vertex Count: " + _finalMesh.vertices.Length);
+        //  Debug.Log("Finalmesh Vertex Count: " + _finalMesh.vertices.Length);
         #endregion
 
         #region Set the bindposes for the new mesh
         // TODO: Fix
-           Matrix4x4[] bindPoses = targets[0].sharedMesh.bindposes;
-           finalMesh.bindposes = bindPoses;
-      //   Debug.Log("Finalmesh Bindposes Count: " + finalMesh.bindposes.Length);
+        Matrix4x4[] bindPoses = targets[0].sharedMesh.bindposes;
+        finalMesh.bindposes = bindPoses;
+        //   Debug.Log("Finalmesh Bindposes Count: " + finalMesh.bindposes.Length);
         #endregion
 
         #region Recalculate bone weights
@@ -109,26 +105,56 @@ public class CharacterMeshCombiner : MonoBehaviour
         // TODO: find a better method of merging bone weights
         BoneWeight[] finalBoneWeights = finalMesh.boneWeights;
 
-     //   Debug.Log("Finalmesh Boneweights Count: " + finalMesh.boneWeights.Length);
+        /*
+          Bones in the submeshes have and index of i + submesh index when the mesh is merged
+          This is the old way of offsetting the bone weights, it does not take into account submeshes
 
         int offset = 0;
 
         for (int i = 0; i < allMeshes.Length; i++)
         {
             Mesh currentMesh = allMeshes[i];
+
             for (int v = 0; v < currentMesh.vertexCount; v++)
-            {            
+            {
+                
                 finalBoneWeights[offset + v].boneIndex0 -= _meshRenderer.bones.Length * i;
                 finalBoneWeights[offset + v].boneIndex1 -= _meshRenderer.bones.Length * i;
                 finalBoneWeights[offset + v].boneIndex2 -= _meshRenderer.bones.Length * i;
                 finalBoneWeights[offset + v].boneIndex3 -= _meshRenderer.bones.Length * i;
+                
             }
-            offset += currentMesh.vertexCount;
-       //     Debug.Log("Adding offset: " + allMeshes[i].vertexCount);
-        }
-      //  Debug.Log("Offset: " + offset + " Final Mesh Vertex count: " + finalMesh.vertices.Length);
-        finalMesh.boneWeights = finalBoneWeights;
 
+            offset += currentMesh.vertexCount;
+        }
+        */
+
+        for (int i = 0; i < finalMesh.subMeshCount; i++)
+        {
+            SubMeshDescriptor currentSubmesh = finalMesh.GetSubMesh(i);
+            Debug.Log("Base Vertex: " + currentSubmesh.firstVertex);
+            Debug.Log("Vertex Count: " + currentSubmesh.vertexCount);
+            for (int v = 0; v < currentSubmesh.vertexCount; v++)
+            {
+                finalBoneWeights[v + currentSubmesh.firstVertex].boneIndex0 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[v + currentSubmesh.firstVertex].boneIndex1 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[v + currentSubmesh.firstVertex].boneIndex2 -= _meshRenderer.bones.Length * i;
+                finalBoneWeights[v + currentSubmesh.firstVertex].boneIndex3 -= _meshRenderer.bones.Length * i;
+            }
+        }
+
+ /* 
+        USE THIS TO DEBUG THE INDEX OF EACH BONE IF THE CONSOLE (WARNING: THIS IS SLOW)
+        for (int i = 0; i < finalBoneWeights.Length; i++)
+        {
+            BoneWeight weight = finalBoneWeights[i];
+            Debug.Log("Index 0 of Vertex " + i + " : " + weight.boneIndex0);
+        }
+ */
+
+        
+
+        finalMesh.boneWeights = finalBoneWeights;
         #endregion
 
         #region Finalize Mesh
@@ -136,7 +162,7 @@ public class CharacterMeshCombiner : MonoBehaviour
         #endregion
 
         #region Generate New Materials Array
-        
+
         #endregion
 
         #region Set the final skinned mesh
@@ -145,5 +171,5 @@ public class CharacterMeshCombiner : MonoBehaviour
         #endregion
     }
 
-  
+
 }
