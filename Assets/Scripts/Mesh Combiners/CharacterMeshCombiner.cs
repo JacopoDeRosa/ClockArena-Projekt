@@ -7,6 +7,7 @@ using System;
 
 public class CharacterMeshCombiner : MonoBehaviour
 {
+    [SerializeField] private string _finalMeshName;
     [SerializeField] private Equipment _characterEquipment;
     [SerializeField] private SkinnedMeshRenderer _meshRenderer;
     [SerializeField] private Transform _meshesContainer;
@@ -38,7 +39,7 @@ public class CharacterMeshCombiner : MonoBehaviour
 
         Mesh finalMesh = new Mesh();
 
-        finalMesh.name = "Merged Mesh Test";
+        finalMesh.name = _finalMeshName;
 
 
         // Get The total number of submeshes
@@ -88,7 +89,7 @@ public class CharacterMeshCombiner : MonoBehaviour
             }
         }
 
-        finalMesh.CombineMeshes(combineInstances, false, true);
+        finalMesh.CombineMeshes(combineInstances, false, false);
 
         //  Debug.Log("Finalmesh Vertex Count: " + _finalMesh.vertices.Length);
         #endregion
@@ -132,8 +133,8 @@ public class CharacterMeshCombiner : MonoBehaviour
         for (int i = 0; i < finalMesh.subMeshCount; i++)
         {
             SubMeshDescriptor currentSubmesh = finalMesh.GetSubMesh(i);
-            Debug.Log("Base Vertex: " + currentSubmesh.firstVertex);
-            Debug.Log("Vertex Count: " + currentSubmesh.vertexCount);
+        //    Debug.Log("Base Vertex: " + currentSubmesh.firstVertex);
+        //    Debug.Log("Vertex Count: " + currentSubmesh.vertexCount);
             for (int v = 0; v < currentSubmesh.vertexCount; v++)
             {
                 finalBoneWeights[v + currentSubmesh.firstVertex].boneIndex0 -= _meshRenderer.bones.Length * i;

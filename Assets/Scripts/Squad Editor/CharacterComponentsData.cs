@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CharacterCustomizationData
+public class CharacterComponentsData
 {
     public string name;
     public Factions faction;
@@ -17,7 +17,7 @@ public class CharacterCustomizationData
     public int exp;
 
 
-    public CharacterCustomizationData()
+    public CharacterComponentsData()
     {
         name = "Unnamed Soldier";
         voice = 0;

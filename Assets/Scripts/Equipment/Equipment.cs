@@ -6,6 +6,7 @@ using System;
 public class Equipment : MonoBehaviour
 {
     [SerializeField] private Character _user;
+    [SerializeField] private Transform _armourContainer;
     [SerializeField] private WeaponSlot _weaponSlot;
     [SerializeField] private GadgetSlot _gadgetSlot;
     [SerializeField] private ArmourSlot _headSlot;

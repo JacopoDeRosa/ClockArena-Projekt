@@ -7,13 +7,13 @@ public class SquadData
     public Factions faction;
     public int image;
     public string name;
-    public CharacterCustomizationData[] characters = new CharacterCustomizationData[6];
+    public CharacterComponentsData[] characters = new CharacterComponentsData[6];
 
     public SquadData(int image, Factions faction, string name)
     {
         this.image = image;
         this.faction = faction;
         this.name = name;
-        characters = new CharacterCustomizationData[6];
+        characters = new CharacterComponentsData[6];
     }
 }

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterCustomizationReader : MonoBehaviour
+public class CharacterDataReader : MonoBehaviour
 {
     [SerializeField] private Character _character;
     [SerializeField] private Equipment _equipment;
-    public void ReadData(CharacterCustomizationData data)
+    public void ReadData(CharacterComponentsData data)
     {
         _character.SetName(data.name);
         _character.SetIcon(data.icon);
