@@ -37,17 +37,9 @@ public class InitiativeBarSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void SetCharacter(Character character)
     {
-        if (character.CustomIcon != null)
-        {
-            SetImage(character.CustomIcon);
-        }
-        else
-        {
-            SetImage(character.Data.DefaulIcon);
-        }
+        SetImage(character.Icon);   
         _text.text = character.Name;
         _assignedCharacter = character;
-
     }
     private void SetImage(Sprite image)
     {

@@ -6,12 +6,11 @@ using Sirenix.OdinInspector;
 public class Character : MonoBehaviour
 {   
     [SerializeField] private string _name;
-    [SerializeField] private Sprite _customIcon;
-    [SerializeField] private CharacterData _data;
+    [SerializeField] private Sprite _icon;
     [SerializeField] private CharacterMover _characterMover;
-    [SerializeField] private Factions _faction;
-    [SerializeField] private CharacterVoice _voice;
-    [SerializeField] private int _exp = 1000;
+    [SerializeField] private Faction _faction;
+    [SerializeField] private int _exp = 0;
+    [SerializeField] private int _level = 1;
 
     [ShowInInspector][ReadOnly]
     private bool _sleep;
@@ -22,11 +21,11 @@ public class Character : MonoBehaviour
 
    
     public string Name { get => _name; }
-    public Sprite CustomIcon { get => _customIcon; }
-    public CharacterData Data { get => _data; }
+    public Sprite Icon { get => _icon; }
     public CharacterMover Mover { get => _characterMover; }
     public int InitiativeLevel { get => _initiativeLevel; }
-    public int Level { get => Mathf.FloorToInt(_exp / 1000); }
+    public int Level { get => _level; }
+    public int Exp { get => _exp; }
 
   
     public int RollInitiative()
@@ -69,17 +68,10 @@ public class Character : MonoBehaviour
     }
     public void SetIcon(int icon)
     {
-       // TODO: Build icons db and take icon from there.
+        _icon = GameItemDB.GetDbOfType<IconsDB>(IconsDB.Name).GetItem(icon);
     }
-    public void SetData(int dataType)
-    {
-       // TODO: Build data db and take icon from there.
-    }
-    public void SetVoice(int voice)
-    {
-        // TODO: Build voice db and take icon from there.
-    }
-    public void SetFaction(Factions faction)
+  
+    public void SetFaction(Faction faction)
     {
         _faction = faction;
     }
@@ -87,5 +79,10 @@ public class Character : MonoBehaviour
     {
         _exp = exp;
     }
+    public void SetLevel(int level)
+    {
+        _level = level;
+    }
+   
 }
 

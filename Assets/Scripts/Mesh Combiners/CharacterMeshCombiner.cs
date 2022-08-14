@@ -22,10 +22,10 @@ public class CharacterMeshCombiner : MonoBehaviour
     public void UpdateCharacterMesh()
     {
         SkinnedMeshRenderer[] renderers = _meshesContainer.GetComponentsInChildren<SkinnedMeshRenderer>(true);
-        MergeSkinnedMeshesEfficent(renderers);
+        MergeSkinnedMeshes(renderers);
     }
 
-    private void MergeSkinnedMeshesEfficent(SkinnedMeshRenderer[] targets)
+    private void MergeSkinnedMeshes(SkinnedMeshRenderer[] targets)
     {
         #region Error Catching
         if (targets == null || targets.Length < 1)

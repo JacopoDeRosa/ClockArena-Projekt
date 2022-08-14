@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a47c5c4d33ab9419216e8f01c9f08a, type: 3}
   m_Name: Icons
   m_EditorClassIdentifier: 
-  _defaultItem: {fileID: 0}
-  _items: []
+  _defaultItem: {fileID: 21300000, guid: 7a821340bb94bc6448253e713b341626, type: 3}
+  _items:
+  - {fileID: 21300000, guid: 5909d386803211b4cb21ee6afea6611c, type: 3}
+  - {fileID: 21300000, guid: a1c91743c29a29144b1f142f9f007c15, type: 3}
+  - {fileID: 21300000, guid: e518ae6919812a04a8d529ef40cd5025, type: 3}

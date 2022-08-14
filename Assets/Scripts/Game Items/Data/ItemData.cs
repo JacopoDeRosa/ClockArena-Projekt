@@ -17,9 +17,9 @@ public class ItemData : ScriptableObject
     public int RequiredLevel { get => _reuqiredLevel; }
 
 
-    public bool UsableByFaction(Factions faction)
+    public bool UsableByFaction(Faction faction)
     {
-        return _enabledFactions.HasFlag(faction);
+        return _enabledFactions.HasFlag((Factions)faction);
     }
 
     public virtual string GetItemClass()

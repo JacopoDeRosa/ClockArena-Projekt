@@ -14,7 +14,7 @@ public class CharacterEditorCamera : MonoBehaviour
     private float _rotationSpeed;
     private bool _focused;
 
-    private void Start()
+    private void OnEnable()
     {
         _input = FindObjectOfType<PlayerInput>();
         if (_input)

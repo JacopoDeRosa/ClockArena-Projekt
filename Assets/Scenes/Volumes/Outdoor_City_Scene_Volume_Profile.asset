@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Value: 3
   limitMax:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: 15
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -163,51 +163,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   focusMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   focusDistance:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 10
   focusDistanceMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   nearFocusStart:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 47.1
   nearFocusEnd:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 100
   farFocusStart:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 100.00001
   farFocusEnd:
-    m_OverrideState: 0
-    m_Value: 20
+    m_OverrideState: 1
+    m_Value: 200
   m_NearSampleCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 5
   m_NearMaxBlur:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 4
   m_FarSampleCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 7
   m_FarMaxBlur:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 8
   m_Resolution:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
   m_HighQualityFiltering:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   m_PhysicallyBased:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &-7651823787859819247
 MonoBehaviour:
@@ -370,13 +370,13 @@ MonoBehaviour:
     m_Value: 25
   colorFilter:
     m_OverrideState: 0
-    m_Value: {r: 1, g: 0.75964546, b: 0, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
   saturation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   sphericalMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   seaLevel:
     m_OverrideState: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
     m_Value: 55261.973
   aerosolDensity:
     m_OverrideState: 0
-    m_Value: 0.01192826
+    m_Value: 0.165
   aerosolTint:
     m_OverrideState: 0
     m_Value: {r: 0.9, g: 0.9, b: 0.9, a: 1}
@@ -580,7 +580,7 @@ MonoBehaviour:
     m_Value: 3
   groundTint:
     m_OverrideState: 0
-    m_Value: {r: 0.4, g: 0.25, b: 0.15, a: 1}
+    m_Value: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -669,10 +669,10 @@ MonoBehaviour:
     m_Value: 0
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 370
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 10000
+    m_Value: 100
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -683,8 +683,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   depthExtent:
-    m_OverrideState: 0
-    m_Value: 64
+    m_OverrideState: 1
+    m_Value: 100
   denoisingMode:
     m_OverrideState: 1
     m_Value: 3
@@ -729,17 +729,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 4
   cloudType:
-    m_OverrideState: 0
-    m_Value: 1
-  skyAmbientMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
+  skyAmbientMode:
+    m_OverrideState: 1
+    m_Value: 1
   windOrientation:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 130
   windSpeed:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 0
   fogType:
     m_OverrideState: 0
     m_Value: 0

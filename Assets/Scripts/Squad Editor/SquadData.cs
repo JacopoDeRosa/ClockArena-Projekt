@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class SquadData
 {
-    public Factions faction;
+    public Faction faction;
     public int image;
     public string name;
     public CharacterComponentsData[] characters = new CharacterComponentsData[6];
 
-    public SquadData(int image, Factions faction, string name)
+    public SquadData(Faction faction, string name)
     {
-        this.image = image;
+        this.image = 0;
         this.faction = faction;
         this.name = name;
         characters = new CharacterComponentsData[6];
+    }
+
+    public void AddNewCharacterAtIndex(int index, CharacterComponentsData character)
+    {
+        characters[index] = character;
     }
 }

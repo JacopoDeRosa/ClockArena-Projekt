@@ -35,7 +35,7 @@ public class FoldingBar : MonoBehaviour
         _adjustedSinkAmount = _sinkAmount * FindScale();
     }
 
-
+    [Button]
     public void Toggle(bool open)
     {
         if (_busy) return;

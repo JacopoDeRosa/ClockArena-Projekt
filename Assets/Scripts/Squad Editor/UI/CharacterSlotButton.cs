@@ -13,6 +13,7 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
     [SerializeField] private int _index;
     [SerializeField] private GameObject _filledView, _emptyView;
     [SerializeField] private TMP_Text _nameText, _levelText;
+    [SerializeField] private Image _characterIcon;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -46,7 +47,7 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
         }
         else
         {
-            Debug.Log("Inspect Character");
+            _editor.FocusOnCharacter(_index);
         }
 
     }

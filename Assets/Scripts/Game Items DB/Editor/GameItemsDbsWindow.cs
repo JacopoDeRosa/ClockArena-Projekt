@@ -31,6 +31,7 @@ public class GameItemsDbsWindow : EditorWindow
 
         CheckDB<VoiceDB>(VoiceDB.Name);
         CheckDB<IconsDB>(IconsDB.Name);
+        CheckDB<DataDB>(DataDB.Name);
 
         EditorGUILayout.EndHorizontal();
     }

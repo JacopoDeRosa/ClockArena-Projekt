@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterComponentsData
 {
     public string name;
-    public Factions faction;
+    public Faction faction;
     public int dataType;
     public int icon;
     public int voice;
@@ -15,17 +15,21 @@ public class CharacterComponentsData
     public int head;
     public int body;
     public int exp;
-
+    public int level;
 
     public CharacterComponentsData()
     {
-        name = "Unnamed Soldier";
+        name = "Soldier";
+
+        icon = 0;
         voice = 0;
         weapon = 0;
         gadget = 0;
         head = 0;
         body = 0;
         exp = 0;
+        level = 0;
+        dataType = 0;
     }
 
 }
