@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
-public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IClickAudio
 {
     [SerializeField] private Graphic _graphic;
     [SerializeField] private Color _normalColor, _highlightedColor, _clickColor;
@@ -15,9 +16,15 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
     [SerializeField] private TMP_Text _nameText, _levelText;
     [SerializeField] private Image _characterIcon;
 
+    public event Action onAudio;
+
+    public ClickTypes ClickType { get => ClickTypes.Heavy; }
+
+
     public void OnPointerDown(PointerEventData eventData)
     {
         _graphic.color = _clickColor;
+        onAudio?.Invoke();
     }
     public void OnPointerUp(PointerEventData eventData)
     {

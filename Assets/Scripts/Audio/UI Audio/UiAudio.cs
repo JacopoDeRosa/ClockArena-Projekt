@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiAudio : MonoBehaviour
 {
@@ -24,7 +25,15 @@ public class UiAudio : MonoBehaviour
                 clickable.onAudio += PlayLightClick;
             }
         }
+
+        Button[] buttons = FindObjectsOfType<Button>();
+
+        foreach (Button button in buttons)
+        {
+            button.onClick.AddListener(PlayLightClick);
+        }
     }
+
 
     private void PlayHeavyClick()
     {
