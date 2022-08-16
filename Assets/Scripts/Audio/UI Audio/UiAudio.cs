@@ -26,7 +26,7 @@ public class UiAudio : MonoBehaviour
             }
         }
 
-        Button[] buttons = FindObjectsOfType<Button>();
+        Button[] buttons = FindObjectsOfType<Button>(true);
 
         foreach (Button button in buttons)
         {

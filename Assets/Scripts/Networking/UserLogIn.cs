@@ -57,13 +57,22 @@ public class UserLogIn : MonoBehaviour
         _loadingScreen.SetText("Logging You In");
 
         UserData data = JsonUtility.FromJson<UserData>(logInRequest.downloadHandler.text);
-        LoggedUser.LogInUser(data);
+
         logInRequest.Dispose();
+
         yield return _fader.FadeOutRoutine();
+
         _loadingScreen.gameObject.SetActive(false);
+
         _screen.SetActive(false);
+
+        LoggedUser.LogInUser(data);
+
         yield return new WaitForSeconds(0.1f);
+
         yield return _fader.FadeInRoutine();
+
+       
     }
 
     private void LogError(string error, bool disableLoading = true)

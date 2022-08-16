@@ -43,6 +43,8 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
 
     private void OnClick()
     {
+        if (_editor.SquadLoaded == false) return;
+
         Character character = _editor.GetCharacter(_index);
         if(character == null)
         {

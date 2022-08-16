@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.Networking;
 
 public class SquadEditor : MonoBehaviour
 {
@@ -10,13 +12,28 @@ public class SquadEditor : MonoBehaviour
     [SerializeField] private GameObject _inspectionCamera;
     [SerializeField] private CharacterAbilitiesWindow _abilitiesWindow;
     [SerializeField] private CharacterEquipmentWindow _equipmentWindow;
-    [SerializeField] private Faction _squadFaction;
 
+
+    private SquadData _squad;
     private bool _focused;
+    private LoadingScreen _loadingScreen;
 
-    public void InitNewSquad()
+    public bool SquadLoaded { get => _squad != null; }
+
+    public event Action<SquadData> onSquadLoaded;
+
+    private void Awake()
     {
+        LoggedUser.onUserLoggedIn += TryGetSquad;
+        _loadingScreen = FindObjectOfType<LoadingScreen>(true);
+    }
 
+    public SquadData CreateNewSquad(Faction faction, string name)
+    {
+        SquadData squadData = new SquadData(faction, name);
+        _squad = squadData;
+        StartCoroutine(UpdatePlayerSquad());
+        return _squad;
     }
 
     public Character GetCharacter(int index)
@@ -49,7 +66,6 @@ public class SquadEditor : MonoBehaviour
         _abilitiesWindow.FoldingBar.Toggle(true);
         _equipmentWindow.FoldingBar.Toggle(true);
     }
-
     public void LooseFocus()
     {
         if (_focused == false) return;
@@ -57,5 +73,100 @@ public class SquadEditor : MonoBehaviour
         _abilitiesWindow.FoldingBar.Toggle(false);
         _equipmentWindow.FoldingBar.Toggle(false);
         _inspectionCamera.SetActive(false);
+    }
+
+    private void TryGetSquad(UserData userData)
+    {
+        StartCoroutine(GetSquadRoutine(userData.userName));
+    }
+
+    private IEnumerator GetSquadRoutine(string owner)
+    {
+        WWWForm form = NetworkUtility.GetSignedForm();
+
+        _loadingScreen.gameObject.SetActive(true);
+        _loadingScreen.SetText("Loading User Squad");
+
+        form.AddField("owner", owner);
+
+#if UNITY_EDITOR
+        yield return new WaitForSeconds(2);
+#endif
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(NetworkUtility.dbUrl + "/LoadUserSquad.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        SquadData squad = null;
+
+        if (webRequest.downloadHandler.text == "3")
+        {
+            Debug.LogError("User has no squad assigned");
+        }
+        else if(webRequest.downloadHandler.text == "4")
+        {
+            Debug.LogError("Squad Query Error");
+        }
+        else
+        {
+            squad = JsonUtility.FromJson<SquadData>(webRequest.downloadHandler.text);
+        }
+      
+        if(webRequest.error != null)
+        {
+            Debug.LogError("Server error in squad editor: " + webRequest.error);
+        }
+
+        if (squad != null)
+        {
+            for (int i = 0; i < squad.characters.Length; i++)
+            {
+                if (squad.characters[i].available == false)
+                {
+                    squad.characters[i] = null;
+                }
+            }
+
+            // TODO: Place characters here.
+
+            _squad = squad;
+        }
+
+        onSquadLoaded?.Invoke(squad);
+
+        webRequest.Dispose();
+
+        _loadingScreen.gameObject.SetActive(false);
+    }
+    private IEnumerator UpdatePlayerSquad()
+    {
+        if (LoggedUser.IsLogged == false)
+        {
+            Debug.Log("No User Logged");
+            yield break;
+        }
+
+        _loadingScreen.gameObject.SetActive(true);
+        _loadingScreen.SetText("Updating Squad Data");
+
+#if UNITY_EDITOR
+        yield return new WaitForSeconds(2);
+#endif
+
+        string squadJson = JsonUtility.ToJson(_squad);
+
+        WWWForm form = NetworkUtility.GetSignedForm();
+
+        form.AddField("owner", LoggedUser.UserData.userName);
+        form.AddField("squad", squadJson);
+        Debug.Log(squadJson);
+        UnityWebRequest webRequest = UnityWebRequest.Post(NetworkUtility.dbUrl + "/UpdateSquad.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        onSquadLoaded?.Invoke(_squad);
+
+        webRequest.Dispose();
+        _loadingScreen.gameObject.SetActive(false);
     }
 }

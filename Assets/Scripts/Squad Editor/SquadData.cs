@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SquadData
 {
     public Faction faction;
@@ -15,6 +16,11 @@ public class SquadData
         this.faction = faction;
         this.name = name;
         characters = new CharacterComponentsData[6];
+        for (int i = 0; i < characters.Length; i++)
+        {
+            characters[i] = new CharacterComponentsData();
+            characters[i].faction = faction;
+        }
     }
 
     public void AddNewCharacterAtIndex(int index, CharacterComponentsData character)

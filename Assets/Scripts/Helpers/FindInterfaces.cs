@@ -11,7 +11,7 @@ public static class FindInterfaces
         GameObject[] rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
         foreach (var rootGameObject in rootGameObjects)
         {
-            T[] childrenInterfaces = rootGameObject.GetComponentsInChildren<T>();
+            T[] childrenInterfaces = rootGameObject.GetComponentsInChildren<T>(true);
             foreach (var childInterface in childrenInterfaces)
             {
                 interfaces.Add(childInterface);

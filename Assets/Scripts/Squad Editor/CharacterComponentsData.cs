@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterComponentsData
 {
+    public bool available;
     public string name;
     public Faction faction;
     public int dataType;
@@ -20,7 +21,7 @@ public class CharacterComponentsData
     public CharacterComponentsData()
     {
         name = "Soldier";
-
+        available = false;
         icon = 0;
         voice = 0;
         weapon = 0;

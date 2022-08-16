@@ -9,6 +9,8 @@ public static class LoggedUser
     private static UserData _userData;
     private static SquadData _userSquad;
 
+    public static bool IsLogged { get => _isLogged; }
+
     public static UserData UserData { get => _userData; }
     public static event Action<UserData> onUserLoggedIn;
     public static void LogInUser(UserData user)
