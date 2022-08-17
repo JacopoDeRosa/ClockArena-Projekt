@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -13,5 +13,90 @@ public static class NetworkUtility
         WWWForm form = new WWWForm();
         form.AddField("appPassword", signature);
         return form;
+    }
+
+    public static IEnumerator UpdateUserParameter(string parameter, string value)
+    {
+        if (LoggedUser.IsLogged == false) yield break;
+
+        WWWForm form = GetSignedForm();
+
+        form.AddField("user", LoggedUser.UserData.userName);
+        form.AddField("parameter", parameter);
+        form.AddField("value", value);
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(dbUrl + "/UpdateUserParameter.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        webRequest.Dispose();
+    }
+
+    public static IEnumerator UpdateUserParameter(string parameter, int value)
+    {
+        if (LoggedUser.IsLogged == false) yield break;
+
+        WWWForm form = GetSignedForm();
+
+        form.AddField("user", LoggedUser.UserData.userName);
+        form.AddField("parameter", parameter);
+        form.AddField("value", value);
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(dbUrl + "/UpdateUserParameter.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        if (webRequest.error != null)
+        {
+            Debug.LogError(webRequest.error);
+        }
+
+        webRequest.Dispose();
+    }
+
+    public static IEnumerator GetUserParameter(string parameter, Action<int> setCallback)
+    {
+        WWWForm form = GetSignedForm();
+        form.AddField("user", LoggedUser.UserData.userName);
+        form.AddField("parameter", parameter);
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(dbUrl + "/GetUserParameter.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        if(webRequest.error != null)
+        {
+            Debug.LogError(webRequest.error);
+        }
+
+        if(int.TryParse(webRequest.downloadHandler.text, out int result))
+        {
+            setCallback(result);
+        }
+
+        webRequest.Dispose();
+
+    }
+
+    public static IEnumerator GetUserParameter(string parameter, Action<string> setCallback)
+    {
+        WWWForm form = GetSignedForm();
+        form.AddField("user", LoggedUser.UserData.userName);
+        form.AddField("parameter", parameter);
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(dbUrl + "/GetUserParameter.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        if (webRequest.error != null)
+        {
+            Debug.LogError(webRequest.error);
+        }
+
+        string result = webRequest.downloadHandler.text;
+       
+        setCallback(result);
+
+        webRequest.Dispose();
     }
 }

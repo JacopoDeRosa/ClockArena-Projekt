@@ -49,11 +49,17 @@ public class SquadEditor : MonoBehaviour
     }
     public Character SpawnCharacterAtIndex(int index)
     {
+        // TODO: Try to put everything in the corutine
         if (index >= _characterBases.Length) return null;
 
         Character spawnedChar = Instantiate(_characterTemplate, _characterBases[index]);
+
         _characters[index] = spawnedChar;
+
         spawnedChar.GetComponent<CharacterVoice>().PlayAcknowledge();
+
+        StartCoroutine(AddCharacterRoutine(index));
+
         return spawnedChar;
     }
     public void FocusOnCharacter(int index)
@@ -147,6 +153,7 @@ public class SquadEditor : MonoBehaviour
         }
 
         _loadingScreen.gameObject.SetActive(true);
+
         _loadingScreen.SetText("Updating Squad Data");
 
 #if UNITY_EDITOR
@@ -159,7 +166,7 @@ public class SquadEditor : MonoBehaviour
 
         form.AddField("owner", LoggedUser.UserData.userName);
         form.AddField("squad", squadJson);
-        Debug.Log(squadJson);
+
         UnityWebRequest webRequest = UnityWebRequest.Post(NetworkUtility.dbUrl + "/UpdateSquad.php", form);
 
         yield return webRequest.SendWebRequest();
@@ -167,6 +174,15 @@ public class SquadEditor : MonoBehaviour
         onSquadLoaded?.Invoke(_squad);
 
         webRequest.Dispose();
+
         _loadingScreen.gameObject.SetActive(false);
+    }
+    private IEnumerator AddCharacterRoutine(int index)
+    {
+        _loadingScreen.gameObject.SetActive(true);
+        _loadingScreen.SetText("Purchasing Character");
+
+        yield return NetworkUtility.UpdateUserParameter("acoins", 500);
+        yield return UpdatePlayerSquad();
     }
 }

@@ -29,7 +29,36 @@ public class CharacterComponentsData
         head = 0;
         body = 0;
         exp = 0;
-        level = 0;
+        level = 1;
+        dataType = 0;
+    }
+    public CharacterComponentsData(bool available)
+    {
+        name = "Soldier";
+        this.available = available;
+        icon = 0;
+        voice = 0;
+        weapon = 0;
+        gadget = 0;
+        head = 0;
+        body = 0;
+        exp = 0;
+        level = 1;
+        dataType = 0;
+    }
+    public CharacterComponentsData(bool available, string name, Faction faction)
+    {
+        this.name = name;
+        this.available = available;
+        this.faction = faction;
+        icon = 0;
+        voice = 0;
+        weapon = 0;
+        gadget = 0;
+        head = 0;
+        body = 0;
+        exp = 0;
+        level = 1;
         dataType = 0;
     }
 

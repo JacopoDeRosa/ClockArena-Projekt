@@ -23,8 +23,10 @@ public class SquadData
         }
     }
 
-    public void AddNewCharacterAtIndex(int index, CharacterComponentsData character)
+    public CharacterComponentsData AddNewCharacterAtIndex(int index)
     {
+        CharacterComponentsData character = new CharacterComponentsData(true, "New Character", faction);
         characters[index] = character;
+        return character;
     }
 }
