@@ -61,5 +61,20 @@ public class CharacterComponentsData
         level = 1;
         dataType = 0;
     }
+    public CharacterComponentsData(CharacterComponentsData clone)
+    {
+        this.name = clone.name;
+        this.available = clone.available;
+        this.faction = clone.faction;
+        icon = clone.icon;
+        voice = clone.voice;
+        weapon = clone.weapon;
+        gadget = clone.gadget;
+        head = clone.head;
+        body = clone.body;
+        exp = clone.exp;
+        level = clone.level;
+        dataType = clone.dataType;
+    }
 
 }

@@ -266,8 +266,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: New Soldier
   _icon: {fileID: 21300000, guid: 7a821340bb94bc6448253e713b341626, type: 3}
-  _characterMover: {fileID: 392475708318199454}
   _faction: 4
+  _characterMover: {fileID: 392475708318199454}
+  _characterEquipment: {fileID: 392475708318199455}
+  _dataReader: {fileID: 392475708318199443}
   _exp: 0
   _level: 1
 --- !u!114 &392475708318199455

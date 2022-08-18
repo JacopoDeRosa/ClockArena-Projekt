@@ -7,8 +7,10 @@ public class Character : MonoBehaviour
 {   
     [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private Faction _faction;
+    [SerializeField] private CharacterMover _characterMover;
+    [SerializeField] private Equipment _characterEquipment;
+    [SerializeField] private CharacterDataReader _dataReader;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -18,11 +20,11 @@ public class Character : MonoBehaviour
     [ShowInInspector][ReadOnly]
     private int _initiativeLevel = 0;
 
-
-   
     public string Name { get => _name; }
     public Sprite Icon { get => _icon; }
     public CharacterMover Mover { get => _characterMover; }
+    public Equipment Equipment { get => _characterEquipment; }
+    public CharacterDataReader DataReader { get => _dataReader; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }

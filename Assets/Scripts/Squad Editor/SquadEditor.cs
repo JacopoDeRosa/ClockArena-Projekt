@@ -20,7 +20,10 @@ public class SquadEditor : MonoBehaviour
 
     public bool SquadLoaded { get => _squad != null; }
 
+    public event Action<int> onCharacterUpdated;
     public event Action<SquadData> onSquadLoaded;
+    public event Action<int> onFocus;
+    public event Action onLoseFocus;
 
     private void Awake()
     {
@@ -28,11 +31,16 @@ public class SquadEditor : MonoBehaviour
         _loadingScreen = FindObjectOfType<LoadingScreen>(true);
     }
 
+    private void OnDestroy()
+    {
+        LoggedUser.onUserLoggedIn -= TryGetSquad;
+    }
+
     public SquadData CreateNewSquad(Faction faction, string name)
     {
         SquadData squadData = new SquadData(faction, name);
         _squad = squadData;
-        StartCoroutine(UpdatePlayerSquad());
+        StartCoroutine(UpdateSquadRoutine());
         return _squad;
     }
 
@@ -47,46 +55,69 @@ public class SquadEditor : MonoBehaviour
             return _characters[index];
         }
     }
-    public Character SpawnCharacterAtIndex(int index)
+
+    public CharacterComponentsData GetCharacterData(int index)
     {
-        // TODO: Try to put everything in the corutine
-        if (index >= _characterBases.Length) return null;
-
-        Character spawnedChar = Instantiate(_characterTemplate, _characterBases[index]);
-
-        _characters[index] = spawnedChar;
-
-        spawnedChar.GetComponent<CharacterVoice>().PlayAcknowledge();
-
-        StartCoroutine(AddCharacterRoutine(index));
-
-        return spawnedChar;
+        return _squad.characters[index];
     }
+
+    public void UpdateCharacterData(int index, CharacterComponentsData data)
+    {
+        _squad.characters[index] = data;
+        onCharacterUpdated?.Invoke(index);
+    }
+
+    public void SpawnCharacterAtIndex(int index, Action<Character> callback)
+    {
+        if (index >= _characterBases.Length) return;
+        StartCoroutine(AddCharacterRoutine(index, callback));
+    }
+
     public void FocusOnCharacter(int index)
     {
+        if (index >= _characters.Length) return;
         if (_focused) return;
+        if (_characters[index] == null) return;
+        
         _inspectionCamera.transform.rotation = Quaternion.identity;
         _inspectionCamera.transform.position = _characterBases[index].position;
         _inspectionCamera.gameObject.SetActive(true);
         _focused = true;
-        _abilitiesWindow.FoldingBar.Toggle(true);
-        _equipmentWindow.FoldingBar.Toggle(true);
+        onFocus?.Invoke(index);
     }
     public void LooseFocus()
     {
         if (_focused == false) return;
         _focused = false;
-        _abilitiesWindow.FoldingBar.Toggle(false);
-        _equipmentWindow.FoldingBar.Toggle(false);
         _inspectionCamera.SetActive(false);
+        onLoseFocus?.Invoke();
+    }
+    public IEnumerator UpdateSquad()
+    {
+
+        string squadJson = JsonUtility.ToJson(_squad);
+
+        WWWForm form = NetworkUtility.GetSignedForm();
+
+        form.AddField("owner", LoggedUser.UserData.userName);
+        form.AddField("squad", squadJson);
+
+        UnityWebRequest webRequest = UnityWebRequest.Post(NetworkUtility.dbUrl + "/UpdateSquad.php", form);
+
+        yield return webRequest.SendWebRequest();
+
+        onSquadLoaded?.Invoke(_squad);
+
+        webRequest.Dispose();
+
     }
 
     private void TryGetSquad(UserData userData)
     {
-        StartCoroutine(GetSquadRoutine(userData.userName));
+        StartCoroutine(LoadSquadRoutine(userData.userName));
     }
 
-    private IEnumerator GetSquadRoutine(string owner)
+    private IEnumerator LoadSquadRoutine(string owner)
     {
         WWWForm form = NetworkUtility.GetSignedForm();
 
@@ -130,10 +161,15 @@ public class SquadEditor : MonoBehaviour
                 if (squad.characters[i].available == false)
                 {
                     squad.characters[i] = null;
+                    continue;
                 }
-            }
 
-            // TODO: Place characters here.
+                Character spawnedChar = Instantiate(_characterTemplate, _characterBases[i]);
+                _characters[i] = spawnedChar;
+                spawnedChar.DataReader.ReadData(squad.GetCharacterAtIndex(i));
+                onCharacterUpdated?.Invoke(i);
+            }
+           
 
             _squad = squad;
         }
@@ -144,7 +180,7 @@ public class SquadEditor : MonoBehaviour
 
         _loadingScreen.gameObject.SetActive(false);
     }
-    private IEnumerator UpdatePlayerSquad()
+    private IEnumerator UpdateSquadRoutine()
     {
         if (LoggedUser.IsLogged == false)
         {
@@ -159,30 +195,33 @@ public class SquadEditor : MonoBehaviour
 #if UNITY_EDITOR
         yield return new WaitForSeconds(2);
 #endif
-
-        string squadJson = JsonUtility.ToJson(_squad);
-
-        WWWForm form = NetworkUtility.GetSignedForm();
-
-        form.AddField("owner", LoggedUser.UserData.userName);
-        form.AddField("squad", squadJson);
-
-        UnityWebRequest webRequest = UnityWebRequest.Post(NetworkUtility.dbUrl + "/UpdateSquad.php", form);
-
-        yield return webRequest.SendWebRequest();
-
-        onSquadLoaded?.Invoke(_squad);
-
-        webRequest.Dispose();
+        yield return UpdateSquad();
 
         _loadingScreen.gameObject.SetActive(false);
-    }
-    private IEnumerator AddCharacterRoutine(int index)
+    } 
+    private IEnumerator AddCharacterRoutine(int index, Action<Character> callback)
     {
         _loadingScreen.gameObject.SetActive(true);
         _loadingScreen.SetText("Purchasing Character");
 
-        yield return NetworkUtility.UpdateUserParameter("acoins", 500);
-        yield return UpdatePlayerSquad();
+        void PlaceCharacter(bool valid)
+        {
+            if (valid)
+            {
+                CharacterComponentsData componentsData = _squad.AddNewCharacterAtIndex(index);
+                Character spawnedChar = Instantiate(_characterTemplate, _characterBases[index]);
+                _characters[index] = spawnedChar;
+                spawnedChar.DataReader.ReadData(componentsData);
+                callback(spawnedChar);
+            }
+        }
+
+        yield return NetworkUtility.TrySpendACoins(100, PlaceCharacter);
+
+        _loadingScreen.SetText("Updating Squad");
+
+        yield return UpdateSquad();
+
+        _loadingScreen.gameObject.SetActive(false);
     }
 }

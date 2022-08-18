@@ -35,11 +35,15 @@ public class Equipment : MonoBehaviour
     }
     public void SetHeadArmour(int armour)
     {
-       // _headSlot.SetItem(armour);
+        Debug.Log("Setting head to: " + armour);
+        onArmourChanged?.Invoke();
+        // _headSlot.SetItem(armour);
     }
     public void SetBodyArmour(int armour)
     {
-       // _bodySlot.SetItem(armour);
+        Debug.Log("Setting body to: " + armour);
+        onArmourChanged?.Invoke();
+        // _bodySlot.SetItem(armour);
     }
 
     public void ClearWeapon()

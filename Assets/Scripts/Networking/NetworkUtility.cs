@@ -99,4 +99,29 @@ public static class NetworkUtility
 
         webRequest.Dispose();
     }
+
+    public static IEnumerator TrySpendACoins(int amount, Action<bool> callback)
+    {
+        int coinAmount = 0;
+
+        void CheckCoinAmount(int coins)
+        {
+            coinAmount = coins;
+        }
+
+        yield return GetUserParameter("acoins", CheckCoinAmount);
+
+        if (coinAmount < amount)
+        {
+            callback(false);
+        }
+        else
+        {
+            yield return UpdateUserParameter("acoins", coinAmount - amount);
+            UserData data = LoggedUser.UserData;
+            data.aCoins = coinAmount - amount;
+            LoggedUser.UpdateUserData(data);
+            callback(true);
+        }
+    }
 }

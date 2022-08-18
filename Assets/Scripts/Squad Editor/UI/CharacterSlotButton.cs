@@ -20,7 +20,10 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public ClickTypes ClickType { get => ClickTypes.Heavy; }
 
-
+    private void Awake()
+    {
+        _editor.onCharacterUpdated += OnCharacterUpdated;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         _graphic.color = _clickColor;
@@ -48,17 +51,36 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
         Character character = _editor.GetCharacter(_index);
         if(character == null)
         {
-             character = _editor.SpawnCharacterAtIndex(_index);
-            _emptyView.SetActive(false);
-            _filledView.SetActive(true);
-            _nameText.text = character.Name;
-            _levelText.text = "Lvl " + character.Level;
+            _editor.SpawnCharacterAtIndex(_index, SetCharacter);
         }
         else
         {
             _editor.FocusOnCharacter(_index);
         }
 
+    }
+
+    public void SetCharacter(Character character)
+    {
+        if(character == null)
+        {
+            _emptyView.SetActive(true);
+            _filledView.SetActive(false);
+        }
+        else
+        {
+            _emptyView.SetActive(false);
+            _filledView.SetActive(true);
+            _nameText.text = character.Name;
+            _levelText.text = "Lvl " + character.Level;
+            _characterIcon.sprite = character.Icon;
+        }
+    }
+
+    private void OnCharacterUpdated(int index)
+    {
+        if (index != _index) return;
+        SetCharacter(_editor.GetCharacter(index));
     }
 
 }

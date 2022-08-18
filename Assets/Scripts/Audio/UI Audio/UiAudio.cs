@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UiAudio : MonoBehaviour
 {
@@ -32,6 +33,13 @@ public class UiAudio : MonoBehaviour
         {
             button.onClick.AddListener(PlayLightClick);
         }
+
+        TMP_InputField[] inputFields = FindObjectsOfType<TMP_InputField>(true);
+
+        foreach (TMP_InputField inputField in inputFields)
+        {
+            inputField.onSelect.AddListener(PlayLightClick);
+        }
     }
 
 
@@ -40,6 +48,10 @@ public class UiAudio : MonoBehaviour
         _audioSource.PlayOneShot(_heavyClick);
     }
     private void PlayLightClick()
+    {
+        _audioSource.PlayOneShot(_lightClick);
+    }
+    private void PlayLightClick(string useless)
     {
         _audioSource.PlayOneShot(_lightClick);
     }
