@@ -8,6 +8,7 @@ public class CharacterDataReader : MonoBehaviour
     [SerializeField] private CharacterVoice _voice;
     [SerializeField] private Equipment _equipment;
     [SerializeField] private CharacterStats _stats;
+    
     public void ReadData(CharacterComponentsData data)
     {
         _character.SetName(data.name);

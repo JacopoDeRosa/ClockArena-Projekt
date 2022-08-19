@@ -17,25 +17,14 @@ public class CharacterComponentsData
     public int body;
     public int exp;
     public int level;
+    public AbilityDescriptor primaryAbility;
+    public AbilityDescriptor secondayAbility;
+
 
     public CharacterComponentsData()
     {
         name = "Soldier";
         available = false;
-        icon = 0;
-        voice = 0;
-        weapon = 0;
-        gadget = 0;
-        head = 0;
-        body = 0;
-        exp = 0;
-        level = 1;
-        dataType = 0;
-    }
-    public CharacterComponentsData(bool available)
-    {
-        name = "Soldier";
-        this.available = available;
         icon = 0;
         voice = 0;
         weapon = 0;
@@ -60,6 +49,8 @@ public class CharacterComponentsData
         exp = 0;
         level = 1;
         dataType = 0;
+        primaryAbility = new AbilityDescriptor(0, 0, false);
+        secondayAbility = new AbilityDescriptor(0, 0, false);
     }
     public CharacterComponentsData(CharacterComponentsData clone)
     {
@@ -75,6 +66,8 @@ public class CharacterComponentsData
         exp = clone.exp;
         level = clone.level;
         dataType = clone.dataType;
+        primaryAbility = clone.primaryAbility;
+        secondayAbility = clone.secondayAbility;
     }
 
 }

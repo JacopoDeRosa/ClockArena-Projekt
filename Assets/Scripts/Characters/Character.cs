@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private Equipment _characterEquipment;
     [SerializeField] private CharacterDataReader _dataReader;
+    [SerializeField] private CharacterStats _stats;
+    [SerializeField] private CharacterAnimatorControl _animator;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -25,9 +27,12 @@ public class Character : MonoBehaviour
     public CharacterMover Mover { get => _characterMover; }
     public Equipment Equipment { get => _characterEquipment; }
     public CharacterDataReader DataReader { get => _dataReader; }
+    public CharacterStats Stats { get => _stats; }
+    public CharacterAnimatorControl Animator { get => _animator; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }
+    public int ExpToNextLevel { get => 1000 + (400 * (_level - 1)); }
 
   
     public int RollInitiative()
@@ -85,6 +90,5 @@ public class Character : MonoBehaviour
     {
         _level = level;
     }
-   
 }
 

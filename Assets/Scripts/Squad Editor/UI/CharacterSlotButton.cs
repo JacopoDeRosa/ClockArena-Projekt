@@ -82,5 +82,4 @@ public class CharacterSlotButton : MonoBehaviour, IPointerEnterHandler, IPointer
         if (index != _index) return;
         SetCharacter(_editor.GetCharacter(index));
     }
-
 }

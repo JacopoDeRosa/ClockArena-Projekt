@@ -37,7 +37,7 @@ public class CharacterEquipmentWindow : MonoBehaviour
 
         _foldingBar.Toggle(true);
         _nameField.text = character.Name;
-        _levelText.text = "Level: " + character.Level.ToString() + " - EXP " + character.Exp.ToString().PadLeft(4,'0') + "/1000"; // TODO: Replace 1000 with the exp to next level
+        _levelText.text = "Level: " + character.Level.ToString() + " - EXP " + character.Exp.ToString().PadLeft(4,'0') + "/" + character.ExpToNextLevel.ToString(); // TODO: Replace 1000 with the exp to next level
         _icon.sprite = character.Icon;
         _activeCharacter = character;
         _activeCharacterData = new CharacterComponentsData(data);

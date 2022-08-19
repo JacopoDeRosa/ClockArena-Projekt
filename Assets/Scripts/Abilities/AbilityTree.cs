@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityTree : MonoBehaviour
+
+[CreateAssetMenu(fileName = "New Ability Tree", menuName = "New Ability Tree")]
+public class AbilityTree : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AbilityTier[] _abilityTiers = new AbilityTier[10];
+
+    public Ability GetAbility(int tierIndex, int abilityIndex)
     {
-        
+        AbilityTier tier = _abilityTiers[tierIndex];
+        return tier.GetAbility(abilityIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    public Ability GetAbility(AbilityDescriptor descriptor)
     {
-        
+        return GetAbility(descriptor.tierIndex, descriptor.abilityIndex);
     }
+
+    private void OnValidate()
+    {
+        if(_abilityTiers.Length != 10)
+        {
+            _abilityTiers = new AbilityTier[10];
+        }
+    }
+
+#if UNITY_EDITOR
+   // TODO: Put editor stuff here in future.
+#endif
 }

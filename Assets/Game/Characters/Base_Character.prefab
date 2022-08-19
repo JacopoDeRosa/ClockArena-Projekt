@@ -270,6 +270,8 @@ MonoBehaviour:
   _characterMover: {fileID: 392475708318199454}
   _characterEquipment: {fileID: 392475708318199455}
   _dataReader: {fileID: 392475708318199443}
+  _stats: {fileID: -5699468471679304968}
+  _animator: {fileID: 392475708318199451}
   _exp: 0
   _level: 1
 --- !u!114 &392475708318199455
@@ -475,7 +477,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 392475708318199425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b00d5c6acb9af45ab5f33d451bf0ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a28b66bb2a6f254387e6a612a64bd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 392475708318199452}

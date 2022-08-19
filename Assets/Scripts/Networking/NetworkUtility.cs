@@ -124,4 +124,17 @@ public static class NetworkUtility
             callback(true);
         }
     }
+
+    public static IEnumerator AddACoins(int amount)
+    {
+        int coinAmount = 0;
+
+        void CheckCoinAmount(int coins)
+        {
+            coinAmount = coins;
+        }
+
+        yield return GetUserParameter("acoins", CheckCoinAmount);
+        yield return UpdateUserParameter("acoins", coinAmount + amount);
+    }
 }
