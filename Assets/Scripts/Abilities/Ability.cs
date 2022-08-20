@@ -22,7 +22,7 @@ public class Ability : ScriptableObject
 
     }
 
-    public virtual void PassiveUser(Character user)
+    public virtual void PassiveUse(Character user)
     {
 
     }
