@@ -34,7 +34,6 @@ public class TacticalCameraHeight : MonoBehaviour
 
     private void OnMouseWheel(InputAction.CallbackContext context)
     {
-        print("Mouse Wheel");
         Vector2 wheel = context.ReadValue<Vector2>();
 
         if (_busy) return;
