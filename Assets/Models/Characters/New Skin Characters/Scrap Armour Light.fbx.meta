@@ -3,7 +3,12 @@ guid: 1fc30d98193690342a40b071a104fe1e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_Scrap_Armour
+    second: {fileID: 2100000, guid: 81dc2335ce624d2438050c0d71a6e590, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

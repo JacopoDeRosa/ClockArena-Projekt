@@ -8,6 +8,7 @@ public class CharacterDataReader : MonoBehaviour
     [SerializeField] private CharacterVoice _voice;
     [SerializeField] private Equipment _equipment;
     [SerializeField] private CharacterStats _stats;
+    [SerializeField] private CharacterAbilities _abilities;
     
     public void ReadData(CharacterComponentsData data)
     {
@@ -25,6 +26,10 @@ public class CharacterDataReader : MonoBehaviour
         _voice.SetVoicePack(data.voice);
 
         _stats.SetBaseStats(data.dataType);
+
+        _abilities.SetAbilityTree(data.abilityTree);
+        _abilities.SetPrimaryAbility(data.primaryAbility);
+        _abilities.SetSecondaryAbility(data.secondayAbility);
 
     }
 }

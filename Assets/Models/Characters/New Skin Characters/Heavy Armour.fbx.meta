@@ -3,7 +3,12 @@ guid: 9e451b0074466e4408a268125fc8be39
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heavy_Armour
+    second: {fileID: 2100000, guid: a39b41a18362f0a4d90f29047631e6cb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

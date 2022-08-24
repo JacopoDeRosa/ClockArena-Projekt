@@ -225,7 +225,9 @@ GameObject:
   - component: {fileID: 787703816392551655}
   - component: {fileID: -5699468471679304968}
   - component: {fileID: 392475708318199443}
-  m_Layer: 0
+  - component: {fileID: 777827011}
+  - component: {fileID: 5756650093620526888}
+  m_Layer: 12
   m_Name: Base_Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,6 +274,7 @@ MonoBehaviour:
   _dataReader: {fileID: 392475708318199443}
   _stats: {fileID: -5699468471679304968}
   _animator: {fileID: 392475708318199451}
+  _abilities: {fileID: 5756650093620526888}
   _exp: 0
   _level: 1
 --- !u!114 &392475708318199455
@@ -404,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb6e3c47492b7e4d849390f7d7b7e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimRig: {fileID: 0}
+  _aimRig: {fileID: 392475708587516867}
 --- !u!114 &392475708318199428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eff1639c8b0d44aaa32a2a2baa9d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseStats: {fileID: 0}
+  _baseStats: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _hp: 100
   _stamina: 100
   _ap: 100
@@ -484,6 +487,36 @@ MonoBehaviour:
   _voice: {fileID: 787703816392551655}
   _equipment: {fileID: 392475708318199455}
   _stats: {fileID: -5699468471679304968}
+  _abilities: {fileID: 5756650093620526888}
+--- !u!136 &777827011
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392475708318199425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5756650093620526888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392475708318199425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f575b8a386c0204d8c1c990cbc5a5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _primaryAbility: {fileID: 0}
+  _secondaryAbility: {fileID: 0}
+  _activeTree: {fileID: 11400000, guid: c35b4c00662472a459d9efcaf9a429f6, type: 2}
 --- !u!1 &392475708434436878
 GameObject:
   m_ObjectHideFlags: 0

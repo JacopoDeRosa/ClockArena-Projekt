@@ -14,6 +14,18 @@ public class Equipment : MonoBehaviour
 
     public event Action onArmourChanged;
 
+    private ArmourDB _armourDB;
+
+    private void Awake()
+    {
+        GetArmourDB();
+    }
+
+    private void GetArmourDB()
+    {
+        _armourDB = GameItemDB.GetDbOfType<ArmourDB>(ArmourDB.Name);
+    }
+
     private void OnValidate()
     {
         ValidateArmourSlots();
@@ -29,21 +41,50 @@ public class Equipment : MonoBehaviour
     {
        // _weaponSlot.SetItem(weapon);
     }
+
     public void SetGadget(int gadget)
     {
        // _gadgetSlot.SetItem(gadget);
     }
-    public void SetHeadArmour(int armour)
+
+    public void SetHeadArmour(int index)
     {
-        Debug.Log("Setting head to: " + armour);
+        if (_armourDB == null) GetArmourDB();
+
+        Armour armourPrefab = _armourDB.GetItem(index);
+
+        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Head) return;
+
+        Armour armour = Instantiate(armourPrefab, _armourContainer);
+
+        armour.SetUser(_user);
+
+        _headSlot.SetItem(armour);
+
         onArmourChanged?.Invoke();
-        // _headSlot.SetItem(armour);
     }
-    public void SetBodyArmour(int armour)
+
+    public void SetBodyArmour(int index)
     {
-        Debug.Log("Setting body to: " + armour);
+        if (_armourDB == null) GetArmourDB();
+
+        Armour armourPrefab = _armourDB.GetItem(index);
+
+        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Body) return;
+
+        Armour armour = Instantiate(armourPrefab, _armourContainer);
+
+        armour.SetUser(_user);
+
+        _bodySlot.SetItem(armour);
+
         onArmourChanged?.Invoke();
-        // _bodySlot.SetItem(armour);
+    }
+
+    private bool IsValidItemForUser(GameItem item)
+    {
+        if (item == null || item.Data == null) return false;
+        return item.Data.RequiredLevel <= _user.Level && item.Data.UsableByFaction(_user.Faction);
     }
 
     public void ClearWeapon()

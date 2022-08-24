@@ -3,7 +3,12 @@ guid: 81d3c74332cde3f488e5ba9ffe65ecb9
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Welder_Mask
+    second: {fileID: 2100000, guid: 32c69c56136ee554d8c393e561e759e2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

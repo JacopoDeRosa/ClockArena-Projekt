@@ -3,7 +3,12 @@ guid: 44e7c3d9001c57d4b91ae1bc9f6fd63c
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Traitor_Light_Helemet
+    second: {fileID: 2100000, guid: 57c727a0261a8f244bf626fd159fa580, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

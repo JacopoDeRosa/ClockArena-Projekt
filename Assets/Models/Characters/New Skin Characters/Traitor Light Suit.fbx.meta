@@ -3,7 +3,12 @@ guid: b4e6843b94004e9418b2553131e3e598
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Traitor_Light_Armour
+    second: {fileID: 2100000, guid: f3a04e4436154124ba9da9f0af36cbaf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

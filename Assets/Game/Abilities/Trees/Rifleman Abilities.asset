@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90263da2502bdf4cbe6cfa0e3016333, type: 3}
+  m_Name: Rifleman Abilities
+  m_EditorClassIdentifier: 
+  _name: 
+  _abilityTiers:
+  - _name: Private
+    _abilities: []
+  - _name: Corpral
+    _abilities: []
+  - _name: Sergeant
+    _abilities: []
+  - _name: Specialist
+    _abilities: []
+  - _name: Captain
+    _abilities: []
+  - _name: Major
+    _abilities: []
+  - _name: Colonel
+    _abilities: []
+  - _name: Brigadier
+    _abilities: []
+  - _name: General
+    _abilities: []
+  - _name: Marshal
+    _abilities: []

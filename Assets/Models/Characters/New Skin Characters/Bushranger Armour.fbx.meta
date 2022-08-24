@@ -3,7 +3,12 @@ guid: 3ce007035289a724c87c8d7a85a78d26
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bushranger_Armour
+    second: {fileID: 2100000, guid: 0c285d5376f96a044b89987ccf428e3e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

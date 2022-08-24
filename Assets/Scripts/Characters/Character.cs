@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterDataReader _dataReader;
     [SerializeField] private CharacterStats _stats;
     [SerializeField] private CharacterAnimatorControl _animator;
+    [SerializeField] private CharacterAbilities _abilities;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -24,11 +25,13 @@ public class Character : MonoBehaviour
 
     public string Name { get => _name; }
     public Sprite Icon { get => _icon; }
+    public Faction Faction { get => _faction; }
     public CharacterMover Mover { get => _characterMover; }
     public Equipment Equipment { get => _characterEquipment; }
     public CharacterDataReader DataReader { get => _dataReader; }
     public CharacterStats Stats { get => _stats; }
     public CharacterAnimatorControl Animator { get => _animator; }
+    public CharacterAbilities Abilities { get => _abilities; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }

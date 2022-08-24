@@ -6,7 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ability Tree", menuName = "New Ability Tree")]
 public class AbilityTree : ScriptableObject
 {
+    [SerializeField] private string _name;
     [SerializeField] private AbilityTier[] _abilityTiers = new AbilityTier[10];
+
+    public string Name { get => _name; }
 
     public Ability GetAbility(int tierIndex, int abilityIndex)
     {
@@ -16,6 +19,8 @@ public class AbilityTree : ScriptableObject
 
     public Ability GetAbility(AbilityDescriptor descriptor)
     {
+        if (descriptor.available == false) return null;
+
         return GetAbility(descriptor.tierIndex, descriptor.abilityIndex);
     }
 

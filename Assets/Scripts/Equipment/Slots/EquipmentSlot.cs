@@ -27,8 +27,4 @@ public class EquipmentSlot<T> where T: GameItem
 
         return data;
     }
-    public bool IsValidFactionItem(Faction faction)
-    {
-        return Item.Data.UsableByFaction(faction);
-    }
 }

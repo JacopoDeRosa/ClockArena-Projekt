@@ -3,7 +3,12 @@ guid: 513355fd2c8b69242b32bbfd8e6c515c
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Maniac_Mask
+    second: {fileID: 2100000, guid: 5258112cbf648874bacf4812dac4e498, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
