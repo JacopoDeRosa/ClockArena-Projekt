@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d669888765959bd45a651ef8e105f30c, type: 3}
   m_Name: Traitor Medium
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
+  _name: Medium Suit
+  _sprite: {fileID: 21300000, guid: e4707ad86f2233243a5a519520d7fc4e, type: 3}
   _cost: 55
   _rarity: 0
-  _reuqiredLevel: 2
+  _reuqiredLevel: 1
   _enabledFactions: 8
   _protection: 15
   _weight: 10

@@ -5,12 +5,14 @@ using Sirenix.OdinInspector;
 
 public class ItemData : ScriptableObject
 {
+    [SerializeField] private string _name;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private int _cost;
     [SerializeField] private ItemRarity _rarity;
     [SerializeField] private int _reuqiredLevel;
     [SerializeField] private Factions _enabledFactions;
 
+    public string Name { get => _name; }
     public Sprite Sprite { get => _sprite; }
     public int Cost { get => _cost; }
     public ItemRarity Rarity { get => _rarity; }

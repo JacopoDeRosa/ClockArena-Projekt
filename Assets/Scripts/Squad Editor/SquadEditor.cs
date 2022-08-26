@@ -11,7 +11,7 @@ public class SquadEditor : MonoBehaviour
     [SerializeField] private Character[] _characters = new Character[6];
     [SerializeField] private GameObject _inspectionCamera;
     [SerializeField] private CharacterAbilitiesWindow _abilitiesWindow;
-    [SerializeField] private CharacterEquipmentWindow _equipmentWindow;
+    [SerializeField] private CharacterCustomizationWindow _equipmentWindow;
 
 
     private SquadData _squad;

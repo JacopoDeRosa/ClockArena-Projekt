@@ -16,6 +16,16 @@ public class Equipment : MonoBehaviour
 
     private ArmourDB _armourDB;
 
+    public bool HasHeadArmour { get => _headSlot.Item != null; }
+    public bool HasBodyArmour { get => _bodySlot.Item != null; }
+    public bool HasWeapon { get => _weaponSlot.Item != null; }
+    public bool HasGadget { get => _gadgetSlot.Item != null; }
+
+    public Armour HeadArmour { get => _headSlot.Item; }
+    public Armour BodyArmour { get => _bodySlot.Item; }
+    public Weapon Weapon { get => _weaponSlot.Item; }
+    public Gadget Gadget { get => _gadgetSlot.Item; }
+
     private void Awake()
     {
         GetArmourDB();
@@ -47,13 +57,13 @@ public class Equipment : MonoBehaviour
        // _gadgetSlot.SetItem(gadget);
     }
 
-    public void SetHeadArmour(int index)
+    public Armour SetHeadArmour(int index)
     {
         if (_armourDB == null) GetArmourDB();
 
         Armour armourPrefab = _armourDB.GetItem(index);
 
-        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Head) return;
+        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Head) return null;
 
         Armour armour = Instantiate(armourPrefab, _armourContainer);
 
@@ -62,15 +72,17 @@ public class Equipment : MonoBehaviour
         _headSlot.SetItem(armour);
 
         onArmourChanged?.Invoke();
+
+        return armour;
     }
 
-    public void SetBodyArmour(int index)
+    public Armour SetBodyArmour(int index)
     {
         if (_armourDB == null) GetArmourDB();
 
         Armour armourPrefab = _armourDB.GetItem(index);
 
-        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Body) return;
+        if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Body) return null;
 
         Armour armour = Instantiate(armourPrefab, _armourContainer);
 
@@ -79,6 +91,8 @@ public class Equipment : MonoBehaviour
         _bodySlot.SetItem(armour);
 
         onArmourChanged?.Invoke();
+
+        return armour;
     }
 
     private bool IsValidItemForUser(GameItem item)
@@ -87,20 +101,27 @@ public class Equipment : MonoBehaviour
         return item.Data.RequiredLevel <= _user.Level && item.Data.UsableByFaction(_user.Faction);
     }
 
-    public void ClearWeapon()
+    public ItemData ClearWeapon()
     {
-        _weaponSlot.ClearItem();
+        ItemData data = _weaponSlot.ClearItem();
+        return data;
+       
     }
-    public void ClearGadget()
+    public ItemData ClearGadget()
     {
-        _gadgetSlot.ClearItem();
+        ItemData data = _gadgetSlot.ClearItem();
+        return data;
     }
-    public void ClearHeadArmour()
+    public ItemData ClearHeadArmour(bool recaulculateMesh = true)
     {
-        _headSlot.ClearItem();
+        ItemData data = _headSlot.ClearItem();
+        if (recaulculateMesh) onArmourChanged?.Invoke();
+        return data; 
     }
-    public void ClearBodyArmour()
+    public ItemData ClearBodyArmour(bool recaulculateMesh = true)
     {
-        _bodySlot.ClearItem();
+        ItemData data = _bodySlot.ClearItem();
+        if(recaulculateMesh) onArmourChanged?.Invoke();
+        return data;
     }
 }

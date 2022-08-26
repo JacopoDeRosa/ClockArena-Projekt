@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d669888765959bd45a651ef8e105f30c, type: 3}
   m_Name: Maniac Mask
   m_EditorClassIdentifier: 
+  _name: Maniac Mask
+  _sprite: {fileID: 21300000, guid: 527640e672e9cc24c9e30f49d2a75349, type: 3}
   _cost: 10
   _rarity: 0
   _reuqiredLevel: 0
   _enabledFactions: 12
   _protection: 2
   _weight: 0
+  _armourType: 0

@@ -21,7 +21,7 @@ public class EquipmentSlot<T> where T: GameItem
         if (_item != null)
         {
             data = _item.Data;
-            MonoBehaviour.Destroy(_item);
+            MonoBehaviour.Destroy(_item.gameObject);
             _item = null;
         }
 

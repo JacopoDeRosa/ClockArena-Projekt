@@ -21,8 +21,19 @@ public class CharacterMeshCombiner : MonoBehaviour
     [Button]
     public void UpdateCharacterMesh()
     {
+        StartCoroutine(MergeMeshesRoutine());
+    }
+
+    public void UpdateCharacterMeshImmediate()
+    {
         SkinnedMeshRenderer[] renderers = _meshesContainer.GetComponentsInChildren<SkinnedMeshRenderer>(true);
         MergeSkinnedMeshes(renderers);
+    }
+
+    private IEnumerator MergeMeshesRoutine()
+    {
+        yield return new WaitForEndOfFrame();
+        UpdateCharacterMeshImmediate();
     }
 
     private void MergeSkinnedMeshes(SkinnedMeshRenderer[] targets)

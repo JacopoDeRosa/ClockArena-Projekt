@@ -15,7 +15,7 @@ public static class NetworkUtility
         return form;
     }
 
-    public static IEnumerator UpdateUserParameter(string parameter, string value)
+    private static IEnumerator UpdateUserParameter(string parameter, string value)
     {
         if (LoggedUser.IsLogged == false) yield break;
 
@@ -32,7 +32,7 @@ public static class NetworkUtility
         webRequest.Dispose();
     }
 
-    public static IEnumerator UpdateUserParameter(string parameter, int value)
+    private static IEnumerator UpdateUserParameter(string parameter, int value)
     {
         if (LoggedUser.IsLogged == false) yield break;
 
@@ -136,5 +136,9 @@ public static class NetworkUtility
 
         yield return GetUserParameter("acoins", CheckCoinAmount);
         yield return UpdateUserParameter("acoins", coinAmount + amount);
+
+        UserData data = LoggedUser.UserData;
+        data.aCoins = coinAmount + amount;
+        LoggedUser.UpdateUserData(data);
     }
 }

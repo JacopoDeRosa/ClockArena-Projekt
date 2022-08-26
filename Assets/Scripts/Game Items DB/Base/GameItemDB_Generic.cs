@@ -8,6 +8,8 @@ public class GameItemDB<T> : GameItemDB
     [SerializeField] private T[] _items;
 
   
+    public T[] Items { get => _items; }
+
     public T GetItem(int index)
     {
         if (index >= _items.Length) return _defaultItem;

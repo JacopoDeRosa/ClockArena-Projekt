@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d669888765959bd45a651ef8e105f30c, type: 3}
-  m_Name: Light Traitor Helmet
+  m_Name: Light Helmet
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
+  _name: Light Helmet
+  _sprite: {fileID: 21300000, guid: 527640e672e9cc24c9e30f49d2a75349, type: 3}
   _cost: 15
   _rarity: 0
   _reuqiredLevel: 0
