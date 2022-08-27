@@ -13,6 +13,7 @@ public class Ability : ScriptableObject
 
     public string Name { get => _name; }
     public Sprite Icon { get => _icon; }
+    public AbilityTypes AbilityType { get => _activeUseType; }
     public bool HasActiveUse { get => _hasActiveUse; }
     public bool HasPassiveUser { get => _hasPassiveUse; }
 

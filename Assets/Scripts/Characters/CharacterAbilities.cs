@@ -7,7 +7,10 @@ public class CharacterAbilities : MonoBehaviour
     [SerializeField] private Ability _primaryAbility, _secondaryAbility;
     [SerializeField] private AbilityTree _activeTree;
 
+    public AbilityTree ActiveTree { get => _activeTree; }
+
     public event Action<Ability> onPrimaryChange, onSecondaryChange;
+
 
 
     public void SetPrimaryAbility(AbilityDescriptor descriptor)

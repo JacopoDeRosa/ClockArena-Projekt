@@ -24,6 +24,13 @@ public class AbilityTree : ScriptableObject
         return GetAbility(descriptor.tierIndex, descriptor.abilityIndex);
     }
 
+    public AbilityTier GetAbilityTier(int tier)
+    {
+        if (tier >= 10) return null;
+
+        return _abilityTiers[tier];
+    }
+
     private void OnValidate()
     {
         if(_abilityTiers.Length != 10)

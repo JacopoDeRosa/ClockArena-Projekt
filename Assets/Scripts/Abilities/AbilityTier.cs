@@ -8,6 +8,7 @@ public class AbilityTier
     [SerializeField] private Ability[] _abilities;
 
     public string Name { get => _name; }
+    public Ability[] Abilities { get => _abilities; } 
     
     public Ability GetAbility(int index)
     {
