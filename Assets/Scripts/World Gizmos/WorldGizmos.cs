@@ -7,7 +7,6 @@ public class WorldGizmos : MonoBehaviour
     [SerializeField] private RangeGizmo _rangeGizmo;
     [SerializeField] private PathRenderer _pathRenderer;
     [SerializeField] private GameObject _pointer;
-
     private void OnValidate()
     {
         if(FindObjectsOfType<WorldGizmos>().Length > 1)
@@ -54,6 +53,4 @@ public class WorldGizmos : MonoBehaviour
     {
         _rangeGizmo.gameObject.SetActive(false);
     }
-
-    
 }

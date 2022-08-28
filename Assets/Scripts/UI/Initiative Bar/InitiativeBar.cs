@@ -10,12 +10,10 @@ public class InitiativeBar : MonoBehaviour
     private InitiativeBarSlot[] _slots = new InitiativeBarSlot[24];
     [SerializeField]
     private TurnInitiativeCalculator _initiativeCalculator;
-    [SerializeField]
-    private WorldGizmos _worldGizmos; 
 
     private void Awake()
     {
-        _initiativeCalculator.onInitiaviteRolled.AddListener(SetInitiativeSlotCharacters);
+        _initiativeCalculator.onInitiativeRoll.AddListener(SetInitiativeSlotCharacters);
     }
 
 

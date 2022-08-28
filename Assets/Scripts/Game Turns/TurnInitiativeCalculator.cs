@@ -8,7 +8,7 @@ public class TurnInitiativeCalculator : MonoBehaviour
 {
     public const int MaxInitiative = 12;
 
-    public UnityEvent<Character[]> onInitiaviteRolled;
+    public UnityEvent<Character[]> onInitiativeRoll;
 
     [ShowInInspector][ReadOnly]
     private Queue<Character> _initiativeOrder;
@@ -37,7 +37,7 @@ public class TurnInitiativeCalculator : MonoBehaviour
             }
         }
         _charactersByInitiative = _initiativeOrder.ToArray();
-        onInitiaviteRolled.Invoke(CharactersByInitiative);
+        onInitiativeRoll.Invoke(CharactersByInitiative);
     }
 
     public Character GetNextCharacter()
