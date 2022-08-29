@@ -60,7 +60,7 @@ public class WorldGizmos : MonoBehaviour
         _rangeGizmo.transform.position = position;
     }
 
-    public void ResetRangegizmo()
+    public void ResetRangeGizmo()
     {
         _rangeGizmo.gameObject.SetActive(false);
     }

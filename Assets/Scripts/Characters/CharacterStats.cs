@@ -30,6 +30,13 @@ public class CharacterStats : MonoBehaviour, IDamageable
         onHpChange?.Invoke(_hp);
     }
 
+    public void HealDamage(int damage)
+    {
+        _hp += damage;
+        _hp = Mathf.Clamp(_hp, 0, _maxHp);
+        onHpChange?.Invoke(_hp);
+    }
+
     public void SetBaseStats(int dataType)
     {
         _baseStats = GameItemDB.GetDbOfType<DataDB>().GetItem(dataType);

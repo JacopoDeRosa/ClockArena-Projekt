@@ -21,4 +21,14 @@ public class CharacterVoice : MonoBehaviour
     {
         _audioSource.PlayOneShot(_voicePack.Movement);
     }
+
+    public void PlayAttack()
+    {
+        _audioSource.PlayOneShot(_voicePack.Attack);
+    }
+
+    public void PlaySpecial()
+    {
+        _audioSource.PlayOneShot(_voicePack.Special);
+    }
 }

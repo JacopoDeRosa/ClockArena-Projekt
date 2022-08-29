@@ -8,12 +8,10 @@ public class MousePointGetter : MonoBehaviour
 {
     [SerializeField] private Camera _eventCamera;
 
-    [ShowInInspector] 
-    [ReadOnly]
     private Vector2 _mousePosition;
-
-
     private PlayerInput _playerInput;
+
+    public Vector2 MousePosition { get => _mousePosition; }
 
     private void Start()
     {
@@ -57,6 +55,35 @@ public class MousePointGetter : MonoBehaviour
         }
         return false;     
     }
+
+    /// <summary>
+    /// Returns true if an object was found
+    /// </summary>
+    /// <param name="point"></param>
+    /// <returns></returns>
+    public bool GetHoveredObject(out GameObject hover)
+    {
+        hover = null;
+        Ray ray = _eventCamera.ScreenPointToRay(_mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            hover = hit.transform.gameObject;
+            return true;
+        }
+        return false;
+    }
+    public bool GetHoveredObject(out GameObject hover, LayerMask layerMask)
+    {
+        hover = null;
+        Ray ray = _eventCamera.ScreenPointToRay(_mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
+        {
+            hover = hit.transform.gameObject;
+            return true;
+        }
+        return false;
+    }
+
 
     public bool GetMousePoint(out Vector3 point, LayerMask layerMask)
     {

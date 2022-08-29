@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 
 public class Character : MonoBehaviour
 {   
@@ -14,6 +15,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterStats _stats;
     [SerializeField] private CharacterAnimatorControl _animator;
     [SerializeField] private CharacterAbilities _abilities;
+    [SerializeField] private CharacterVoice _voice;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -32,15 +34,18 @@ public class Character : MonoBehaviour
     public CharacterStats Stats { get => _stats; }
     public CharacterAnimatorControl Animator { get => _animator; }
     public CharacterAbilities Abilities { get => _abilities; }
+    public CharacterVoice Voice { get => _voice; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }
     public int ExpToNextLevel { get => 1000 + (400 * (_level - 1)); }
 
+    public event Action onTurnStarted;
+
   
     public int RollInitiative()
     {
-        _initiativeLevel = Random.Range(0, TurnInitiativeCalculator.MaxInitiative + 1);
+        _initiativeLevel = UnityEngine.Random.Range(0, TurnInitiativeCalculator.MaxInitiative + 1);
         return _initiativeLevel;
     }
 
@@ -55,6 +60,10 @@ public class Character : MonoBehaviour
         {
             WakeUp();
         }
+    }
+    public void StartTurn()
+    {
+        onTurnStarted?.Invoke();
     }
 
     private void GoToSleep()

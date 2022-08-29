@@ -276,6 +276,7 @@ MonoBehaviour:
   _stats: {fileID: -5699468471679304968}
   _animator: {fileID: 392475708318199451}
   _abilities: {fileID: 5756650093620526888}
+  _voice: {fileID: 787703816392551655}
   _exp: 0
   _level: 1
 --- !u!114 &392475708318199455
@@ -314,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2718fa8e2417b174bab4f2e3f4f7c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSprite: {fileID: 0}
   _voice: {fileID: 787703816392551655}
   _agent: {fileID: 392475708318199449}
   _obstacle: {fileID: 392475708318199448}
@@ -517,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f575b8a386c0204d8c1c990cbc5a5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _user: {fileID: 392475708318199452}
   _primaryAbility: {fileID: 0}
   _secondaryAbility: {fileID: 0}
   _activeTree: {fileID: 11400000, guid: c35b4c00662472a459d9efcaf9a429f6, type: 2}
@@ -532,7 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916ed235bb19afd4b9958b74418ffcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: ef8a519693da4934fbecd817bdc553f1, type: 3}
   _voice: {fileID: 787703816392551655}
 --- !u!1 &392475708434436878
 GameObject:

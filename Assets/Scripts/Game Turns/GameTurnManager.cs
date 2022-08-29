@@ -54,6 +54,7 @@ public class GameTurnManager : MonoBehaviour
 
         onNextCharacter.Invoke(_activeCharacter);
         _activeCharacter.SetSleepState(false);
+        _activeCharacter.StartTurn();
     }
 
     private void Start()
