@@ -16,4 +16,9 @@ public class CharacterVoice : MonoBehaviour
     {
         _audioSource.PlayOneShot(_voicePack.Acknowledge);
     }
+
+    public void PlayMoving()
+    {
+        _audioSource.PlayOneShot(_voicePack.Movement);
+    }
 }

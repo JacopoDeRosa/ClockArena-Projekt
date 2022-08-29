@@ -6,6 +6,7 @@ public class WorldGizmos : MonoBehaviour
 {
     [SerializeField] private RangeGizmo _rangeGizmo;
     [SerializeField] private PathRenderer _pathRenderer;
+    [SerializeField] private NavPathRenderer _navPathRenderer;
     [SerializeField] private GameObject _pointer;
     private void OnValidate()
     {
@@ -31,6 +32,16 @@ public class WorldGizmos : MonoBehaviour
         _pathRenderer.SetGizmoColor(color);
     }
 
+    public void RenderNavPath(Vector3[] points, bool valid)
+    {
+        _navPathRenderer.RenderNavPath(points, valid);
+    }
+
+    public void ClearNavPath()
+    {
+        _navPathRenderer.ClearPath();
+    }
+
     public void SetPointerPosition(Vector3 position)
     {
         if(_pointer.activeInHierarchy == false) _pointer.SetActive(true);
@@ -42,11 +53,11 @@ public class WorldGizmos : MonoBehaviour
         if (_pointer.activeInHierarchy == true) _pointer.SetActive(false);
     }
 
-    public void SetRangeGizmo(Vector3 position, float radius)
+    public void SetRangeGizmo(Vector3 position, float range)
     {
-        _rangeGizmo.gameObject.SetActive(true);
-        _rangeGizmo.SetRange(radius);
-        _rangeGizmo.transform.position = new Vector3(position.x, position.y + 0.25f, position.z);
+        if(_rangeGizmo.gameObject.activeInHierarchy == false) _rangeGizmo.gameObject.SetActive(true);
+        _rangeGizmo.SetRange(range);
+        _rangeGizmo.transform.position = position;
     }
 
     public void ResetRangegizmo()

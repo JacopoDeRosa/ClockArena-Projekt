@@ -12,6 +12,8 @@ public class ActionScheduler : MonoBehaviour
 
     private List<BarAction> _activeActions;
 
+    private PlayerInput _input;
+
     public event Action onActionsUpdated;
 
     public List<BarAction> ActiveActions { get => _activeActions; }
@@ -19,6 +21,28 @@ public class ActionScheduler : MonoBehaviour
     private void Awake()
     {
         _turnManager.onNextCharacter.AddListener(ReadCharacterActions);
+    }
+
+    private void Start()
+    {
+        _input = FindObjectOfType<PlayerInput>();
+        if (_input)
+        {
+            _input.actions["Cancel"].started += OnCancel;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_input)
+        {
+            _input.actions["Cancel"].started -= OnCancel;
+        }
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+        CancelCurrentAction();
     }
 
     private void ReadCharacterActions(Character character)
@@ -42,11 +66,13 @@ public class ActionScheduler : MonoBehaviour
         onActionsUpdated?.Invoke();
     }
 
-    private void StartAction(int index)
+    public void StartAction(int index)
     {
         if (_currentAction != null) return;
+        Debug.Log(_currentAction != null);
         _currentAction = _activeActions[index];
         _currentAction.Parent.onActionEnd += ClearCurrentAction;
+        _currentAction.BeginCallback.Invoke();
 
     }
 
@@ -55,10 +81,13 @@ public class ActionScheduler : MonoBehaviour
         if (_currentAction == null) return;
         _currentAction.Parent.onActionEnd -= ClearCurrentAction;
         _currentAction = null;
+        Debug.Log("Clearing Current Action");
     }
 
     private void CancelCurrentAction()
     {
+        if (_currentAction == null) return;
+
         _currentAction.Parent.onActionEnd -= ClearCurrentAction;
         _currentAction.CancelCallback.Invoke();
         _currentAction = null;

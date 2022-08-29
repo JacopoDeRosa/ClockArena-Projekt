@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 {
     [SerializeField] private Sprite _moveSprite;
+    [SerializeField] private CharacterVoice _voice;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private NavMeshObstacle _obstacle;
     [SerializeField] private float _stoppingDistance;
@@ -19,8 +20,10 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     [FoldoutGroup("Events")]
     public UnityEvent onMoveEnd;
 
+    private MousePointGetter _mousePointGetter;
+    private WorldGizmos _worldGizmos;
+
     private bool _moving;
-    private Vector3 _targetPosition;
 
     private bool _targeting;
     private PlayerInput _input;
@@ -30,6 +33,12 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     private bool IsAtTarget { get => _agent.remainingDistance <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
     public Vector3 Velocity { get => _agent.velocity; }
+
+    private void Awake()
+    {
+        _mousePointGetter = FindObjectOfType<MousePointGetter>();
+        _worldGizmos = FindObjectOfType<WorldGizmos>();
+    }
 
     private void Start()
     {
@@ -49,8 +58,18 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     }
 
     private void OnConfirm(InputAction.CallbackContext context)
-    {
-
+    {   
+        if(_targeting)
+        {
+            if (_mousePointGetter.GetMousePoint(out Vector3 point) && TryCalculatePath(point))
+            {
+                MoveToPoint(point);
+            }
+            _targeting = false;
+            _worldGizmos.ClearNavPath();
+            _worldGizmos.ResetPointer();
+            _voice.PlayMoving();
+        }
     }
 
 
@@ -58,12 +77,16 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     {
         if (_moving) return;
         _agent.isStopped = false;
-
-        _agent.SetDestination(point);
-        _targetPosition = point;
+        NavMesh.SamplePosition(point, out NavMeshHit hit, _agent.height * 2, NavMesh.AllAreas);
+        _agent.SetDestination(hit.position);
         _moving = true;
-        _targetPosition = point;
         onMoveStart.Invoke();
+    }
+    public bool TryCalculatePath(Vector3 position)
+    {
+        NavMeshPath path = new NavMeshPath();
+        _agent.CalculatePath(position, path);
+        return path.status == NavMeshPathStatus.PathComplete;
     }
     public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out float length)
     {
@@ -77,21 +100,29 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         if (pathComplete)
         {
             //TODO: Implement Distance
-
-
             pathPoints = path.corners;
         }
         return pathComplete;
     }
     private void Update()
     {
-        if (_moving)
+        if (_moving && _agent.pathPending == false)
         {
             if (IsAtTarget)
             {
                 _moving = false;
                 onMoveEnd.Invoke();
                 onActionEnd?.Invoke();
+            }
+        }
+
+        if(_targeting)
+        {
+            if (_mousePointGetter.GetMousePoint(out Vector3 mousePosition))
+            {
+                _worldGizmos.SetPointerPosition(mousePosition);
+                bool validPath = TryCalculatePath(mousePosition, out Vector3[] points, out float lenght);
+                _worldGizmos.RenderNavPath(points, validPath);
             }
         }
     }
@@ -114,13 +145,14 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     }
 
     private void StartTargeting()
-    {
-        Debug.Log("Targeting");
+    { 
+        _targeting = true;
     }
-
     private void CancelTargeting()
     {
-
+        _worldGizmos.ClearNavPath();
+        _worldGizmos.ResetPointer();
+        _targeting = false;
     }
 
     public IEnumerable<BarAction> GetBarActions()

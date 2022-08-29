@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 392475708318199443}
   - component: {fileID: 777827011}
   - component: {fileID: 5756650093620526888}
+  - component: {fileID: 6687104716723051025}
   m_Layer: 12
   m_Name: Base_Character
   m_TagString: Untagged
@@ -313,6 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2718fa8e2417b174bab4f2e3f4f7c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSprite: {fileID: 0}
+  _voice: {fileID: 787703816392551655}
   _agent: {fileID: 392475708318199449}
   _obstacle: {fileID: 392475708318199448}
   _stoppingDistance: 0.25
@@ -517,6 +520,20 @@ MonoBehaviour:
   _primaryAbility: {fileID: 0}
   _secondaryAbility: {fileID: 0}
   _activeTree: {fileID: 11400000, guid: c35b4c00662472a459d9efcaf9a429f6, type: 2}
+--- !u!114 &6687104716723051025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392475708318199425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916ed235bb19afd4b9958b74418ffcdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: ef8a519693da4934fbecd817bdc553f1, type: 3}
+  _voice: {fileID: 787703816392551655}
 --- !u!1 &392475708434436878
 GameObject:
   m_ObjectHideFlags: 0

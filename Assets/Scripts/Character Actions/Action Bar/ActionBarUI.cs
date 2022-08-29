@@ -21,7 +21,7 @@ public class ActionBarUI : MonoBehaviour
         {
             BarAction barAction = _actionScheduler.ActiveActions[i];
             _allButtons[i].gameObject.SetActive(true);
-            _allButtons[i].SetAction(barAction);
+            _allButtons[i].SetAction(barAction, i);
         }
     }
 

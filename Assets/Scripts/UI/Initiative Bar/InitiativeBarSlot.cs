@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InitiativeBarSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class InitiativeBarSlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _text;
@@ -17,23 +17,15 @@ public class InitiativeBarSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
     }
 
     private Character _assignedCharacter;
-    private bool _pointerIn = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       if(_pointerIn && eventData.button == PointerEventData.InputButton.Left)
+       if(eventData.button == PointerEventData.InputButton.Left)
        {
             Debug.Log("Should focus on: " + _assignedCharacter.Name);
        }
     }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _pointerIn = true;
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _pointerIn = false;
-    }
+ 
 
     public void SetCharacter(Character character)
     {
