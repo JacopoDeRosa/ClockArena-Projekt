@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3a2e2617a057b242897000c891e906c, type: 3}
-  m_Name: Gadgets
+  m_Name: GadgetsDB
   m_EditorClassIdentifier: 
-  _id: 
+  _defaultItem: {fileID: 0}
   _items: []

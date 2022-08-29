@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class TurnEndAction : MonoBehaviour, IBarAction
 {
-    [SerializeField] private Sprite _icon;
     [SerializeField] private CharacterVoice _voice;
+
+    private IconsDB _iconsDB;
 
     public event Action onActionEnd;
 
@@ -15,6 +16,7 @@ public class TurnEndAction : MonoBehaviour, IBarAction
     private void Awake()
     {
         _turnManager = FindObjectOfType<GameTurnManager>();
+        _iconsDB = GameItemDB.GetDbOfType<IconsDB>();
     }
 
     private void EndTurn()
@@ -31,6 +33,6 @@ public class TurnEndAction : MonoBehaviour, IBarAction
 
     public IEnumerable<BarAction> GetBarActions()
     {
-        yield return new BarAction(EndTurn, Cancel, this, "End Turn", "End this character's turn", _icon);
+        yield return new BarAction(EndTurn, Cancel, this, "End Turn", "End this character's turn", _iconsDB.EndTurnSprite);
     }
 }

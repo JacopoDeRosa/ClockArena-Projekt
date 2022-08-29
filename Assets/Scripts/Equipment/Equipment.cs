@@ -33,7 +33,7 @@ public class Equipment : MonoBehaviour
 
     private void GetArmourDB()
     {
-        _armourDB = GameItemDB.GetDbOfType<ArmourDB>(ArmourDB.Name);
+        _armourDB = GameItemDB.GetDbOfType<ArmourDB>();
     }
 
     private void OnValidate()

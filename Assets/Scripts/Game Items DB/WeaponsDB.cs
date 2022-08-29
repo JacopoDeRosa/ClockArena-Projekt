@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WeaponsDB : GameItemDB<Weapon>
 {
-    public const string Name = "Weapons";
+   
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9280cbb1c11431f46a40421501d534e0, type: 3}
-  m_Name: Ability Trees
+  m_Name: AbilityTreesDB
   m_EditorClassIdentifier: 
   _defaultItem: {fileID: 11400000, guid: c35b4c00662472a459d9efcaf9a429f6, type: 2}
   _items:

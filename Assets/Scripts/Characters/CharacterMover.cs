@@ -9,7 +9,6 @@ using UnityEngine.InputSystem;
 
 public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 {
-    [SerializeField] private Sprite _moveSprite;
     [SerializeField] private CharacterVoice _voice;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private NavMeshObstacle _obstacle;
@@ -27,8 +26,10 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     private bool _targeting;
     private PlayerInput _input;
+    private IconsDB _iconsDB;
 
     public event Action onActionEnd;
+
 
     private bool IsAtTarget { get => _agent.remainingDistance <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
@@ -38,6 +39,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     {
         _mousePointGetter = FindObjectOfType<MousePointGetter>();
         _worldGizmos = FindObjectOfType<WorldGizmos>();
+        _iconsDB = GameItemDB.GetDbOfType<IconsDB>();
     }
 
     private void Start()
@@ -158,6 +160,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     public IEnumerable<BarAction> GetBarActions()
     {
         // TODO: Add Generic action icons to the icons DB
-        yield return new BarAction(StartTargeting, CancelTargeting, this, "Move", "Move to the selected position", _moveSprite);
+        yield return new BarAction(StartTargeting, CancelTargeting, this, "Move", "Move to the selected position", _iconsDB.MoveSprite);
     }
 }

@@ -18,7 +18,7 @@ public class UserInfoTab : MonoBehaviour
     {
         _displayNameText.text = userData.displayName;
         _usernameText.text = "#" + userData.userName;
-        _image.sprite = IconsDB.GetDbOfType<IconsDB>(IconsDB.Name).GetItem(userData.image);
+        _image.sprite = IconsDB.GetDbOfType<IconsDB>().GetItem(userData.image);
     }
     
 }

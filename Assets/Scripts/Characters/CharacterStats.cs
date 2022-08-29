@@ -32,7 +32,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public void SetBaseStats(int dataType)
     {
-        _baseStats = GameItemDB.GetDbOfType<DataDB>(DataDB.Name).GetItem(dataType);
+        _baseStats = GameItemDB.GetDbOfType<DataDB>().GetItem(dataType);
         _maxHp = _baseStats.BaseHP;
         _maxAp = _baseStats.BaseAP;
         _maxSanity = _baseStats.BaseSanity;

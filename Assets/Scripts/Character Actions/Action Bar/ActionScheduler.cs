@@ -69,7 +69,6 @@ public class ActionScheduler : MonoBehaviour
     public void StartAction(int index)
     {
         if (_currentAction != null) return;
-        Debug.Log(_currentAction != null);
         _currentAction = _activeActions[index];
         _currentAction.Parent.onActionEnd += ClearCurrentAction;
         _currentAction.BeginCallback.Invoke();
@@ -81,7 +80,6 @@ public class ActionScheduler : MonoBehaviour
         if (_currentAction == null) return;
         _currentAction.Parent.onActionEnd -= ClearCurrentAction;
         _currentAction = null;
-        Debug.Log("Clearing Current Action");
     }
 
     private void CancelCurrentAction()

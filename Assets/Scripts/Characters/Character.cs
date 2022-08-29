@@ -78,7 +78,7 @@ public class Character : MonoBehaviour
     }
     public void SetIcon(int icon)
     {
-        _icon = GameItemDB.GetDbOfType<IconsDB>(IconsDB.Name).GetItem(icon);
+        _icon = GameItemDB.GetDbOfType<IconsDB>().GetItem(icon);
     }
   
     public void SetFaction(Faction faction)

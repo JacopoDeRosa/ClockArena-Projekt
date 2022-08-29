@@ -32,7 +32,7 @@ public class SquadInfoTab : MonoBehaviour
             _fullSquadTab.SetActive(true);
             _emptySquadTab.SetActive(false);
             _squadNameText.text = squadData.name;
-            _squadLogo.sprite = GameItemDB.GetDbOfType<IconsDB>(IconsDB.Name).GetItem(squadData.image);
+            _squadLogo.sprite = GameItemDB.GetDbOfType<IconsDB>().GetItem(squadData.image);
         }
     }
 }

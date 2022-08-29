@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ArmourDB : GameItemDB<Armour>
 {
-    public const string Name = "Armour";
+
 }

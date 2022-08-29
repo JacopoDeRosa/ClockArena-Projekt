@@ -146,7 +146,7 @@ public class CharacterCustomizationWindow : MonoBehaviour
     #region Item Filters
     private IEnumerable<ItemDescriptor> GetAvailableArmour(Character character, ArmourTypes armourType)
     {
-        ArmourDB armourDB = GameItemDB.GetDbOfType<ArmourDB>(ArmourDB.Name);
+        ArmourDB armourDB = GameItemDB.GetDbOfType<ArmourDB>();
 
         for (int i = 0; i < armourDB.Items.Length; i++)
         {

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AbilityTreesDB : GameItemDB<AbilityTree>
 {
-    public static string Name { get => "Ability Trees"; }
+
 }

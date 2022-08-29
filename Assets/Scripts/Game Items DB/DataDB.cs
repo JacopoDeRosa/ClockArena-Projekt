@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class DataDB : GameItemDB<CharacterBaseStats>
 {
-    public const string Name = "Characters";
 
 }

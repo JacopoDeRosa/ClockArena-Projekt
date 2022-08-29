@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttackAction : MonoBehaviour, ISleeper
+public class CharacterAttackAction : MonoBehaviour, ISleeper, IBarAction
 {
     [SerializeField] private Equipment _characterEquipment;
+
+    public event Action onActionEnd;
 
     private void OnValidate()
     {
@@ -23,5 +26,10 @@ public class CharacterAttackAction : MonoBehaviour, ISleeper
     public void WakeUp()
     {
         
+    }
+
+    public IEnumerable<BarAction> GetBarActions()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -25,6 +25,6 @@ public class CharacterAbilities : MonoBehaviour
     }
     public void SetAbilityTree(int tree)
     {
-        _activeTree = GameItemDB.GetDbOfType<AbilityTreesDB>(AbilityTreesDB.Name).GetItem(tree);
+        _activeTree = GameItemDB.GetDbOfType<AbilityTreesDB>().GetItem(tree);
     }
 }

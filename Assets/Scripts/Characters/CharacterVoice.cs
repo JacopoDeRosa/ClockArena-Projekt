@@ -9,7 +9,7 @@ public class CharacterVoice : MonoBehaviour
 
     public void SetVoicePack(int pack)
     {
-        _voicePack = GameItemDB.GetDbOfType<VoiceDB>(VoiceDB.Name).GetItem(pack);
+        _voicePack = GameItemDB.GetDbOfType<VoiceDB>().GetItem(pack);
     }
 
     public void PlayAcknowledge()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf79b8b179f73f442b3824d00a918472, type: 3}
-  m_Name: Characters
+  m_Name: DataDB
   m_EditorClassIdentifier: 
   _defaultItem: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _items:
