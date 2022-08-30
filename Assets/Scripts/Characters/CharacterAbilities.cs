@@ -13,6 +13,9 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
 
     public AbilityTree ActiveTree { get => _activeTree; }
 
+    public Ability Primary { get => _primaryAbility; }
+    public Ability Secondary { get => _secondaryAbility; }
+
     public event Action<Ability> onPrimaryChange, onSecondaryChange;
     public event Action onActionEnd;
 
@@ -26,6 +29,8 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
 
     private Ability _activeAbility;
 
+    private bool _busy;
+
     private void Awake()
     {
         _worldGizmos = FindObjectOfType<WorldGizmos>();
@@ -34,8 +39,8 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
 
     private void Start()
     {
-        _input = FindObjectOfType<PlayerInput>();
-        if(_input)
+        _input = PlayerInputSingleton.Instance;
+        if (_input)
         {
             _input.actions["Confirm"].started += OnConfirm;
         }
@@ -76,9 +81,18 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
             {
                 _activeAbility.ActiveUse(_user, character);
             }
-        }
 
-       
+            if (_activeAbility.Duration > 0)
+            {
+                StartCoroutine(EndActionDelayed(_activeAbility.Duration));
+            }
+            else
+            {
+                EndAction();
+            }
+
+            _targetCharacters = false;
+        }
     }
 
     public void SetPrimaryAbility(AbilityDescriptor descriptor)
@@ -136,11 +150,14 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
         UseAbility(_secondaryAbility);
     }
 
-    private void CancelActiveAbility()
+    private bool CancelActiveAbility()
     {
+        if (_busy) return false;
+
         _targetAoe = false;
         _targetCharacters = false;
         _activeAbility = null;
+        return true;
     }
 
     private void EndAction()
@@ -151,8 +168,10 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
 
     private IEnumerator EndActionDelayed(float seconds)
     {
+        _busy = true;
         yield return new WaitForSeconds(seconds);
         EndAction();
+        _busy = false;
     }
 
     public IEnumerable<BarAction> GetBarActions()

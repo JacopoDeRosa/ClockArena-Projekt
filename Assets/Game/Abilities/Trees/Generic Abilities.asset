@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90263da2502bdf4cbe6cfa0e3016333, type: 3}
   m_Name: Generic Abilities
   m_EditorClassIdentifier: 
-  _name: Jack Of All Trades
+  _name: Gladiator
   _abilityTiers:
   - _name: Rookie
-    _abilities: []
+    _abilities:
+    - {fileID: 11400000, guid: 214b641be22fcd840ba6a291ab3e2a04, type: 2}
+    - {fileID: 11400000, guid: 2f12c984a3691eb429503dcc2d39aa47, type: 2}
+    - {fileID: 11400000, guid: ccc018d0e7b4ea24c9f465a24bed3aac, type: 2}
   - _name: Squaddie
-    _abilities: []
+    _abilities:
+    - {fileID: 11400000, guid: 419b7ccf036ef614b8bf7a5d8163f0b8, type: 2}
   - _name: Gladiator
     _abilities: []
   - _name: Sergeant

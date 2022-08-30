@@ -25,7 +25,7 @@ public class ActionScheduler : MonoBehaviour
 
     private void Start()
     {
-        _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
         if (_input)
         {
             _input.actions["Cancel"].started += OnCancel;
@@ -85,9 +85,10 @@ public class ActionScheduler : MonoBehaviour
     private void CancelCurrentAction()
     {
         if (_currentAction == null) return;
-
-        _currentAction.Parent.onActionEnd -= ClearCurrentAction;
-        _currentAction.CancelCallback.Invoke();
-        _currentAction = null;
+        if (_currentAction.CancelCallback.Invoke())
+        {
+            _currentAction.Parent.onActionEnd -= ClearCurrentAction;
+            _currentAction = null;
+        }
     }
 }

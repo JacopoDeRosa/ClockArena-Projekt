@@ -21,3 +21,4 @@ MonoBehaviour:
   _hasPassiveUse: 0
   _activeUseType: 0
   _summon: {fileID: 3570785540074026501, guid: 2335ece54e4d160448bdb54ce8bb413b, type: 3}
+  _userFX: {fileID: 2374581437033964749, guid: 2e85577346537494aaff5b8d15e19981, type: 3}

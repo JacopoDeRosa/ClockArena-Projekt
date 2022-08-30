@@ -49,4 +49,20 @@ public class CharacterAnimatorControl : MonoBehaviour
     {
         _animators = GetComponentsInChildren<Animator>();
     }
+
+    public void SetBool(string name,bool value)
+    {
+        foreach (Animator animator in _animators)
+        {
+            animator.SetBool(name, value);
+        }
+    }
+
+    public void SetTrigger(string name)
+    {
+        foreach (Animator animator in _animators)
+        {
+            animator.SetTrigger(name);
+        }
+    }
 }

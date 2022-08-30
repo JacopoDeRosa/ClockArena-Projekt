@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 {
-    [SerializeField] private CharacterVoice _voice;
+    [SerializeField] private Character _user;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private NavMeshObstacle _obstacle;
     [SerializeField] private float _stoppingDistance;
@@ -21,6 +21,8 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     private MousePointGetter _mousePointGetter;
     private WorldGizmos _worldGizmos;
+
+    private bool _crouched;
 
     private bool _moving;
 
@@ -44,7 +46,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     private void Start()
     {
-        _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
         if(_input)
         {
             _input.actions["Confirm"].started += OnConfirm;
@@ -70,7 +72,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
             _targeting = false;
             _worldGizmos.ClearNavPath();
             _worldGizmos.ResetPointer();
-            _voice.PlayMoving();
+            _user.Voice.PlayMoving();
         }
     }
 
@@ -147,19 +149,50 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     }
 
     private void StartTargeting()
-    { 
-        _targeting = true;
-    }
-    private void CancelTargeting()
     {
+        if (_crouched)
+        {
+            onActionEnd?.Invoke();
+        }
+        else
+        {
+            _targeting = true;
+        }
+    }
+    private bool CancelTargeting()
+    {
+        if (_moving) return false;
+
         _worldGizmos.ClearNavPath();
         _worldGizmos.ResetPointer();
         _targeting = false;
+        return true;
     }
+
+    private void ToggleCrouch()
+    {
+        _crouched = !_crouched;
+        _user.Animator.SetBool("Crouched", _crouched);
+        StartCoroutine(EndActionDelayed(1));
+    }
+
+    private bool NoCancel()
+    {
+        return false;
+    }
+
+
+    private IEnumerator EndActionDelayed(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        onActionEnd?.Invoke();
+    }
+
 
     public IEnumerable<BarAction> GetBarActions()
     {
         // TODO: Add Generic action icons to the icons DB
         yield return new BarAction(StartTargeting, CancelTargeting, this, "Move", "Move to the selected position", _iconsDB.MoveSprite);
+        yield return new BarAction(ToggleCrouch, NoCancel, this, "Crouch/Stand", "Have this character crouch or stand        (Some actions won't work when crouched)", _iconsDB.CrouchSprite);
     }
 }

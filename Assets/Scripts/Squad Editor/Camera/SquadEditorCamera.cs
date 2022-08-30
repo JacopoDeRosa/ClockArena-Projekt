@@ -27,7 +27,7 @@ public class SquadEditorCamera : MonoBehaviour
 
     private void Start()
     {
-        _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
         if (_input)
         {
             _input.actions["Look"].performed += OnMouseLook;

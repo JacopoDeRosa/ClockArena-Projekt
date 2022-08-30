@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class CharacterAttackAction : MonoBehaviour, ISleeper, IBarAction
 {
-    [SerializeField] private Equipment _characterEquipment;
+    [SerializeField] private Character _user;
+
 
     public event Action onActionEnd;
 
-    private void OnValidate()
-    {
-        if(_characterEquipment == null)
-        {
-           _characterEquipment = GetComponent<Equipment>();
-        }
-    }
+    private IconsDB _iconsDB;
 
+    private void Awake()
+    {
+        _iconsDB = GameItemDB.GetDbOfType<IconsDB>();
+    }
 
     public void Sleep()
     {
@@ -28,8 +27,38 @@ public class CharacterAttackAction : MonoBehaviour, ISleeper, IBarAction
         
     }
 
+    public void Punch()
+    {
+        _user.Animator.SetTrigger("Melee");
+        _user.Voice.PlayAttack();
+        StartCoroutine(EndActionDelayed(2));
+    }
+
+    public bool NoCancel()
+    {
+        return false;
+    }
+
+    private IEnumerator EndActionDelayed(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        onActionEnd?.Invoke();
+    }
+
+
     public IEnumerable<BarAction> GetBarActions()
     {
-        throw new NotImplementedException();
+        if(_user.Equipment.Weapon is RangedWeapon)
+        {
+            yield return new BarAction(null, null, this, "Not Implemented", "Not Implemented", null);
+        }
+        else if (_user.Equipment.Weapon is MeleeWeapon)
+        {
+            yield return new BarAction(null, null, this, "Not Implemented", "Not Implemented", null);
+        }
+        else if(_user.Equipment.Weapon == null)
+        {
+            yield return new BarAction(Punch, NoCancel, this, "Punch", "Punch anything in front of you", _iconsDB.MeleeSprite);
+        }
     }
 }

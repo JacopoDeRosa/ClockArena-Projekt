@@ -8,15 +8,11 @@ public class GameTurnManager : MonoBehaviour
     [SerializeField] private List<Character> _playingCharacters;
     [SerializeField] private TurnInitiativeCalculator _initiveHandler;
    
-
-    
     /// <summary>
     /// Returns the number of the turn
     /// </summary>
     [FoldoutGroup("Events")]
     public UnityEvent<int> onTurnStarted;
-    [FoldoutGroup("Events")]
-    public UnityEvent onTurnEnded;
     [FoldoutGroup("Events")]
     public UnityEvent<Character> onNextCharacter;
 
@@ -28,6 +24,11 @@ public class GameTurnManager : MonoBehaviour
     public List<Character> PlayingCharacters { get => _playingCharacters; }
     public Character ActiveCharacter { get => _activeCharacter; }
 
+
+    public void AddCharacters(List<Character> characters)
+    {
+        _playingCharacters.AddRange(characters);
+    }
 
     public void BeginNewTurn()
     {
@@ -55,10 +56,5 @@ public class GameTurnManager : MonoBehaviour
         onNextCharacter.Invoke(_activeCharacter);
         _activeCharacter.SetSleepState(false);
         _activeCharacter.StartTurn();
-    }
-
-    private void Start()
-    {
-        BeginNewTurn();
     }
 }

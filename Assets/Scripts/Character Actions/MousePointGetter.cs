@@ -15,7 +15,7 @@ public class MousePointGetter : MonoBehaviour
 
     private void Start()
     {
-        if (_playerInput == null) _playerInput = FindObjectOfType<PlayerInput>();
+        _playerInput = PlayerInputSingleton.Instance;
 
         _playerInput.actions["Mouse Position"].performed += OnMousePosition;
     }

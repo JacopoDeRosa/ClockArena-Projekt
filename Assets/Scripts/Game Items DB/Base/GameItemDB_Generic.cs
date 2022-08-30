@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameItemDB<T> : GameItemDB
 {
-    [SerializeField] private T _defaultItem;
+    [SerializeField] protected T _defaultItem;
     [SerializeField] private T[] _items;
 
   

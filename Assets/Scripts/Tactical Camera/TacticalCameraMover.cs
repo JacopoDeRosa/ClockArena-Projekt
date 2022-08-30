@@ -19,11 +19,15 @@ public class TacticalCameraMover : MonoBehaviour
     private void Start()
     {
         _translateVector = Vector3.zero;
-        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
 
         if (_input != null)
         {
             _input.actions["Move"].performed += OnMove;
+        }
+        else
+        {
+            Debug.Log("Input is null");
         }
         _inputSmoothReal = Mathf.Clamp01(_inputSmoothing * Time.deltaTime);
     }

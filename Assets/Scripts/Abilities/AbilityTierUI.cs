@@ -9,8 +9,6 @@ public class AbilityTierUI : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private GameObject _lockedView;
 
-    private Queue<AbilityUiSlot> _freeSlots;
-
     private void Awake()
     {
         ResetAbilitySlots();   
@@ -18,32 +16,24 @@ public class AbilityTierUI : MonoBehaviour
 
     private void ResetAbilitySlots()
     {
-        if(_freeSlots == null)
-        {
-            _freeSlots = new Queue<AbilityUiSlot>();
-        }
-        else
-        {
-            _freeSlots.Clear();
-        }
-
         foreach (AbilityUiSlot slot in _allSlots)
         {
-            _freeSlots.Enqueue(slot);
             slot.gameObject.SetActive(false);
         }
     }
 
-    public void ReadAbilityTier(AbilityTier abilityTier)
+    public void ReadAbilityTier(AbilityTier abilityTier, int index)
     {
         ResetAbilitySlots();
 
         _nameText.text = abilityTier.Name;
-        foreach (Ability ability in abilityTier.Abilities)
+        for (int i = 0; i < abilityTier.Abilities.Length; i++)
         {
-            AbilityUiSlot uiSlot = _freeSlots.Dequeue();
+            Ability ability = abilityTier.Abilities[i];
+            AbilityUiSlot uiSlot = _allSlots[i];
             uiSlot.gameObject.SetActive(true);
             uiSlot.SetAbility(ability);
+            uiSlot.SetAbilityDescriptor(new AbilityDescriptor(index, i));
         }
     }
     public void SetLocked(bool locked)

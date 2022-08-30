@@ -16,7 +16,7 @@ public class CharacterEditorCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
         if (_input)
         {
             _input.actions["Look"].performed += OnMouseLook;

@@ -11,6 +11,7 @@ public class HealingAbility : Ability
     public override void ActiveUse(Character user)
     {
         user.Stats.HealDamage(_healing);
+        user.Animator.SetTrigger("Summon Buff");
         Instantiate(_effect, user.transform.position, user.transform.rotation);
     }
 }

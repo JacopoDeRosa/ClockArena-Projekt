@@ -17,7 +17,7 @@ public class TacticalCameraHeight : MonoBehaviour
 
     private void Start()
     {
-        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
 
         if (_input)
         {

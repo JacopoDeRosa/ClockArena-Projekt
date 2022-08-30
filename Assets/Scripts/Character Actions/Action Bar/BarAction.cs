@@ -10,17 +10,17 @@ public class BarAction
     private string _description;
     private Sprite _icon;
     private Action _beginActionCallback;
-    private Action _cancelActionCallback;
+    private CancelAction _cancelActionCallback;
     private IBarAction _parentAction;
     
     public string Name { get => _name; }
     public string Description { get => _description; }
     public Sprite Icon { get => _icon; }
     public Action BeginCallback { get => _beginActionCallback; }
-    public Action CancelCallback { get => _cancelActionCallback; }
+    public CancelAction CancelCallback { get => _cancelActionCallback; }
     public IBarAction Parent { get => _parentAction; }
    
-    public BarAction(Action beginCallback, Action cancelCallback, IBarAction parent, string name = "Unknown", string description = "No Description Available", Sprite icon = null)
+    public BarAction(Action beginCallback, CancelAction cancelCallback, IBarAction parent, string name = "Unknown", string description = "No Description Available", Sprite icon = null)
     {
         _name = name;
         _description = description;
@@ -30,3 +30,5 @@ public class BarAction
         _parentAction = parent;
     }
 }
+
+public delegate bool CancelAction();

@@ -18,6 +18,7 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
     [SerializeField] private ItemWindow _itemWindow;
     [SerializeField] private ItemUiSlot _headSlot, _bodySlot, _weaponSlot, _gadgetSlot;
+    [SerializeField] private AbilitySetSlot _primaryAbility, _secondaryAbility;
 
     private CharacterComponentsData _activeCharacterData;
     private Character _activeCharacter;
@@ -58,7 +59,13 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
     private void OnLoseFocus()
     {
+        RevertChanges();
         _foldingBar.Toggle(false);
+    }
+
+    private void RevertChanges()
+    {
+        _activeCharacter.DataReader.ReadData(_squadEditor.GetCharacterData(_activeCharacterIndex));
     }
 
     private void ReadCharacter(Character character)
@@ -67,6 +74,9 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _levelText.text = "Level: " + character.Level.ToString() + " - EXP " + character.Exp.ToString().PadLeft(4, '0') + "/" + character.ExpToNextLevel.ToString(); // TODO: Replace 1000 with the exp to next level
         _icon.sprite = character.Icon;
         _activeCharacter = character;
+
+        _primaryAbility.ReadAbility(character.Abilities.Primary);
+        _secondaryAbility.ReadAbility(character.Abilities.Secondary);
     }
 
     private void ReadCharacterEquipment(Character character)
@@ -260,5 +270,17 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
 
     #endregion
+
+    public void SetPrimaryAbility(AbilityDescriptor descriptor)
+    {
+        _activeCharacterData.primaryAbility = descriptor;
+        _activeCharacter.Abilities.SetPrimaryAbility(descriptor);
+    }
+
+    public void SetSecondaryAbility(AbilityDescriptor descriptor)
+    {
+        _activeCharacterData.secondayAbility = descriptor;
+        _activeCharacter.Abilities.SetSecondaryAbility(descriptor);
+    }
 
 }

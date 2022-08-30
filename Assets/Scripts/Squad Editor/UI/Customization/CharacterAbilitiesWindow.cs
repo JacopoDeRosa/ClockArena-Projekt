@@ -6,6 +6,7 @@ public class CharacterAbilitiesWindow : MonoBehaviour
 {
     [SerializeField] private FoldingBar _foldingBar;
     [SerializeField] private SquadEditor _squadEditor;
+    [SerializeField] private CharacterCustomizationWindow _customizationWindow;
     [SerializeField] private AbilityTierUI[] _tierSlots;
 
     private AbilityTree _activeAbilityTree;
@@ -45,7 +46,7 @@ public class CharacterAbilitiesWindow : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             AbilityTier tier = _activeAbilityTree.GetAbilityTier(i);
-            _tierSlots[i].ReadAbilityTier(tier);
+            _tierSlots[i].ReadAbilityTier(tier, i);
             if(i > _activeCharacter.Level - 1)
             {
                 _tierSlots[i].SetLocked(true);

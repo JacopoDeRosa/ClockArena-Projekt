@@ -15,7 +15,7 @@ public class TacticalCameraRotation : MonoBehaviour
 
     private void Start()
     {
-        if (_input == null) _input = FindObjectOfType<PlayerInput>();
+        _input = PlayerInputSingleton.Instance;
         if (_input != null)
         {
             _input.actions["Rotation"].started += OnRotation;

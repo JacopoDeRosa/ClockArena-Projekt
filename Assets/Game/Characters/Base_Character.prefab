@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 392475708318199454}
   - component: {fileID: 392475708318199449}
   - component: {fileID: 392475708318199448}
+  - component: {fileID: 8825378186119267264}
   - component: {fileID: 392475708318199451}
   - component: {fileID: 392475708318199450}
   - component: {fileID: 392475708318199429}
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2718fa8e2417b174bab4f2e3f4f7c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _voice: {fileID: 787703816392551655}
+  _user: {fileID: 392475708318199452}
   _agent: {fileID: 392475708318199449}
   _obstacle: {fileID: 392475708318199448}
   _stoppingDistance: 0.25
@@ -363,6 +364,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.75, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &8825378186119267264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392475708318199425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7117361587eb1bb4b8a1a79409efa768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _user: {fileID: 392475708318199452}
 --- !u!114 &392475708318199451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors:
   - m_Transform: {fileID: 392475708135815649}
     m_Style:

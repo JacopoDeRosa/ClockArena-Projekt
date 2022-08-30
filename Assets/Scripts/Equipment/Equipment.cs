@@ -7,6 +7,7 @@ public class Equipment : MonoBehaviour
 {
     [SerializeField] private Character _user;
     [SerializeField] private Transform _armourContainer;
+    [SerializeField] private Transform _leftHand, _rightHand;
     [SerializeField] private WeaponSlot _weaponSlot;
     [SerializeField] private GadgetSlot _gadgetSlot;
     [SerializeField] private ArmourSlot _headSlot;
@@ -25,6 +26,8 @@ public class Equipment : MonoBehaviour
     public Armour BodyArmour { get => _bodySlot.Item; }
     public Weapon Weapon { get => _weaponSlot.Item; }
     public Gadget Gadget { get => _gadgetSlot.Item; }
+    public Transform RightHand { get => _rightHand; }
+    public Transform LeftHand { get => _leftHand; }
 
     private void Awake()
     {
@@ -61,6 +64,8 @@ public class Equipment : MonoBehaviour
     {
         if (_armourDB == null) GetArmourDB();
 
+        if (HeadArmour != null) ClearHeadArmour(false);
+
         Armour armourPrefab = _armourDB.GetItem(index);
 
         if (armourPrefab == null || armourPrefab.Data == null || IsValidItemForUser(armourPrefab) == false || armourPrefab.Data.ArmourType != ArmourTypes.Head) return null;
@@ -79,6 +84,8 @@ public class Equipment : MonoBehaviour
     public Armour SetBodyArmour(int index)
     {
         if (_armourDB == null) GetArmourDB();
+
+        if (BodyArmour != null) ClearBodyArmour(false);
 
         Armour armourPrefab = _armourDB.GetItem(index);
 

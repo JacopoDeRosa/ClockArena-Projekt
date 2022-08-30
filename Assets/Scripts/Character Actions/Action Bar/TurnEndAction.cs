@@ -26,9 +26,9 @@ public class TurnEndAction : MonoBehaviour, IBarAction
         onActionEnd?.Invoke();
     }
 
-    private void Cancel()
+    private bool Cancel()
     {
-
+        return true;
     }
 
     public IEnumerable<BarAction> GetBarActions()
