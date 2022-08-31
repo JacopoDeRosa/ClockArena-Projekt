@@ -10,6 +10,7 @@ public class DamageEachTurn : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private LayerMask _effectMask;
 
+    [SerializeField]
     private List<Collider> _affectedColliders;
 
     private WaitForSeconds _checkWait;
@@ -36,7 +37,8 @@ public class DamageEachTurn : MonoBehaviour
 
     private void CheckForDamage()
     {
-        Physics.OverlapSphereNonAlloc(transform.position, _radius, _checkedColliders, _effectMask);
+      
+         _checkedColliders =  Physics.OverlapSphere(transform.position, _radius, _effectMask);
         foreach (Collider collider in _checkedColliders)
         {
             if(collider == null || _affectedColliders.Contains(collider))
