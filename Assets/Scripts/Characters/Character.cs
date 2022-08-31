@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAnimatorControl _animator;
     [SerializeField] private CharacterAbilities _abilities;
     [SerializeField] private CharacterVoice _voice;
+    [SerializeField] private CharacterGUI _gui;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -35,6 +36,7 @@ public class Character : MonoBehaviour
     public CharacterAnimatorControl Animator { get => _animator; }
     public CharacterAbilities Abilities { get => _abilities; }
     public CharacterVoice Voice { get => _voice; }
+    public CharacterGUI GUI { get => _gui; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }
@@ -88,6 +90,7 @@ public class Character : MonoBehaviour
     public void SetIcon(int icon)
     {
         _icon = GameItemDB.GetDbOfType<IconsDB>().GetItem(icon);
+        _gui.SetImage(_icon);
     }
   
     public void SetFaction(Faction faction)

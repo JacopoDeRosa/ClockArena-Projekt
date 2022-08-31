@@ -71,6 +71,7 @@ public class GameSquadLoader : MonoBehaviour
                 Character spawnedChar = Instantiate(_characterTemplate, _spawnPoints[i].position, _spawnPoints[i].rotation);
                 spawnedCharacters.Add(spawnedChar);
                 spawnedChar.DataReader.ReadData(squad.GetCharacterAtIndex(i));
+                spawnedChar.GUI.ShowGui(true);
             }
 
             _turnManager.AddCharacters(spawnedCharacters);
