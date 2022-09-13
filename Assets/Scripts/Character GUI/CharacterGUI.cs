@@ -18,7 +18,9 @@ public class CharacterGUI : MonoBehaviour
     private void Start()
     {
         _healthBar.SetMaxValue(_stats.MaxHp);
+        _healthBar.SetValue(_stats.HP);
         _stats.onHpChange += _healthBar.SetValue;
+       
     }
     public void ShowGui(bool show)
     {

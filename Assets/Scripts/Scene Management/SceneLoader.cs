@@ -23,6 +23,6 @@ public class SceneLoader : MonoBehaviour
     {
         yield return _fader.FadeOutRoutine();
 
-        SceneManager.LoadScene(index);
+        yield return SceneManager.LoadSceneAsync(index);
     }
 }

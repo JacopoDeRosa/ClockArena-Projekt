@@ -12,7 +12,9 @@ public class TakeScreenShot : MonoBehaviour
     public void TakeScreenshot()
     {
         ScreenCapture.CaptureScreenshot(Application.dataPath + "/" + _folderPath + "/" + _fileName + ".png");
+#if UNITY_EDITOR
         UnityEditor.AssetDatabase.Refresh();
+#endif
     }
 
 }

@@ -18,6 +18,14 @@ public class UserLogIn : MonoBehaviour
         _logInButton.onClick.AddListener(LogInUser);
     }
 
+    private void Start()
+    {
+        if(LoggedUser.IsLogged)
+        {
+            StartCoroutine(UserReLogRoutine());
+        }
+    }
+
     private void LogInUser()
     {
         StartCoroutine(LogInRoutine());
@@ -73,6 +81,24 @@ public class UserLogIn : MonoBehaviour
         yield return _fader.FadeInRoutine();
 
        
+    }
+
+    private IEnumerator UserReLogRoutine()
+    {
+        _loadingScreen.SetText("Logging You In");
+
+        yield return _fader.FadeOutRoutine();
+
+        _loadingScreen.gameObject.SetActive(false);
+
+        _screen.SetActive(false);
+
+        LoggedUser.LogInUser(LoggedUser.UserData);
+
+        yield return new WaitForSeconds(0.1f);
+
+        yield return _fader.FadeInRoutine();
+
     }
 
     private void LogError(string error, bool disableLoading = true)

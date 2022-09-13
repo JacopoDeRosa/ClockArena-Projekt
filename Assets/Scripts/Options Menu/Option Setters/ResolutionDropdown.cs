@@ -38,6 +38,14 @@ public class ResolutionDropdown : GameOptionSetter
         }
     }
 
+    private IEnumerable<string> GetAutoResToString()
+    {
+        foreach (var resolution in Screen.resolutions)
+        {
+            yield return new CustomResolution(resolution.width, resolution.height).ToString();
+        }
+    }
+
     public override void Redraw()
     {
 
