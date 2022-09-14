@@ -14,7 +14,10 @@ public class CharacterMeshCombiner : MonoBehaviour
 
     private void Awake()
     {
-        _characterEquipment.onArmourChanged += UpdateCharacterMesh;
+        if (_characterEquipment != null)
+        {
+            _characterEquipment.onArmourChanged += UpdateCharacterMesh;
+        }
         UpdateCharacterMesh();
     }
 
