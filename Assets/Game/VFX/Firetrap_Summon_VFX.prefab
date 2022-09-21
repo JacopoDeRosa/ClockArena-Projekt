@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995662544770527911}
-  m_LocalRotation: {x: -0.7070201, y: -0, z: -0, w: 0.7071935}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.00012257694, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.010000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3220499934456280413}
-  m_RootOrder: 1
+  m_Father: {fileID: 3220499935617940875}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!108 &5758421674189740304
 Light:
@@ -42,10 +42,10 @@ Light:
   m_GameObject: {fileID: 1995662544770527911}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 0.8480973, b: 1, a: 1}
-  m_Intensity: 3183.0989
+  m_Intensity: 80000
   m_Range: 1.3
   m_SpotAngle: 160
   m_InnerSpotAngle: 21.80208
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 3183.0989
+  m_Intensity: 80000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -9987,7 +9987,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3220499935617940875}
-  - {fileID: 8968229325404343304}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10037,6 +10036,7 @@ Transform:
   - {fileID: 3220499935823733144}
   - {fileID: 3220499933987411862}
   - {fileID: 2140828628415149706}
+  - {fileID: 8968229325404343304}
   m_Father: {fileID: 3220499934456280413}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -10050,7 +10050,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 3
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}

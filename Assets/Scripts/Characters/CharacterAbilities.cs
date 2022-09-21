@@ -134,7 +134,7 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
         {
             _activeAbility.ActiveUse(_user);
             _user.Voice.PlayAcknowledge();
-            onActionEnd?.Invoke();
+            StartCoroutine(EndActionDelayed(ability.Duration));
         }
 
 
@@ -153,10 +153,17 @@ public class CharacterAbilities : MonoBehaviour, IBarAction
     private bool CancelActiveAbility()
     {
         if (_busy) return false;
-
-        _targetAoe = false;
-        _targetCharacters = false;
+        if (_targetAoe)
+        {
+            _targetAoe = false;
+            _worldGizmos.ResetRangeGizmo();
+        }
+        else if (_targetCharacters)
+        {
+            _targetCharacters = false;
+        }
         _activeAbility = null;
+      
         return true;
     }
 
