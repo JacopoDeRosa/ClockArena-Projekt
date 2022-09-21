@@ -27,12 +27,13 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 3cff44f010becb441aac1722d2147c0b, type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   - _ENABLE_FOG_ON_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -167,22 +168,22 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_10EB46E7: 1
-    - Vector1_12094A6A: 0.15
-    - Vector1_276CFA84: 1.259
+    - Vector1_12094A6A: 0.5
+    - Vector1_276CFA84: 0.1
     - Vector1_34AA93A4: 1
     - Vector1_380E174C: 3
     - Vector1_4B804F1: 1.02
     - Vector1_5E63D775: 1
     - Vector1_6F1356E9: 0.05
-    - Vector1_8163804F: 0.7
+    - Vector1_8163804F: 0.2
     - Vector1_82D25EEE: 0.1
     - Vector1_86FC2385: 1.5
     - Vector1_9A6CDA63: 1
-    - Vector1_A01E7616: 0.1
-    - Vector1_A6116528: 12
+    - Vector1_A01E7616: 0.25
+    - Vector1_A6116528: 2
     - Vector1_A99CC525: 0.1
-    - Vector1_AA127297: -0.5
-    - Vector1_C09E8EE0: 0.906
+    - Vector1_AA127297: -0.2
+    - Vector1_C09E8EE0: 0.9
     - Vector1_D1C0A90B: 1
     - Vector1_E35C987E: 0
     - _AORemapMax: 1
@@ -203,8 +204,8 @@ Material:
     - _BlendMode: 0
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -229,7 +230,7 @@ Material:
     - _DistortionSrcBlend: 1
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 0
+    - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 10
@@ -316,17 +317,17 @@ Material:
     m_Colors:
     - Color_150F8878: {r: 0.09803922, g: 0.16078432, b: 0.11076622, a: 1}
     - Color_3311DE9B: {r: 0.08370417, g: 0.103773594, b: 0.09209905, a: 1}
-    - Color_65F0F92: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
-    - Vector2_55F9F952: {r: 1, g: 0, b: 0, a: 0}
+    - Color_65F0F92: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+    - Vector2_55F9F952: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_74235613: {r: 0.25, g: -1, b: 0, a: 0}
-    - Vector2_7B143DA2: {r: 10, g: 10, b: 0, a: 0}
+    - Vector2_7B143DA2: {r: 7, g: 7, b: 0, a: 0}
     - Vector2_8D373A62: {r: -16.7, g: -13.02, b: 0, a: 0}
     - Vector2_9CC078F0: {r: 0.1, g: 0.1, b: 0, a: 0}
     - Vector2_A7ABB0BC: {r: -1, g: 0, b: 0, a: 0}
     - Vector2_B69D7F47: {r: -0.3, g: -1, b: 0, a: 0}
-    - Vector2_CE6A866F: {r: 5, g: 5, b: 0, a: 0}
+    - Vector2_CE6A866F: {r: 3, g: 3, b: 0, a: 0}
     - Vector2_DF5FC430: {r: 0.03, g: 0.01, b: 0, a: 0}
-    - Vector2_F47C6FA1: {r: 5, g: 10, b: 0, a: 0}
+    - Vector2_F47C6FA1: {r: 3, g: 3, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
