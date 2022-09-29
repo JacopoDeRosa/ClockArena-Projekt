@@ -170,14 +170,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e49b0c2e70419a4b81317849e4d3019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _inputSmoothing: 5
   _moveChecker: {fileID: 6150058299494864735}
   _checkDistance: 2
   _checkThickness: 0.35
   _checkMask:
     serializedVersion: 2
     m_Bits: 1
+  _speed: 10
+  _inputSmoothing: 5
 --- !u!114 &1748804629295505743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bcd60c0ff740f459aaee5d4235d6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveChecker: {fileID: 6150058299494864735}
+  _checkDistance: 2
+  _checkThickness: 0.35
+  _checkMask:
+    serializedVersion: 2
+    m_Bits: 1
   _rotationSpeed: 90
   _rotationStep: 45
 --- !u!114 &1748804629295505742
@@ -204,6 +210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec82b5dcddbfb0419d6e42d065230a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveChecker: {fileID: 6150058299494864735}
+  _checkDistance: 1
+  _checkThickness: 0.35
+  _checkMask:
+    serializedVersion: 2
+    m_Bits: 1
   _currentLayer: 2
   _maxLayers: 6
   _step: 2

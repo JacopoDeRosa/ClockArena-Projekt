@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: MLP Large Scene
   m_EditorClassIdentifier: 
   workflow: 0
-  probesSpacing: 20
-  cornersDetectionThreshold: 20
-  cornerProbesSpacing: 20
+  probesSpacing: 5
+  cornersDetectionThreshold: 1
+  cornerProbesSpacing: 2
   distanceFromGeometry: 0.1
   divideVolumeOnProbesCount: 10000
   useVolumeBottom: 1
   selectedObjectsAsGlobal: 0
-  maxHeightAboveGeometry: 0
-  maxHeightAboveTerrain: 0
+  maxHeightAboveGeometry: 75
+  maxHeightAboveTerrain: 75
   collisionDetectionLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -31,10 +31,10 @@ MonoBehaviour:
   lightIntensityThreshold: 0
   cullByColor: 0
   colorThreshold: 0.001
-  fillEquivalentVolume: 0
-  equivalentVolumeFillingRate: 0
-  fillUnlitVolume: 0
-  unlitVolumeFillingRate: 0
+  fillEquivalentVolume: 1
+  equivalentVolumeFillingRate: 0.25
+  fillUnlitVolume: 1
+  unlitVolumeFillingRate: 0.25
   optimizeForMixedLighting: 0
   tryPreventLightLeakage: 0
   boundsDisplayMode: 0
