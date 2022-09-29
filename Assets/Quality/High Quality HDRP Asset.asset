@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
     supportShadowMask: 1
-    supportSSR: 0
-    supportSSRTransparent: 0
+    supportSSR: 1
+    supportSSRTransparent: 1
     supportSSAO: 1
     supportSSGI: 1
     supportSubsurfaceScattering: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
       m_SchemaId:
         m_Id: With3Levels
     supportVolumetrics: 1
-    supportVolumetricClouds: 0
+    supportVolumetricClouds: 1
     supportLightLayers: 1
     supportDistortion: 1
     supportTransparentBackface: 1
@@ -51,17 +51,17 @@ MonoBehaviour:
     probeVolumeMemoryBudget: 1024
     probeVolumeSHBands: 1
     supportRayTracing: 0
-    supportedRayTracingMode: 3
+    supportedRayTracingMode: 1
     lightLoopSettings:
       cookieAtlasSize: 2048
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 1
-      planarReflectionAtlasSize: 1024
+      planarReflectionAtlasSize: 2048
       reflectionProbeCacheSize: 64
       reflectionCubemapSize: 256
       reflectionCacheCompressed: 0
-      reflectionProbeFormat: 74
+      reflectionProbeFormat: 48
       skyReflectionSize: 256
       skyLightingOverrideLayerMask:
         serializedVersion: 2
@@ -72,10 +72,10 @@ MonoBehaviour:
       maxAreaLightsOnScreen: 64
       maxEnvLightsOnScreen: 64
       maxDecalsOnScreen: 512
-      maxPlanarReflectionOnScreen: 16
+      maxPlanarReflectionOnScreen: 32
       maxLightsPerClusterCell: 8
       maxLocalVolumetricFogSize: 64
-      maxLocalVolumetricFogOnScreen: 64
+      maxLocalVolumetricFogOnScreen: 128
     hdShadowInitParams:
       maxShadowRequests: 256
       directionalShadowsDepthBits: 32
@@ -118,7 +118,7 @@ MonoBehaviour:
       lutFormat: 48
       bufferFormat: 74
     dynamicResolutionSettings:
-      enabled: 0
+      enabled: 1
       useMipBias: 0
       enableDLSS: 0
       DLSSPerfQualitySetting: 0

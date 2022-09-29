@@ -167,14 +167,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_10EB46E7: 1
+    - Vector1_10EB46E7: 0.93
     - Vector1_12094A6A: 0.5
     - Vector1_276CFA84: 0.1
     - Vector1_34AA93A4: 1
     - Vector1_380E174C: 3
     - Vector1_4B804F1: 1.02
     - Vector1_5E63D775: 1
-    - Vector1_6F1356E9: 0.05
+    - Vector1_6F1356E9: 0.07
     - Vector1_8163804F: 0.2
     - Vector1_82D25EEE: 0.1
     - Vector1_86FC2385: 1.5
@@ -238,7 +238,7 @@ Material:
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
     - _EmissiveIntensityUnit: 0
-    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
