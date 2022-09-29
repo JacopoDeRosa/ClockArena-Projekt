@@ -22,8 +22,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     private MousePointGetter _mousePointGetter;
     private WorldGizmos _worldGizmos;
 
-    private bool _crouched;
-
+    private Stance _stance;
     private bool _moving;
 
     private bool _targeting;
@@ -31,11 +30,14 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     private IconsDB _iconsDB;
 
     public event Action onActionEnd;
+    public event Action<Stance> onStanceChange;
+    
 
 
     private bool IsAtTarget { get => _agent.remainingDistance <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
     public Vector3 Velocity { get => _agent.velocity; }
+    public Stance CurrentStance { get => _stance; }
 
     private void Awake()
     {
@@ -150,7 +152,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     private void StartTargeting()
     {
-        if (_crouched)
+        if (_stance == Stance.Prone)
         {
             onActionEnd?.Invoke();
         }
@@ -171,8 +173,17 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     private void ToggleCrouch()
     {
-        _crouched = !_crouched;
-        _user.Animator.SetBool("Crouched", _crouched);
+        if(_stance == Stance.Prone)
+        {
+            _user.Animator.SetBool("Crouched", false);
+            _stance = Stance.Standing;
+        }
+        else if(_stance == Stance.Standing)
+        {
+            _user.Animator.SetBool("Crouched", true);
+            _stance = Stance.Prone;
+        }
+        onStanceChange?.Invoke(_stance);
         StartCoroutine(EndActionDelayed(1));
     }
 
@@ -191,8 +202,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
     public IEnumerable<BarAction> GetBarActions()
     {
-        // TODO: Add Generic action icons to the icons DB
         yield return new BarAction(StartTargeting, CancelTargeting, this, "Move", "Move to the selected position", _iconsDB.MoveSprite);
-        yield return new BarAction(ToggleCrouch, NoCancel, this, "Crouch/Stand", "Have this character crouch or stand        (Some actions won't work when crouched)", _iconsDB.CrouchSprite);
+        yield return new BarAction(ToggleCrouch, NoCancel, this, "Crouch/Stand", "Have this character crouch or stand \n (Some actions won't work when crouched)", _iconsDB.CrouchSprite);
     }
 }

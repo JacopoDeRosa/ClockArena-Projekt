@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TacticalCameraMover : MonoBehaviour
+public class TacticalCameraMover : TacCameraComponent
 {
    
     [SerializeField] private float _speed;
     [SerializeField] private float _inputSmoothing;
-    [SerializeField] private Transform _moveChecker;
-    [SerializeField] private float _checkDistance, _checkThickness;
-    [SerializeField] private LayerMask _checkMask;
 
     private PlayerInput _input;
     private Vector2 _moveInput;
@@ -97,28 +94,4 @@ public class TacticalCameraMover : MonoBehaviour
             _moveInput.y *= CheckDirection(-_moveChecker.forward);
         }
     }
-
-
-    private void CheckCameraMultipliers()
-    {
-        _forwardMultiplier = CheckDirection(_moveChecker.forward);
-        _backwardMultiplier = CheckDirection(_moveChecker.forward * -1);
-        _rightMultiplier = CheckDirection(_moveChecker.right);
-        _leftMultiplier = CheckDirection(_moveChecker.right * -1);
-    }
-
-    private float CheckDirection(Vector3 direction)
-    {
-        Ray ray = new Ray(_moveChecker.position, direction);
-
-        if(Physics.SphereCast(ray, _checkThickness, _checkDistance, _checkMask))
-        {
-            return 0;
-        }
-
-        return 1;
-        
-    }
-
-  
 }

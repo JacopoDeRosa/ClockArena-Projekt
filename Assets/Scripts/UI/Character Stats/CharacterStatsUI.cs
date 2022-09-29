@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterStatsUI : MonoBehaviour
 {
     [SerializeField] private StatsBar _healthBar, _staminaBar, _apBar, _sanityBar;
-
+    [SerializeField] private StanceImage _stanceImage;
 
     private Character _activeCharacter;
     private GameTurnManager _turnManager;
@@ -24,6 +25,7 @@ public class CharacterStatsUI : MonoBehaviour
             _activeCharacter.Stats.onStaminaChange -= _staminaBar.SetValue;
             _activeCharacter.Stats.onApChange -= _apBar.SetValue;
             _activeCharacter.Stats.onSanityChange -= _sanityBar.SetValue;
+            _activeCharacter.Mover.onStanceChange -= _stanceImage.SetStance;
         }
 
         _activeCharacter = character;
@@ -42,5 +44,8 @@ public class CharacterStatsUI : MonoBehaviour
         _activeCharacter.Stats.onStaminaChange += _staminaBar.SetValue;
         _activeCharacter.Stats.onApChange += _apBar.SetValue;
         _activeCharacter.Stats.onSanityChange += _sanityBar.SetValue;
+
+        _stanceImage.SetStance(_activeCharacter.Mover.CurrentStance);
+        _activeCharacter.Mover.onStanceChange += _stanceImage.SetStance;
     }
 }

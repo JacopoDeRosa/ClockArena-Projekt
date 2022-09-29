@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TacticalCameraHeight : MonoBehaviour
-{
-    
+public class TacticalCameraHeight : TacCameraComponent
+{   
     [SerializeField] private int _currentLayer;
     [SerializeField] private int _maxLayers;
     [SerializeField] private float _step;
@@ -34,9 +33,17 @@ public class TacticalCameraHeight : MonoBehaviour
 
     private void OnMouseWheel(InputAction.CallbackContext context)
     {
-        Vector2 wheel = context.ReadValue<Vector2>();
-
+        Vector2 wheel = context.ReadValue<Vector2>();    
         if (_busy) return;
+
+        if(wheel.y > 0 && CheckDirectionBool(_moveChecker.up))
+        {
+            return;
+        }
+        if(wheel.y < 0 && CheckDirectionBool(-_moveChecker.up))
+        {
+            return;
+        }
 
         StartCoroutine(ChangeLevel(wheel.y));
     }
@@ -72,4 +79,5 @@ public class TacticalCameraHeight : MonoBehaviour
         _currentLayer += (int) directionSign;
         _busy = false;
     }
+
 }

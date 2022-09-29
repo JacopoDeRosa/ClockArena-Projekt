@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
-public class TacticalCameraRotation : MonoBehaviour
+public class TacticalCameraRotation : TacCameraComponent
 {
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _rotationStep;
@@ -12,6 +12,12 @@ public class TacticalCameraRotation : MonoBehaviour
     private PlayerInput _input;
     private bool _busy;
 
+    private Quaternion _lastRot;
+
+    private void Awake()
+    {
+        _lastRot = transform.localRotation;
+    }
 
     private void Start()
     {
@@ -82,8 +88,42 @@ public class TacticalCameraRotation : MonoBehaviour
             transform.Rotate(new Vector3(0, rotateBy, 0));
             totalRotation += Mathf.Abs(rotateBy);
             yield return waitForEndOfFrame;
+
+            if(CheckRotDirection(direction))
+            {
+                StartCoroutine(RollBack());
+                yield break;
+            }
+         
         }
+
         transform.localRotation = Quaternion.Euler(finalRotation);
+        _lastRot = transform.localRotation;
+        _busy = false;
+    }
+
+    private bool CheckRotDirection(float direction)
+    {
+        if(direction > 0)
+        {
+            return CheckDirectionBool(_moveChecker.right * -1);
+        }
+        else
+        {
+            return CheckDirectionBool(_moveChecker.right);
+        }
+    }
+
+    private IEnumerator RollBack()
+    {
+        Quaternion startRot = transform.localRotation;
+        for (float i = 0; i <= 1; i += 1 * Time.fixedDeltaTime)
+        {
+            transform.localRotation = Quaternion.Lerp(startRot, _lastRot, i);
+            yield return new WaitForFixedUpdate();
+        }
+
+        transform.localRotation = _lastRot;
         _busy = false;
     }
 }
