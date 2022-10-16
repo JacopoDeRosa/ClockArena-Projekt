@@ -26,11 +26,13 @@ public class AreaDamage : MonoBehaviour
         yield return new WaitForSeconds(_delay);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
 
+        Damage damage = new Damage(_damage);
+       
         foreach (Collider collider in colliders)
-        {
+        {     
             foreach (IDamageable damageable in collider.GetComponents<IDamageable>())
             {
-                damageable.DealDamage(_damage);
+                damageable.DealDamage(damage);
             }
         }
     }

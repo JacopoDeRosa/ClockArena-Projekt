@@ -17,6 +17,9 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAbilities _abilities;
     [SerializeField] private CharacterVoice _voice;
     [SerializeField] private CharacterGUI _gui;
+    [SerializeField] private RigSocketsControl _rigSockets;
+    [SerializeField] private CharacterArmsIK _characterArmsIK;
+    [SerializeField] private CharacterAimController _aimController;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
 
@@ -37,6 +40,9 @@ public class Character : MonoBehaviour
     public CharacterAbilities Abilities { get => _abilities; }
     public CharacterVoice Voice { get => _voice; }
     public CharacterGUI GUI { get => _gui; }
+    public RigSocketsControl RigSockets { get => _rigSockets; }
+    public CharacterArmsIK ArmsIK { get => _characterArmsIK; }
+    public CharacterAimController AimController { get => _aimController; }
     public int InitiativeLevel { get => _initiativeLevel; }
     public int Level { get => _level; }
     public int Exp { get => _exp; }

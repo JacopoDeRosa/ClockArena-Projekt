@@ -7,62 +7,57 @@ using LightPhysics;
 public class CharacterAnimatorControl : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
-    [SerializeField] private Animator[] _animators;
+    [SerializeField] private Animator _animator;
+
+    private RuntimeAnimatorController _defaultController;
 
     private void OnValidate()
     {
-        if(_mover == null)
+        if (_mover == null)
         {
             _mover = GetComponent<CharacterMover>();
-        }
-        if(_animators == null)
-        {
-            UpdateAnimatorArray();
         }
     }
 
     private void Awake()
     {
+        _defaultController = _animator.runtimeAnimatorController;
         _mover.onMoveEnd.AddListener(OnMoveEnd);
     }
 
     private void Update()
     {
-        if(_mover.IsMoving)
+        if (_mover.IsMoving)
         {
-            foreach (Animator animator in _animators)
-            {
-                animator.SetFloat("Speed", _mover.Velocity.magnitude);
-            }
+            _animator.SetFloat("Speed", _mover.Velocity.magnitude);
         }
     }
 
     private void OnMoveEnd()
     {
-        foreach (Animator animator in _animators)
-        {
-            animator.SetFloat("Speed", 0);
-        }
+        _animator.SetFloat("Speed", 0);
     }
 
-    public void UpdateAnimatorArray()
+    public void SetBool(string name, bool value)
     {
-        _animators = GetComponentsInChildren<Animator>();
-    }
 
-    public void SetBool(string name,bool value)
-    {
-        foreach (Animator animator in _animators)
-        {
-            animator.SetBool(name, value);
-        }
+        _animator.SetBool(name, value);
+
     }
 
     public void SetTrigger(string name)
     {
-        foreach (Animator animator in _animators)
-        {
-            animator.SetTrigger(name);
-        }
+
+        _animator.SetTrigger(name);
+    }
+
+    public void ResetAnimatorOverride()
+    {
+        _animator.runtimeAnimatorController = _defaultController;
+    }
+
+    public void SetAnimatorOverride(AnimatorOverrideController overrideController)
+    {
+        _animator.runtimeAnimatorController = overrideController;
     }
 }

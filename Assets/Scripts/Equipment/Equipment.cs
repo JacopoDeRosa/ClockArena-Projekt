@@ -14,8 +14,10 @@ public class Equipment : MonoBehaviour
     [SerializeField] private ArmourSlot _bodySlot;
 
     public event Action onArmourChanged;
+    public event Action<Weapon> onWeaponEquipped;
 
     private ArmourDB _armourDB;
+    private WeaponsDB _weaponsDB;
 
     public bool HasHeadArmour { get => _headSlot.Item != null; }
     public bool HasBodyArmour { get => _bodySlot.Item != null; }
@@ -39,6 +41,11 @@ public class Equipment : MonoBehaviour
         _armourDB = GameItemDB.GetDbOfType<ArmourDB>();
     }
 
+    private void GetWeaponsDB()
+    {
+        _weaponsDB = GameItemDB.GetDbOfType<WeaponsDB>();
+    }
+
     private void OnValidate()
     {
         ValidateArmourSlots();
@@ -50,9 +57,29 @@ public class Equipment : MonoBehaviour
         _bodySlot.SetArmourType(ArmourTypes.Body);
     }
 
-    public void SetWeapon(int weapon)
+    public Weapon SetWeapon(int index)
     {
-       // _weaponSlot.SetItem(weapon);
+        if (_weaponsDB == null) GetWeaponsDB();
+
+        if (Weapon != null) ClearWeapon();
+
+        Weapon weaponPrefab = _weaponsDB.GetItem(index);
+
+        if (weaponPrefab == null || weaponPrefab.Data == null || IsValidItemForUser(weaponPrefab) == false) return null;
+
+        Weapon weapon = Instantiate(weaponPrefab);
+
+        _user.RigSockets.AttachItemToSocket(Socket.RightHand, weapon.gameObject, weapon.PositionOffset, weapon.RotationOffset);
+
+        _user.AimController.SetAimOffset(weapon.ChestAimOffset);
+
+        weapon.SetUser(_user);
+
+        _weaponSlot.SetItem(weapon);
+
+        onWeaponEquipped?.Invoke(weapon);
+
+        return weapon;
     }
 
     public void SetGadget(int gadget)
@@ -111,8 +138,8 @@ public class Equipment : MonoBehaviour
     public ItemData ClearWeapon()
     {
         ItemData data = _weaponSlot.ClearItem();
-        return data;
-       
+        _user.Animator.ResetAnimatorOverride();
+        return data;      
     }
     public ItemData ClearGadget()
     {

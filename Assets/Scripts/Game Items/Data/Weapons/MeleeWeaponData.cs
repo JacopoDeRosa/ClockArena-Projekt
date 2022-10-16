@@ -6,13 +6,12 @@ using UnityEngine;
 public class MeleeWeaponData : WeaponData
 {
     [SerializeField]
-    [Range(0, 100)]
-    private float _hitChance = 50f;
-
-    [SerializeField]
     private float _range;
+    [SerializeField]
+    private float _angle;
 
-    public float HitChance { get => _hitChance; }
+    public float Range { get => _range; }
+    public float Angle { get => _angle; }
 
     public override string GetItemClass()
     {

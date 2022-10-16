@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DamageEachTurn : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class DamageEachTurn : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private LayerMask _effectMask;
 
-    [SerializeField]
+
     private List<Collider> _affectedColliders;
+    private List<Guid> _affectedIds;
 
     private WaitForSeconds _checkWait;
 
     private Collider[] _checkedColliders;
+
 
     private GameTurnManager _turnManager;
 
@@ -27,6 +30,7 @@ public class DamageEachTurn : MonoBehaviour
         _checkWait = new WaitForSeconds(checkInterval);
         _checkedColliders = new Collider[25];
         _affectedColliders = new List<Collider>();
+        _affectedIds = new List<Guid>();
         StartCoroutine(CheckDamageRoutine());
     }
 
@@ -36,9 +40,11 @@ public class DamageEachTurn : MonoBehaviour
     }
 
     private void CheckForDamage()
-    {
-      
+    {  
          _checkedColliders =  Physics.OverlapSphere(transform.position, _radius, _effectMask);
+
+        Damage damage = new Damage(_damage);
+
         foreach (Collider collider in _checkedColliders)
         {
             if(collider == null || _affectedColliders.Contains(collider))
@@ -48,7 +54,11 @@ public class DamageEachTurn : MonoBehaviour
 
             foreach (IDamageable damageable in collider.GetComponents<IDamageable>())
             {
-                damageable.DealDamage(_damage);
+                if (_affectedIds.Contains(damageable.GetDamageId())) continue;
+
+                damageable.DealDamage(damage);
+
+                _affectedIds.Add(damageable.GetDamageId());
             }
             _affectedColliders.Add(collider);
         }
@@ -56,6 +66,7 @@ public class DamageEachTurn : MonoBehaviour
     private void OnNewTurn(int turn)
     {
         _affectedColliders.Clear();
+        _affectedIds.Clear();
     }
 
     private IEnumerator CheckDamageRoutine()

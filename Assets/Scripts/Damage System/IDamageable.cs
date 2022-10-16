@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public interface IDamageable
 {
-    public void DealDamage(int damage);    
+    public void DealDamage(Damage damage);
+    public Guid GetDamageId();
 }
+

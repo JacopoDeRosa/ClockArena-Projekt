@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CharacterStats : MonoBehaviour, IDamageable
+public class CharacterStats : MonoBehaviour
 {
     [SerializeField] private CharacterBaseStats _baseStats;
+    [SerializeField] private HitboxController _hitbox;
 
     [SerializeField]
     private int _hp, _stamina, _ap, _sanity;
@@ -24,9 +25,15 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public event Action<int> onHpChange, onStaminaChange, onApChange, onSanityChange;
 
-    public void DealDamage(int damage)
+    private void Start()
     {
-        _hp -= damage;
+        _hitbox.onDamage += DealDamage;
+    }
+
+    public void DealDamage(Damage damage)
+    {
+        _hp -= damage.DamageAmount;
+        _hp = Mathf.Clamp(_hp, 0, _maxHp);
         onHpChange?.Invoke(_hp);
     }
 
