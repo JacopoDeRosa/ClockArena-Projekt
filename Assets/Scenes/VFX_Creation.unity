@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &143833189 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 143833189, guid: e3a3a669ac284074dbc2d48d1ed36f0d, type: 3}
-  m_PrefabInstance: {fileID: 8496011391155085175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,11 +682,6 @@ Transform:
   m_Father: {fileID: 1707655434}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &451366357 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 451366357, guid: e3a3a669ac284074dbc2d48d1ed36f0d, type: 3}
-  m_PrefabInstance: {fileID: 8496011391155085175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302941941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,38 +1004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1570027336, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: _ikToggle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570027336, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: _leftArmHint
-      value: 
-      objectReference: {fileID: 143833189}
-    - target: {fileID: 1570027336, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: _leftArmControl
-      value: 
-      objectReference: {fileID: 451366357}
-    - target: {fileID: 392475707353478425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: m_Data.m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 392475707353478425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: m_Data.m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 392475707353478425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: m_Data.m_MaintainOffset
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 392475708318199425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
       propertyPath: m_Name
       value: Base_Character
       objectReference: {fileID: 0}
-    - target: {fileID: 392475708318199450, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: a50e9eeb34fed744092ec261ddff76b5, type: 2}
     - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
       propertyPath: m_RootOrder
       value: 5
