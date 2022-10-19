@@ -14,6 +14,23 @@ public class CharacterArmsIK : MonoBehaviour
     private Transform _rightArmControl, _rightArmHint;
 
 
+    public void SetLeftArm(Transform control, Transform hint)
+    {
+        _leftArmControl = control;
+        _leftArmHint = hint;
+    }
+
+    public void SetRightArm(Transform control, Transform hint)
+    {
+        _rightArmControl = control;
+        _rightArmHint = hint;
+    }
+
+    public void SetIkToggle(bool toggle)
+    {
+        _ikToggle = toggle;
+    }
+
     private void LateUpdate()
     {
         if(_ikToggle)

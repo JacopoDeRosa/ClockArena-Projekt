@@ -38,9 +38,11 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
         _headSlot.onClear += ClearHeadSlot;
         _bodySlot.onClear += ClearBodySlot;
+        _weaponSlot.onClear += ClearWeaponSlot;
 
         _headSlot.onClick += DisplayHeadArmour;
         _bodySlot.onClick += DisplayBodyArmour;
+        _weaponSlot.onClick += DisplayWeapons;
     }
 
     private void OnFocus(int index)
@@ -171,7 +173,23 @@ public class CharacterCustomizationWindow : MonoBehaviour
         }
     }
 
-    private bool ItemUsableByCharacter(GameItem item, Character character)
+    private IEnumerable<ItemDescriptor> GetAvailableWeapons(Character character)
+    {
+        WeaponsDB weaponsDB = GameItemDB.GetDbOfType<WeaponsDB>();
+        for (int i = 0; i < weaponsDB.Items.Length; i++)
+        {
+            Weapon weapon = weaponsDB.Items[i];
+
+            if (weapon == null || weapon.Data == null) continue;
+
+            if (ItemUsableByCharacter(weapon, character))
+            {
+                yield return new ItemDescriptor(i, weapon.Data.Sprite, "Cost: " + weapon.Data.Cost.ToString());
+            }
+        }
+    }
+
+        private bool ItemUsableByCharacter(GameItem item, Character character)
     {
         return item.Data.UsableByFaction(character.Faction) && item.Data.RequiredLevel <= character.Level;
     }
@@ -204,6 +222,8 @@ public class CharacterCustomizationWindow : MonoBehaviour
     {
         ItemData data = _activeCharacter.Equipment.ClearWeapon();
         if (data != null) UpdateCost(-data.Cost);
+        _activeCharacterData.weapon = 0;
+        _weaponSlot.SetItem(null);
     }
     private void ClearGadgetSlot()
     {
@@ -244,6 +264,21 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _bodySlot.SetItem(armour);
         UpdateCost(armour.Data.Cost);
     }
+    private void SetWeapon(int item)
+    {
+        if(_activeCharacter.Equipment.HasWeapon)
+        {
+            ClearWeaponSlot();
+        }
+
+        _activeCharacterData.weapon = item;
+
+        Weapon weapon = _activeCharacter.Equipment.SetWeapon(item);
+
+        _weaponSlot.SetItem(weapon);
+        UpdateCost(weapon.Data.Cost);
+    }
+
 
     //TODO: Add weapons and gadgets
     #endregion
@@ -266,8 +301,16 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _itemWindow.SetTitle("Body Armour");
         _itemWindow.ShowItems(GetAvailableArmour(_activeCharacter, ArmourTypes.Body));
         _itemWindow.SetCallback(SetBodySlot);
+    }   
+    public void DisplayWeapons()
+    {
+        _itemWindow.gameObject.SetActive(true);
+        _itemWindow.transform.position.Set(0, 0, 0);
+        _itemWindow.SetItemsSize(100, 190);
+        _itemWindow.SetTitle("Weapons");
+        _itemWindow.ShowItems(GetAvailableWeapons(_activeCharacter));
+        _itemWindow.SetCallback(SetWeapon);
     }
-
 
     #endregion
 

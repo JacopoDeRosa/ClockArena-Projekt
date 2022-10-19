@@ -73,6 +73,12 @@ public class Equipment : MonoBehaviour
 
         _user.AimController.SetAimOffset(weapon.ChestAimOffset);
 
+        _user.Animator.SetAnimatorOverride(weapon.AnimatorOverride);
+
+        _user.ArmsIK.SetLeftArm(weapon.LeftHandPosition, weapon.LeftHandHint);
+
+        _user.ArmsIK.SetIkToggle(weapon.RequireIk);
+
         weapon.SetUser(_user);
 
         _weaponSlot.SetItem(weapon);
@@ -139,6 +145,7 @@ public class Equipment : MonoBehaviour
     {
         ItemData data = _weaponSlot.ClearItem();
         _user.Animator.ResetAnimatorOverride();
+        _user.ArmsIK.SetIkToggle(false);
         return data;      
     }
     public ItemData ClearGadget()

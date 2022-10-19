@@ -557,6 +557,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _user: {fileID: 392475708318199452}
+  _aimingMask:
+    serializedVersion: 2
+    m_Bits: 5121
 --- !u!114 &392475708318199451
 MonoBehaviour:
   m_ObjectHideFlags: 0

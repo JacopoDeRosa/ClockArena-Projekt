@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981b4e60ccd7e334586e4e50871ce7d3, type: 3}
   m_Name: Cog Axe
   m_EditorClassIdentifier: 
-  _name: 
-  _sprite: {fileID: 0}
+  _name: CogAxe
+  _sprite: {fileID: 21300000, guid: fbfe0ff918b1d1e4d9bb58135f8989ac, type: 3}
   _cost: 15
   _reuqiredLevel: 0
   _enabledFactions: 14

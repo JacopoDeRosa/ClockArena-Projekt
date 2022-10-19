@@ -12,6 +12,8 @@ public class CharacterAimController : MonoBehaviour
     private Vector3 _planarPosition;
     private Vector3 _aimPlanarPosition;
 
+    public Vector3 AimPointPosition { get => _aimPosition.position; }
+
     private void Awake()
     {
         _planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
@@ -20,26 +22,41 @@ public class CharacterAimController : MonoBehaviour
 
     public void StartAiming()
     {
-
+        StartCoroutine(StartAimRoutine());
     }
 
     public void StopAiming()
     {
 
+        StartCoroutine(StopAimRoutine());
     }
 
     private IEnumerator StartAimRoutine()
     {
-        yield return null;
+
+        while(_aimRig.weight < 1)
+        {
+            _aimRig.weight += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        _aimRig.weight = 1;
     }
     private IEnumerator StopAimRoutine()
     {
-        yield return null;
+        while (_aimRig.weight > 0)
+        {
+            _aimRig.weight -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        _aimRig.weight = 0;
     }
 
     public void SetAimPointPosition(Vector3 position)
     {
-        _planarPosition.Set(transform.position.x, 0, transform.position.z);
+   //   _planarPosition.Set(transform.position.x, 0, transform.position.z);
+        _aimPosition.position = position;
     }
 
     public void SetAimOffset(Vector3 offset)
