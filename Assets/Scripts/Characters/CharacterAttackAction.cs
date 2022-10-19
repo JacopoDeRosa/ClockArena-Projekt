@@ -86,6 +86,7 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
         if (_shooting) return false;
 
         _aiming = false;
+        _user.Animator.SetBool("Aiming", false);
         _worldGizmos.ResetPointer();
         _user.AimController.StopAiming();
         return true;

@@ -12,6 +12,8 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
     [SerializeField] private TMP_Text _levelText, _costText;
 
+    [SerializeField] private TMP_Dropdown _voiceDropdown, _iconDropdown;
+
     [SerializeField] private Image _icon;
 
     [SerializeField] private SquadEditor _squadEditor;
@@ -31,8 +33,30 @@ public class CharacterCustomizationWindow : MonoBehaviour
 
     private void Awake()
     {
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+
+        foreach(var voice in GameItemDB.GetDbOfType<VoiceDB>().Items)
+        {
+            options.Add(new TMP_Dropdown.OptionData(voice.Name));
+        }
+
+        _voiceDropdown.ClearOptions();
+        _voiceDropdown.AddOptions(options);
+
+        options.Clear();
+
+        foreach (var icon in GameItemDB.GetDbOfType<IconsDB>().Items)
+        {
+            options.Add(new TMP_Dropdown.OptionData(icon.name));
+        }
+
+        _iconDropdown.ClearOptions();
+        _iconDropdown.AddOptions(options);
+
         _loadingScreen = FindObjectOfType<LoadingScreen>(true);
         _nameField.onEndEdit.AddListener(SetCharacterName);
+        _voiceDropdown.onValueChanged.AddListener(SetCharacterVoice);
+        _iconDropdown.onValueChanged.AddListener(SetCharacterIcon);
         _squadEditor.onFocus += OnFocus;
         _squadEditor.onLoseFocus += OnLoseFocus;
 
@@ -77,6 +101,7 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _icon.sprite = character.Icon;
         _activeCharacter = character;
 
+
         _primaryAbility.ReadAbility(character.Abilities.Primary);
         _secondaryAbility.ReadAbility(character.Abilities.Secondary);
     }
@@ -87,6 +112,8 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _bodySlot.SetItem(character.Equipment.BodyArmour);
         _weaponSlot.SetItem(character.Equipment.Weapon);
         _gadgetSlot.SetItem(character.Equipment.Gadget);
+        _voiceDropdown.SetValueWithoutNotify(_activeCharacterData.voice);
+        _iconDropdown.SetValueWithoutNotify(_activeCharacterData.icon);
     }
 
     public void SetCharacterName(string name)
@@ -95,6 +122,22 @@ public class CharacterCustomizationWindow : MonoBehaviour
         _activeCharacterData.name = name;
         _activeCharacter.SetName(name);
     }
+
+    public void SetCharacterVoice(int voice)
+    {
+        if (_activeCharacterData == null) return;
+        _activeCharacterData.voice = voice;
+        _activeCharacter.Voice.SetVoicePack(voice);
+        _activeCharacter.Voice.PlayAcknowledge();
+    }
+
+    public void SetCharacterIcon(int icon)
+    {
+        if (_activeCharacterData == null) return;
+        _activeCharacterData.icon = icon;
+        _activeCharacter.SetIcon(icon);
+        _icon.sprite = _activeCharacter.Icon;
+    }    
 
     public void TryApplyChanges()
     {
