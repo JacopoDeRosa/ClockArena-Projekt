@@ -13,8 +13,8 @@ public class FoldingBar : MonoBehaviour
     [SerializeField] private bool _open;
 
     private bool _busy;
-    [SerializeField]
-    private bool _wantedStatus;  
+    private bool _wantedStatus;
+    private bool _started;
 
     private float _adjustedSinkAmount;
 
@@ -25,6 +25,7 @@ public class FoldingBar : MonoBehaviour
     private void Start()
     {
         FindSinkAmount();
+        _started = true;
     }
 
     private float FindScale()
@@ -35,6 +36,11 @@ public class FoldingBar : MonoBehaviour
     private void FindSinkAmount()
     {
         _adjustedSinkAmount = _sinkAmount * FindScale();
+    }
+
+    private void OnDisable()
+    {
+        _busy = false;
     }
 
     [Button]
@@ -54,8 +60,12 @@ public class FoldingBar : MonoBehaviour
             StartCoroutine(MoveToPosition(_adjustedSinkAmount));
         }
     }
-
-
+    public void ToggleNoMove(bool open)
+    {
+        _open = open;
+        _wantedStatus = open;
+        _busy = false;
+    }
     public IEnumerator Toggle()
     {
         if (_busy) yield break;

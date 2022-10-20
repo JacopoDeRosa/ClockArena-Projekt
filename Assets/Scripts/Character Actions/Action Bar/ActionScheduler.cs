@@ -16,6 +16,8 @@ public class ActionScheduler : MonoBehaviour
 
     public event Action onActionsUpdated;
 
+    public event Action onActionEndedOrCanceled;
+
     public List<BarAction> ActiveActions { get => _activeActions; }
 
     private void Awake()
@@ -79,6 +81,7 @@ public class ActionScheduler : MonoBehaviour
     {
         if (_currentAction == null) return;
         _currentAction.Parent.onActionEnd -= ClearCurrentAction;
+        onActionEndedOrCanceled?.Invoke();
         _currentAction = null;
     }
 
@@ -87,8 +90,7 @@ public class ActionScheduler : MonoBehaviour
         if (_currentAction == null) return;
         if (_currentAction.CancelCallback.Invoke())
         {
-            _currentAction.Parent.onActionEnd -= ClearCurrentAction;
-            _currentAction = null;
+            ClearCurrentAction();
         }
     }
 }

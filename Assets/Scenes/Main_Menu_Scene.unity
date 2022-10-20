@@ -4953,7 +4953,6 @@ MonoBehaviour:
   _sinkSpeed: 1
   _scaler: {fileID: 996784049}
   _open: 0
-  _wantedStatus: 0
 --- !u!114 &158015396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13031,7 +13030,6 @@ MonoBehaviour:
   _sinkSpeed: 1
   _scaler: {fileID: 996784049}
   _open: 0
-  _wantedStatus: 0
 --- !u!114 &401343562
 MonoBehaviour:
   m_ObjectHideFlags: 0
