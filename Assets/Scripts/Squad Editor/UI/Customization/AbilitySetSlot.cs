@@ -19,7 +19,6 @@ public class AbilitySetSlot : MonoBehaviour
     public void SetAbility(Ability ability, AbilityDescriptor descriptor)
     {
         ReadAbility(ability);
-        Debug.Log(descriptor.abilityIndex + descriptor.tierIndex);
 
         if(_primaryAbility)
         {
