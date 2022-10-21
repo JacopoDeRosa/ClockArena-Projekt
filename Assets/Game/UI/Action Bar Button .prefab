@@ -109,10 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _direction: 2
   _sinkAmount: 20
-  _sinkSpeed: 3
+  _sinkSpeed: 4
   _scaler: {fileID: 0}
   _open: 0
-  _wantedStatus: 0
 --- !u!1 &3849024210594751628
 GameObject:
   m_ObjectHideFlags: 0
