@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fillMask: {fileID: 5403809962734457066}
+  _fill: {fileID: 5403809962737739043}
   _valueText: {fileID: 5403809961481645719}
   _maxValue: 100
   _currentValue: 100

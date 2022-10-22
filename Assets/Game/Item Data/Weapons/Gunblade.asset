@@ -17,5 +17,5 @@ MonoBehaviour:
   _cost: 5
   _reuqiredLevel: 0
   _enabledFactions: 12
-  _damageRange: {x: 3, y: 4}
+  _damageRange: {x: 10, y: 15}
   _deviation: 3

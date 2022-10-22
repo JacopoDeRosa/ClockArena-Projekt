@@ -15,8 +15,7 @@ MonoBehaviour:
   _name: Sawed Shotgun
   _sprite: {fileID: 21300000, guid: cc0768a82303e2a43869a3e6aa4f6e7a, type: 3}
   _cost: 10
-  _rarity: 0
   _reuqiredLevel: 0
   _enabledFactions: 12
-  _damageRange: {x: 5, y: 7}
+  _damageRange: {x: 10, y: 25}
   _deviation: 3

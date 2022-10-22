@@ -19,14 +19,14 @@ public class GameSquadLoader : MonoBehaviour
     {
         if (LoggedUser.IsLogged)
         {
-            StartCoroutine(LoadSquadRoutine(LoggedUser.UserData.userName));
+            StartCoroutine(LoadSquadRoutine(LoggedUser.UserData.userName, true));
         }
         else
         {
             _turnManager.BeginNewTurn();
         }
     }
-    private IEnumerator LoadSquadRoutine(string owner)
+    private IEnumerator LoadSquadRoutine(string owner, bool friendlySquad)
     {
         WWWForm form = NetworkUtility.GetSignedForm();
 
@@ -72,6 +72,7 @@ public class GameSquadLoader : MonoBehaviour
                 spawnedCharacters.Add(spawnedChar);
                 spawnedChar.DataReader.ReadData(squad.GetCharacterAtIndex(i));
                 spawnedChar.GUI.ShowGui(true);
+                spawnedChar.SetIsPlayer(spawnedChar);
             }
 
             _turnManager.AddCharacters(spawnedCharacters);

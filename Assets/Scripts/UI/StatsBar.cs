@@ -6,7 +6,7 @@ using TMPro;
 
 public class StatsBar : MonoBehaviour
 {
-    [SerializeField] private Image _fillMask;
+    [SerializeField] private Image _fillMask, _fill;
     [SerializeField] private TMP_Text _valueText;
     [SerializeField] private int _maxValue = 1;
     [SerializeField] private int _currentValue = 1;
@@ -24,7 +24,10 @@ public class StatsBar : MonoBehaviour
         EvaluateFill();
     }
 
-
+    public void SetColor(Color color)
+    {
+        _fill.color = color;
+    }
 
     private void EvaluateFill()
     {

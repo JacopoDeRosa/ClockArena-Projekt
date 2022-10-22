@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
     [SerializeField] private Faction _faction;
+    [SerializeField] private bool _isPlayerCharacter;
     [SerializeField] private CharacterMover _characterMover;
     [SerializeField] private Equipment _characterEquipment;
     [SerializeField] private CharacterDataReader _dataReader;
@@ -32,6 +33,7 @@ public class Character : MonoBehaviour
     public string Name { get => _name; }
     public Sprite Icon { get => _icon; }
     public Faction Faction { get => _faction; }
+    public bool IsPlayerCharacter { get => _isPlayerCharacter; }
     public CharacterMover Mover { get => _characterMover; }
     public Equipment Equipment { get => _characterEquipment; }
     public CharacterDataReader DataReader { get => _dataReader; }
@@ -47,6 +49,7 @@ public class Character : MonoBehaviour
     public int Level { get => _level; }
     public int Exp { get => _exp; }
     public int ExpToNextLevel { get => 1000 + (400 * (_level - 1)); }
+
 
     public event Action onTurnStarted;
 
@@ -110,6 +113,11 @@ public class Character : MonoBehaviour
     public void SetLevel(int level)
     {
         _level = level;
+    }
+    public void SetIsPlayer(bool isPlayer)
+    {
+        _isPlayerCharacter = isPlayer;
+        GUI.SetGuiFriendly(isPlayer);
     }
 }
 
