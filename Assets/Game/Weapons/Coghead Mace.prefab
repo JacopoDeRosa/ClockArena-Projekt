@@ -104,3 +104,5 @@ MonoBehaviour:
   _chestAimOffset: {x: 0, y: 15, z: 0}
   _leftHandPosition: {fileID: 0}
   _leftHandHint: {fileID: 0}
+  _requireIK: 0
+  _attackTime: 2

@@ -9,7 +9,12 @@ public class RangedWeaponData : WeaponData
     [Range(0, 90)]
     private float _deviation;
 
+    [SerializeField]
+    private float _range;
+
     public float Deviation { get => _deviation; }
+
+    public float Range { get => _range; }
 
     public override string GetItemClass()
     {

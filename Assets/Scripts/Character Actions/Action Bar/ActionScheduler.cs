@@ -14,7 +14,7 @@ public class ActionScheduler : MonoBehaviour
 
     private PlayerInput _input;
 
-    public event Action onActionsUpdated;
+    public event Action<bool> onActionsUpdated;
 
     public event Action onActionEndedOrCanceled;
 
@@ -65,7 +65,7 @@ public class ActionScheduler : MonoBehaviour
             _activeActions.AddRange(action.GetBarActions());
         }
 
-        onActionsUpdated?.Invoke();
+        onActionsUpdated?.Invoke(character.IsPlayerCharacter);
     }
 
     public void StartAction(int index)

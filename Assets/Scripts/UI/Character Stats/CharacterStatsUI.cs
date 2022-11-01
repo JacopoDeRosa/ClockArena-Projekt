@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CharacterStatsUI : MonoBehaviour
 {
     [SerializeField] private StatsBar _healthBar, _staminaBar, _apBar, _sanityBar;
+    [SerializeField] private GameObject _friendlyStats, _enemyStats;
     [SerializeField] private StanceImage _stanceImage;
 
     private Character _activeCharacter;
@@ -30,6 +31,17 @@ public class CharacterStatsUI : MonoBehaviour
 
         _activeCharacter = character;
 
+        if (_activeCharacter.IsPlayerCharacter)
+        {
+            _friendlyStats.SetActive(true);
+            _enemyStats.SetActive(false);
+        }
+        else
+        {
+            _friendlyStats.SetActive(false);
+            _enemyStats.SetActive(true);
+        }
+
         _healthBar.SetMaxValue(_activeCharacter.Stats.MaxHp);
         _staminaBar.SetMaxValue(_activeCharacter.Stats.MaxStamina);
         _apBar.SetMaxValue(_activeCharacter.Stats.MaxAp);
@@ -47,5 +59,6 @@ public class CharacterStatsUI : MonoBehaviour
 
         _stanceImage.SetStance(_activeCharacter.Mover.CurrentStance);
         _activeCharacter.Mover.onStanceChange += _stanceImage.SetStance;
+
     }
 }

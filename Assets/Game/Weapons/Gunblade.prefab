@@ -171,7 +171,10 @@ MonoBehaviour:
   _leftHandPosition: {fileID: 451366357}
   _leftHandHint: {fileID: 143833189}
   _requireIK: 1
-  _shotTime: 1
+  _attackTime: 2
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4097
   _muzzleFx: {fileID: 4189240904288176983}
   _clip: {fileID: 8300000, guid: 87f9ebbd50aae1f46813092c58a6908c, type: 3}
   _muzzle: {fileID: 7233104573896773025}

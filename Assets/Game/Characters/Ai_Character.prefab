@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8432395044516703783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 392475708318199425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_Name
+      value: Ai_Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392475708318199453, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+--- !u!1 &8104148424936915110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 392475708318199425, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+  m_PrefabInstance: {fileID: 8432395044516703783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5384653570867684256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104148424936915110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290649e4090bc58419fcaa82f930bec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 8104148424936915131}
+  _sightRange: 75
+  _sightMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  _startData:
+    available: 0
+    name: Soldier
+    faction: 0
+    dataType: 0
+    icon: 0
+    voice: 0
+    weapon: 0
+    gadget: 0
+    head: 0
+    body: 0
+    exp: 0
+    level: 1
+    abilityTree: 0
+    primaryAbility:
+      tierIndex: 0
+      abilityIndex: 0
+      available: 0
+    secondayAbility:
+      tierIndex: 0
+      abilityIndex: 0
+      available: 0
+--- !u!114 &8104148424936915131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 392475708318199452, guid: 3bbdecac3337ce946a41a5f877da9af7, type: 3}
+  m_PrefabInstance: {fileID: 8432395044516703783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104148424936915110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b3344d7af2f6848af964f9c3174551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

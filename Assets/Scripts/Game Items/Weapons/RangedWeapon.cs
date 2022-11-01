@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class RangedWeapon : Weapon<RangedWeaponData>
 {
+    [SerializeField] private LayerMask _hitMask;
     [SerializeField] private ParticleSystem _muzzleFx;
     [SerializeField] private AudioClip _clip;
     [SerializeField] private Transform _muzzle;
 
+
     public override void Attack()
     {
-        if(Physics.Raycast(_muzzle.position, _muzzle.forward, out RaycastHit hit))
+        if(Physics.Raycast(_muzzle.position, _muzzle.forward, out RaycastHit hit, Data.Range, _hitMask))
         {
             if(hit.transform.TryGetComponent(out IDamageable damageable))
             {

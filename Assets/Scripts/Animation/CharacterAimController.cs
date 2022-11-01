@@ -31,7 +31,7 @@ public class CharacterAimController : MonoBehaviour
         StartCoroutine(StopAimRoutine());
     }
 
-    private IEnumerator StartAimRoutine()
+    public IEnumerator StartAimRoutine()
     {
 
         while(_aimRig.weight < 1)
@@ -42,7 +42,7 @@ public class CharacterAimController : MonoBehaviour
 
         _aimRig.weight = 1;
     }
-    private IEnumerator StopAimRoutine()
+    public IEnumerator StopAimRoutine()
     {
         while (_aimRig.weight > 0)
         {

@@ -19,7 +19,7 @@ public class TurnEndAction : MonoBehaviour, IBarAction
         _iconsDB = GameItemDB.GetDbOfType<IconsDB>();
     }
 
-    private void EndTurn()
+    public void EndTurn()
     {
         _turnManager.SetNextCharacter();
         _voice.PlayAcknowledge();

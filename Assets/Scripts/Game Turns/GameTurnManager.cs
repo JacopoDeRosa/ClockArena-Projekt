@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class GameTurnManager : MonoBehaviour
 {
-    [SerializeField] private List<Character> _playingCharacters;
+    [SerializeField][ReadOnly]
+    private List<Character> _playingCharacters;
     [SerializeField] private TurnInitiativeCalculator _initiveHandler;
    
     /// <summary>
@@ -24,10 +25,17 @@ public class GameTurnManager : MonoBehaviour
     public List<Character> PlayingCharacters { get => _playingCharacters; }
     public Character ActiveCharacter { get => _activeCharacter; }
 
-
     public void AddCharacters(List<Character> characters)
     {
-        _playingCharacters.AddRange(characters);
+        foreach (Character character in characters)
+        {
+            AddCharacter(character);
+        }
+       
+    }
+    public void AddCharacter(Character character)
+    {
+        _playingCharacters.Add(character);
     }
 
     public void BeginNewTurn()

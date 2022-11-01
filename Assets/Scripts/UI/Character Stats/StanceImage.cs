@@ -6,12 +6,7 @@ using UnityEngine.UI;
 public class StanceImage : MonoBehaviour
 {
     [SerializeField] private Sprite _crouchSprite, _standSprite;
-    private Image _image;
-
-    private void Awake()
-    {
-        _image = GetComponent<Image>();
-    }
+    [SerializeField] private Image _image;
 
     public void SetStance(Stance stance)
     {

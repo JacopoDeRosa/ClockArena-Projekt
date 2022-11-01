@@ -60,7 +60,7 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
         _user.Animator.SetTrigger("Melee");
         _user.Voice.PlayAttack();
         _user.Equipment.Weapon.Attack();
-        StartCoroutine(EndActionDelayed(2));
+        StartCoroutine(EndActionDelayed(_user.Equipment.Weapon.AttackTime));
     }
 
     public bool NoCancel()
@@ -117,7 +117,6 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
 
     private IEnumerator ShootRoutine()
     {
-
         _shooting = true;
 
         _aiming = false;
@@ -130,7 +129,7 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
 
         _worldGizmos.ResetPointer();
 
-        yield return new WaitForSeconds(_user.Equipment.Weapon.ShotTime);
+        yield return new WaitForSeconds(_user.Equipment.Weapon.AttackTime);
 
         _shooting = false;
 

@@ -256,7 +256,7 @@ MonoBehaviour:
   _leftHandPosition: {fileID: 2654855853294051886}
   _leftHandHint: {fileID: 2654855852752467829}
   _requireIK: 1
-  _shotTime: 1
+  _attackTime: 2
   _muzzleFx: {fileID: 4510304502193866535}
   _clip: {fileID: 8300000, guid: c8d0f93d9339dcc4aa739a412cd973c3, type: 3}
   _muzzle: {fileID: 5288316882117919956}

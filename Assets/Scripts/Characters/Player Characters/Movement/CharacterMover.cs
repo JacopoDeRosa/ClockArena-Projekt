@@ -32,8 +32,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     public event Action onActionEnd;
     public event Action<Stance> onStanceChange;
     
-
-
     private bool IsAtTarget { get => _agent.remainingDistance <= _stoppingDistance; }
     public bool IsMoving { get => _moving; }
     public Vector3 Velocity { get => _agent.velocity; }
@@ -78,7 +76,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         }
     }
 
-
     public void MoveToPoint(Vector3 point)
     {
         if (_moving) return;
@@ -88,12 +85,23 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         _moving = true;
         onMoveStart.Invoke();
     }
+
+    public IEnumerator MoveToPointRoutine(Vector3 point)
+    {
+        MoveToPoint(point);
+        while(_moving)
+        {
+            yield return null;
+        }
+    }
+
     public bool TryCalculatePath(Vector3 position)
     {
         NavMeshPath path = new NavMeshPath();
         _agent.CalculatePath(position, path);
         return path.status == NavMeshPathStatus.PathComplete;
     }
+
     public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out float length)
     {
         pathPoints = new Vector3[0];
@@ -110,6 +118,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         }
         return pathComplete;
     }
+
     private void Update()
     {
         if (_moving && _agent.pathPending == false)
@@ -138,10 +147,12 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         _agent.enabled = false;
         _obstacle.enabled = true;
     }
+
     public void WakeUp()
     {
         StartCoroutine(OnWakeUp());
     }
+
     private IEnumerator OnWakeUp()
     {
         _obstacle.enabled = false;
@@ -161,6 +172,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
             _targeting = true;
         }
     }
+
     private bool CancelTargeting()
     {
         if (_moving) return false;
@@ -191,7 +203,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     {
         return false;
     }
-
 
     private IEnumerator EndActionDelayed(float seconds)
     {

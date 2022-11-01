@@ -11,7 +11,7 @@ public class Weapon : GameItem<WeaponData>
     [SerializeField] private Transform _leftHandPosition;
     [SerializeField] private Transform _leftHandHint;
     [SerializeField] private bool _requireIK;
-    [SerializeField] private float _shotTime;
+    [SerializeField] private float _attackTime;
 
     public AnimatorOverrideController AnimatorOverride { get => _animatorOverride; }
     public Vector3 PositionOffset { get => _positionOffset; }
@@ -22,7 +22,7 @@ public class Weapon : GameItem<WeaponData>
     public Transform LeftHandHint { get => _leftHandHint; }
     public bool RequireIk { get => _requireIK; }
 
-    public float ShotTime { get => _shotTime; }
+    public float AttackTime { get => _attackTime; }
     
 
     public virtual void Attack()

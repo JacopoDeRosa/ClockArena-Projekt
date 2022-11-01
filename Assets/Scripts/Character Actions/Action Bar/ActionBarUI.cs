@@ -14,14 +14,17 @@ public class ActionBarUI : MonoBehaviour
         _actionScheduler.onActionsUpdated += OnActionsUpdate;
     }
 
-    private void OnActionsUpdate()
+    private void OnActionsUpdate(bool displayActions)
     {
         DiasbleAllButtons();
-        for (int i = 0; i < _actionScheduler.ActiveActions.Count; i++)
+        if (displayActions)
         {
-            BarAction barAction = _actionScheduler.ActiveActions[i];
-            _allButtons[i].gameObject.SetActive(true);
-            _allButtons[i].SetAction(barAction, i);
+            for (int i = 0; i < _actionScheduler.ActiveActions.Count; i++)
+            {
+                BarAction barAction = _actionScheduler.ActiveActions[i];
+                _allButtons[i].gameObject.SetActive(true);
+                _allButtons[i].SetAction(barAction, i);
+            }
         }
     }
 
