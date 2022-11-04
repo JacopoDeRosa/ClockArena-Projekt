@@ -65,14 +65,16 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     {   
         if(_targeting)
         {
-            if (_mousePointGetter.GetMousePoint(out Vector3 point) && TryCalculatePath(point))
+            if (_mousePointGetter.GetMousePoint(out Vector3 point) && TryCalculatePath(point, out Vector3[] points, out int lenght) && _user.Stats.CheckStatsAvailable(lenght * 2, lenght * 5))
             {
+                _user.Stats.SpendStats(lenght * 2, lenght * 5);
                 MoveToPoint(point);
+                _user.Voice.PlayMoving();
             }
             _targeting = false;
             _worldGizmos.ClearNavPath();
             _worldGizmos.ResetPointer();
-            _user.Voice.PlayMoving();
+            
         }
     }
 
@@ -102,7 +104,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         return path.status == NavMeshPathStatus.PathComplete;
     }
 
-    public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out float length)
+    public bool TryCalculatePath(Vector3 position, out Vector3[] pathPoints, out int length)
     {
         pathPoints = new Vector3[0];
         length = 0;
@@ -113,7 +115,14 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
 
         if (pathComplete)
         {
-            //TODO: Implement Distance
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                Vector3 point = path.corners[i];
+                Vector3 nextPoint = path.corners[i + 1];
+
+                length += (int) Vector3.Distance(point, nextPoint);
+            }
+
             pathPoints = path.corners;
         }
         return pathComplete;
@@ -136,7 +145,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
             if (_mousePointGetter.GetMousePoint(out Vector3 mousePosition))
             {
                 _worldGizmos.SetPointerPosition(mousePosition);
-                bool validPath = TryCalculatePath(mousePosition, out Vector3[] points, out float lenght);
+                bool validPath = TryCalculatePath(mousePosition, out Vector3[] points, out int lenght) && _user.Stats.CheckStatsAvailable(lenght * 2, lenght * 5);
                 _worldGizmos.RenderNavPath(points, validPath);
             }
         }
@@ -209,7 +218,6 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
         yield return new WaitForSeconds(seconds);
         onActionEnd?.Invoke();
     }
-
 
     public IEnumerable<BarAction> GetBarActions()
     {

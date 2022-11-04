@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour, ISleeper
 {
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private HitboxController _hitbox;
@@ -57,4 +57,33 @@ public class CharacterStats : MonoBehaviour
         _stamina = _maxStamina;
     }
 
+    public void SpendStats(int stamina, int ap)
+    {
+        if(_stamina >= stamina && _ap >= ap)
+        {
+            _stamina -= stamina;
+            _ap -= ap;
+
+            onStaminaChange?.Invoke(_stamina);
+            onApChange?.Invoke(_ap);
+        }
+    }
+
+    public bool CheckStatsAvailable(int stamina, int ap)
+    {
+        return _stamina >= stamina && _ap >= ap;
+    }
+
+    public void Sleep()
+    {
+
+        _stamina += _baseStats.StaminaRegen;
+        _stamina = Mathf.Clamp(_stamina, 0, _maxStamina);
+        _ap = _maxAp;
+    }
+
+    public void WakeUp()
+    {
+        
+    }
 }
