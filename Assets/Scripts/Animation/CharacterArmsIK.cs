@@ -10,10 +10,8 @@ public class CharacterArmsIK : MonoBehaviour
     [SerializeField] private TwoBoneIKConstraint _leftArmConstraint, _rightArmConstraint;
     [SerializeField] [Range(0, 1)] private float _leftArmIk, _rightArmIk;
 
-    [SerializeField]
+    
     private Transform _leftArmControl, _leftArmHint;
-
-    [SerializeField]
     private Transform _rightArmControl, _rightArmHint;
 
 
