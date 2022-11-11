@@ -657,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eff1639c8b0d44aaa32a2a2baa9d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _user: {fileID: 392475708318199452}
   _baseStats: {fileID: 11400000, guid: 2c0b0900662c5d84fa9e61aa03839b28, type: 2}
   _hitbox: {fileID: 1320777162402843945}
   _hp: 100
@@ -795,7 +796,7 @@ MonoBehaviour:
   _leftArmConstraint: {fileID: 3440500390153700961}
   _rightArmConstraint: {fileID: 4245355226846620260}
   _leftArmIk: 1
-  _rightArmIk: 0
+  _rightArmIk: 1
 --- !u!114 &2128307808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e6f21118b1b5347989b1889f1f91b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _user: {fileID: 392475708318199452}
   _aimRig: {fileID: 392475708587516867}
   _chestAim: {fileID: 392475707353478425}
   _aimPosition: {fileID: 392475708135815649}

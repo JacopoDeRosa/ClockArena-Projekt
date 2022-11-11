@@ -26,6 +26,7 @@ public class GameSquadLoader : MonoBehaviour
             _turnManager.BeginNewTurn();
         }
     }
+
     private IEnumerator LoadSquadRoutine(string owner, bool friendlySquad)
     {
         WWWForm form = NetworkUtility.GetSignedForm();

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &35191009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35191010}
+  m_Layer: 0
+  m_Name: Trigger_Hand_Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &35191010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35191009}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: -0.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944581024246112659}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1205914229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205914230}
+  m_Layer: 0
+  m_Name: Trigger_Hand_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1205914230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205914229}
+  m_LocalRotation: {x: 0.574061, y: 0.5369496, z: 0.5369496, w: 0.30630764}
+  m_LocalPosition: {x: 0, y: 0.04, z: -0.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944581024246112659}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 193, y: -76, z: -76}
 --- !u!1 &1276588590039038761
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +98,8 @@ Transform:
   - {fileID: 7403173890220214413}
   - {fileID: 4344579014553178602}
   - {fileID: 3918119490681856062}
+  - {fileID: 1205914230}
+  - {fileID: 35191010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,14 +167,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 672cba11b1cab9242a02770bc90ba2ce, type: 2}
   _user: {fileID: 0}
-  _animatorOverride: {fileID: 22100000, guid: cffa4ea43c299004cb4948817042ca2b, type: 2}
-  _positionOffset: {x: 0.023, y: 0.085, z: -0.052}
-  _rotationOffset: {x: -58, y: -45, z: -32}
-  _chestAimOffset: {x: 4, y: 49.5, z: 0}
+  _animatorOverride: {fileID: 22100000, guid: a50e9eeb34fed744092ec261ddff76b5, type: 2}
+  _positionOffset: {x: 0.166, y: -0.09, z: 0.14}
+  _rotationOffset: {x: -7, y: -35, z: 1.6}
+  _chestAimOffset: {x: 8.3, y: 34, z: 0}
+  _targetSocket: 2
   _leftHandPosition: {fileID: 7403173890207986543}
+  _rightHandPosition: {fileID: 1205914230}
   _leftHandHint: {fileID: 7403173890220214413}
+  _rightHandHint: {fileID: 35191010}
   _requireIK: 1
   _attackTime: 2
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4097
   _muzzleFx: {fileID: 6296450328763443790}
   _clip: {fileID: 8300000, guid: b7ea9fd091a6dd643942d6140a498c91, type: 3}
   _muzzle: {fileID: 3918119490681856062}
@@ -265,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7403173890207986542}
   m_LocalRotation: {x: 0.5661483, y: 0.4436884, z: -0.42685574, w: 0.54809755}
-  m_LocalPosition: {x: -0.117, y: -0.001, z: 0.24}
+  m_LocalPosition: {x: -0.1, y: -0.013, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

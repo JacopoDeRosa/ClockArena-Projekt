@@ -42,11 +42,14 @@ public class TurnInitiativeCalculator : MonoBehaviour
 
     public Character GetNextCharacter()
     {
-        if(_initiativeOrder.Count > 0)
+        Character next = null;
+
+        while(_initiativeOrder.Count > 0 && next == null)
         {
-            return _initiativeOrder.Dequeue();
+            Character test = _initiativeOrder.Dequeue();       
+            next = test.Stats.IsDead ? null : test;
         }
 
-        return null;
+        return next;
     }
 }

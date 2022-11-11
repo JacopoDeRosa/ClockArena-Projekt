@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RangedWeapon : Weapon<RangedWeaponData>
 {
-    [SerializeField] private LayerMask _hitMask;
-    [SerializeField] private ParticleSystem _muzzleFx;
-    [SerializeField] private AudioClip _clip;
-    [SerializeField] private Transform _muzzle;
+    [SerializeField] protected LayerMask _hitMask;
+    [SerializeField] protected ParticleSystem _muzzleFx;
+    [SerializeField] protected AudioClip _clip;
+    [SerializeField] protected Transform _muzzle;
 
 
     public override void Attack()
@@ -22,5 +22,10 @@ public class RangedWeapon : Weapon<RangedWeaponData>
         Debug.Log("Pew");
         AudioSource.PlayClipAtPoint(_clip, _muzzle.position);
         _muzzleFx.Play();
+    }
+
+    public void AimAtPoint(Vector3 point)
+    {
+        transform.rotation = Quaternion.LookRotation(point - transform.position);
     }
 }

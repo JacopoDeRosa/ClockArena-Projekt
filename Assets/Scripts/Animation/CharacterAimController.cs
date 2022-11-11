@@ -5,12 +5,15 @@ using UnityEngine.Animations.Rigging;
 
 public class CharacterAimController : MonoBehaviour
 {
+    [SerializeField] private Character _user;
     [SerializeField] private Rig _aimRig;
     [SerializeField] private MultiAimConstraint _chestAim;
     [SerializeField] private Transform _aimPosition;
 
     private Vector3 _planarPosition;
     private Vector3 _aimPlanarPosition;
+
+    private RangedWeapon _aimedWeapon;
 
     public Vector3 AimPointPosition { get => _aimPosition.position; }
 
@@ -40,6 +43,8 @@ public class CharacterAimController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        _aimedWeapon = _user.Equipment.Weapon as RangedWeapon;
+
         _aimRig.weight = 1;
     }
     public IEnumerator StopAimRoutine()
@@ -50,6 +55,8 @@ public class CharacterAimController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        _aimedWeapon = null;
+
         _aimRig.weight = 0;
     }
 
@@ -57,6 +64,8 @@ public class CharacterAimController : MonoBehaviour
     {
    //   _planarPosition.Set(transform.position.x, 0, transform.position.z);
         _aimPosition.position = position;
+
+        _aimedWeapon?.AimAtPoint(position);
     }
 
     public void SetAimOffset(Vector3 offset)

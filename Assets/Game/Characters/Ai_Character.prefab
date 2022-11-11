@@ -75,7 +75,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 8104148424936915131}
-  _sightRange: 75
+  _sightRange: 45
+  _loiterRadius: 10
+  _engagementDistance: 25
   _sightMask:
     serializedVersion: 2
     m_Bits: 65536

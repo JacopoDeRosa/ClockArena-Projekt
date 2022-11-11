@@ -5,6 +5,7 @@ using System;
 
 public class CharacterStats : MonoBehaviour, ISleeper
 {
+    [SerializeField] private Character _user;
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private HitboxController _hitbox;
 
@@ -22,8 +23,12 @@ public class CharacterStats : MonoBehaviour, ISleeper
     public int MaxSanity { get => _maxSanity; }
     public int MaxStamina { get => _maxStamina; }
 
+    public bool IsDead { get; private set; }
+
 
     public event Action<int> onHpChange, onStaminaChange, onApChange, onSanityChange;
+
+    public event Action<Character> onDeath;
 
     private void Start()
     {
@@ -34,6 +39,21 @@ public class CharacterStats : MonoBehaviour, ISleeper
     {
         _hp -= damage.DamageAmount;
         _hp = Mathf.Clamp(_hp, 0, _maxHp);
+
+        if(_hp <= 0)
+        {
+            _user.Animator.SetTrigger("Die");
+            onDeath?.Invoke(_user);
+            _user.GUI.ShowGui(false);
+            IsDead = true;
+        }
+        else
+        {
+            _user.Animator.SetTrigger("Damage");
+        }
+
+     
+        
         onHpChange?.Invoke(_hp);
     }
 

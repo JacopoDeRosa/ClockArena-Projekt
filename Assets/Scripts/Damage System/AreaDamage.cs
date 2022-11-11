@@ -24,7 +24,7 @@ public class AreaDamage : MonoBehaviour
     private IEnumerator DealDamage()
     {
         yield return new WaitForSeconds(_delay);
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _range, _layerMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _range / 2, _layerMask);
 
         Damage damage = new Damage(_damage);
        

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &583872752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583872753}
+  m_Layer: 0
+  m_Name: Trigger_Hand_Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &583872753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583872752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16, y: -0.099, z: -0.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2797388323116807627}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1813370033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813370034}
+  m_Layer: 0
+  m_Name: Trigger_Hand_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1813370034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813370033}
+  m_LocalRotation: {x: 0.5858925, y: 0.47518197, z: 0.5568544, w: 0.34762803}
+  m_LocalPosition: {x: 0.018, y: 0.003, z: -0.102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2797388323116807627}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 187, y: -82, z: -72}
 --- !u!1 &1173445919617371704
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2654855853294051887}
   m_LocalRotation: {x: 0.5661483, y: 0.4436884, z: -0.42685574, w: 0.54809755}
-  m_LocalPosition: {x: -0.11, y: -0.02, z: 0.27}
+  m_LocalPosition: {x: -0.0975, y: 0.002, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,6 +244,8 @@ Transform:
   - {fileID: 2654855852752467829}
   - {fileID: 6178276382393859203}
   - {fileID: 5288316882117919956}
+  - {fileID: 1813370034}
+  - {fileID: 583872753}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,14 +313,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: ae130452ab4470544ada96156b5f7991, type: 2}
   _user: {fileID: 0}
-  _animatorOverride: {fileID: 22100000, guid: cffa4ea43c299004cb4948817042ca2b, type: 2}
-  _positionOffset: {x: 0.05, y: 0.1, z: -0.06}
-  _rotationOffset: {x: -58, y: -45, z: -32}
-  _chestAimOffset: {x: 8, y: 47.5, z: 0}
+  _animatorOverride: {fileID: 22100000, guid: a50e9eeb34fed744092ec261ddff76b5, type: 2}
+  _positionOffset: {x: 0.215, y: 0.05, z: 0.13}
+  _rotationOffset: {x: -8, y: -34, z: -0.9}
+  _chestAimOffset: {x: 10, y: 33, z: 0}
+  _targetSocket: 2
   _leftHandPosition: {fileID: 2654855853294051886}
+  _rightHandPosition: {fileID: 1813370034}
   _leftHandHint: {fileID: 2654855852752467829}
+  _rightHandHint: {fileID: 583872753}
   _requireIK: 1
   _attackTime: 2
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4097
   _muzzleFx: {fileID: 4510304502193866535}
   _clip: {fileID: 8300000, guid: c8d0f93d9339dcc4aa739a412cd973c3, type: 3}
   _muzzle: {fileID: 5288316882117919956}

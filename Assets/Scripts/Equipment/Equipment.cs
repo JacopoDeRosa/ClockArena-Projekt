@@ -69,13 +69,15 @@ public class Equipment : MonoBehaviour
 
         Weapon weapon = Instantiate(weaponPrefab);
 
-        _user.RigSockets.AttachItemToSocket(Socket.RightHand, weapon.gameObject, weapon.PositionOffset, weapon.RotationOffset);
+        _user.RigSockets.AttachItemToSocket(weapon.TargetSocket, weapon.gameObject, weapon.PositionOffset, weapon.RotationOffset);
 
         _user.AimController.SetAimOffset(weapon.ChestAimOffset);
 
         _user.Animator.SetAnimatorOverride(weapon.AnimatorOverride);
 
         _user.ArmsIK.SetLeftArm(weapon.LeftHandPosition, weapon.LeftHandHint);
+
+        _user.ArmsIK.SetRightArm(weapon.RightHandPosition, weapon.RightHandHint);
 
         _user.ArmsIK.SetIkToggle(weapon.RequireIk);
 

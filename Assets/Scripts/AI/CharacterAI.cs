@@ -16,6 +16,11 @@ public class CharacterAI : MonoBehaviour, ISleeper
     private TurnEndAction _turnEndAction;
     private GameTurnManager _turnManager;
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _sightRange);
+    }
     private void Awake()
     {
         _target.GUI.ShowGui(true);
@@ -65,54 +70,70 @@ public class CharacterAI : MonoBehaviour, ISleeper
             }
         }
 
-        if(enemyCharacters.Count == 0)
+        if (enemyCharacters.Count == 0)
         {
+            Debug.Log("No enemies in range, Moving to Patrol");
+
             Vector3 randomDirection = Random.insideUnitSphere * _loiterRadius;
             randomDirection += transform.position;
 
             NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, _loiterRadius, 1);
-            yield return _target.Mover.MoveToPointRoutine(hit.position);
-            yield break;
-        }
 
-        // Sort Closest Enemy
-        for (int j = 0; j < 300; j++)
-        {
-            bool switched = false;
+            Vector3 point = hit.position;
 
-            for (int i = 0; i < enemyCharacters.Count - 1; i++)
+            while(_target.Mover.TryCalculatePath(point) == false)
             {
-                Character a = enemyCharacters[i];
-                Character b = enemyCharacters[i + 1];
+                NavMesh.SamplePosition(randomDirection, out NavMeshHit nextHit, _loiterRadius, 1);
+                point = nextHit.position;
+                yield return null;
+            }
 
-                if(Vector3.SqrMagnitude(a.transform.position - transform.position) > Vector3.SqrMagnitude(b.transform.position - transform.position))
+            yield return _target.Mover.MoveToPointRoutine(hit.position);
+
+            Debug.Log("Patrol Ended");
+
+        }
+        else
+        {
+            // Sort Closest Enemy
+            for (int j = 0; j < 300; j++)
+            {
+                bool switched = false;
+
+                for (int i = 0; i < enemyCharacters.Count - 1; i++)
                 {
-                    enemyCharacters[i] = b;
-                    enemyCharacters[i + 1] = a;
-                    switched = true;
+                    Character a = enemyCharacters[i];
+                    Character b = enemyCharacters[i + 1];
+
+                    if (Vector3.SqrMagnitude(a.transform.position - transform.position) > Vector3.SqrMagnitude(b.transform.position - transform.position))
+                    {
+                        enemyCharacters[i] = b;
+                        enemyCharacters[i + 1] = a;
+                        switched = true;
+                    }
+                }
+
+                yield return null;
+
+                if (switched == false)
+                {
+                    break;
                 }
             }
 
-            yield return null;
+            Character closestEnemy = enemyCharacters[0];
 
-            if(switched == false)
+            if (_target.Equipment.Weapon is RangedWeapon)
             {
-                break;
+                if (Vector3.Distance(transform.position, closestEnemy.transform.position) > _engagementDistance)
+                {
+                    NavMesh.SamplePosition(closestEnemy.transform.TransformPoint(new Vector3(0, 0, _engagementDistance)), out NavMeshHit hit, _engagementDistance, 1);
+
+                    yield return _target.Mover.MoveToPointRoutine(hit.position);
+                }
+
+                yield return ShootRoutine(closestEnemy.transform.position + new Vector3(0, 1.4f, 0));
             }
-        }
-
-        Character closestEnemy = enemyCharacters[0];
-
-        if (_target.Equipment.Weapon is RangedWeapon)
-        {
-            if (Vector3.Distance(transform.position, closestEnemy.transform.position) > _engagementDistance)
-            {
-                NavMesh.SamplePosition(closestEnemy.transform.TransformPoint(new Vector3(0, 0, _engagementDistance)), out NavMeshHit hit, _engagementDistance, 1);
-
-                yield return _target.Mover.MoveToPointRoutine(hit.position);
-            }
-
-            yield return ShootRoutine(closestEnemy.transform.position + new Vector3(0, 1.4f, 0));
         }
     }
 

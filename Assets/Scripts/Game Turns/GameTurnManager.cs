@@ -36,6 +36,11 @@ public class GameTurnManager : MonoBehaviour
     public void AddCharacter(Character character)
     {
         _playingCharacters.Add(character);
+        character.Stats.onDeath += RemoveCharacter;
+    }
+    private void RemoveCharacter(Character character)
+    {
+        _playingCharacters.Remove(character);
     }
 
     public void BeginNewTurn()

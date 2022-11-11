@@ -102,7 +102,10 @@ MonoBehaviour:
   _positionOffset: {x: -0.0115, y: 0.08, z: -0.03}
   _rotationOffset: {x: 8.5, y: -9, z: -70}
   _chestAimOffset: {x: 0, y: 15, z: 0}
-  _leftHandPosition: {fileID: 0}
-  _leftHandHint: {fileID: 0}
+  _targetSocket: 1
   _requireIK: 0
+  _leftHandPosition: {fileID: 0}
+  _rightHandPosition: {fileID: 0}
+  _leftHandHint: {fileID: 0}
+  _rightHandHint: {fileID: 0}
   _attackTime: 2
