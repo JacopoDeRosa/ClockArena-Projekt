@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
+using ExtendedUI;
 
 public class CommonMenuFunctions : MonoBehaviour
 {
+    [SerializeField] private ConfirmationWindow _confirmationWindow;
+
     public void FoldAllBars()
     {
         FoldingBar[] bars = FindObjectsOfType<FoldingBar>();
@@ -32,7 +35,16 @@ public class CommonMenuFunctions : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneLoader.Instance.LoadScene(0);
+    }
+
+    public void BackToMainMenuConf()
+    {
+        if (_confirmationWindow == null) return;
+        var window = Instantiate(_confirmationWindow, transform);
+        window.onConfirm += BackToMainMenu;
+        window.SetMessage("Go Back to the menu?");
+        FoldAllBars();
     }
 
     public void Quit()
@@ -42,6 +54,13 @@ public class CommonMenuFunctions : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         UnityEditor.EditorApplication.Beep();   
 #endif
+    }
+
+    public void QuitConf()
+    {
+        if (_confirmationWindow == null) return;
+        var window = Instantiate(_confirmationWindow, transform);
+        window.onConfirm += Quit;
     }
   
 

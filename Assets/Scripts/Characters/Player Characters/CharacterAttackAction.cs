@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterAttackAction : MonoBehaviour, IBarAction
 {
+    private const int ActionCamChance = 50;
+
     [SerializeField] private Character _user;
     [SerializeField] private LayerMask _aimingMask;
     [SerializeField] private float _aimHardness = 3;
@@ -60,6 +62,7 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
         _user.Animator.SetTrigger("Melee");
         _user.Voice.PlayAttack();
         _user.Equipment.Weapon.Attack();
+        StartActionCam();
         StartCoroutine(EndActionDelayed(_user.Equipment.Weapon.AttackTime));
     }
 
@@ -121,6 +124,10 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
 
         _aiming = false;
 
+        StartActionCam();
+
+        yield return new WaitForSeconds(1);
+
         _user.Equipment.Weapon.Attack();
 
         _user.Animator.SetTrigger("Shoot");
@@ -146,6 +153,15 @@ public class CharacterAttackAction : MonoBehaviour, IBarAction
             {
                 StartCoroutine(ShootRoutine());
             }
+        }
+    }
+
+    private void StartActionCam()
+    {
+        if (UnityEngine.Random.Range(0, 101) < ActionCamChance)
+        {
+            ActionCamera cam = FindObjectOfType<ActionCamera>();
+            cam?.StartActionCamera(transform.position, transform.rotation);
         }
     }
 
