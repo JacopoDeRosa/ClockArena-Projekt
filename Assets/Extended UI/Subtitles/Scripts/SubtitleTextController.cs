@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 using System;
 
 namespace ExtendedUI
@@ -15,14 +14,13 @@ namespace ExtendedUI
         public event Action onDisplay;
         public event Action onDisplayEnd;
 
-        [ShowInInspector] private bool _busy;
+        private bool _busy;
 
         private void Start()
         {
             _mainText.gameObject.SetActive(false);
         }
-
-        [Button]
+        
         public void DisplaySubtitle(Color senderColor, string senderName, string content, float duration)
         {
             if (_busy) return;

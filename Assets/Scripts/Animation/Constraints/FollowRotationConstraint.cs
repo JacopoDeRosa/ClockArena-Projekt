@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 [AddComponentMenu("Constraints/Follow Rotation")]
 public class FollowRotationConstraint : MonoBehaviour
 {
-    [HideLabel]
-    [SerializeField] [EnumToggleButtons] private Axis _axes;
+    
+    [SerializeField] private Axis _axes;
 
     [SerializeField] [Range(0, 1)] private float _weight;
     [SerializeField] private Transform _target;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
 using System;
 using UnityEngine.InputSystem;
 
@@ -13,10 +12,7 @@ public class CharacterMover : MonoBehaviour,  ISleeper, IBarAction
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private NavMeshObstacle _obstacle;
     [SerializeField] private float _stoppingDistance;
-
-    [FoldoutGroup("Events")]
     public UnityEvent onMoveStart;
-    [FoldoutGroup("Events")]
     public UnityEvent onMoveEnd;
 
     private MousePointGetter _mousePointGetter;

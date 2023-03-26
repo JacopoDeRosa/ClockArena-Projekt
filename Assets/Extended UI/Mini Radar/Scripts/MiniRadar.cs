@@ -1,33 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace ExtendedUI
 {
     public class MiniRadar : MonoBehaviour
     {
         [SerializeField]
-        [InfoBox("Do not set scale to negative")]
+     
         private int scale = 5;
 
         [SerializeField]
-        [DetailedInfoBox("Always set Max Markers to 0 when saving as prefab", "When a markers are saved in the prefab it doesn't allow the system to delete them and you won't be able to set a different amount of max markers after")]
         private int _maxMarkers;
 
-        [ShowInInspector]
-        [ReadOnly]
+   
         private Queue<MiniRadarMarker> _markerQueue = new Queue<MiniRadarMarker>();
 
-        [ShowInInspector]
-        [ReadOnly]
         private Queue<MiniRadarItem> _waitList = new Queue<MiniRadarItem>();
 
-        [FoldoutGroup("Editor Components")]
         [SerializeField]
         private MiniRadarMarker _markerPrefab;
-
-        [FoldoutGroup("Editor Components")]
+        
         [SerializeField]
         private Transform _markersContainer;
 
@@ -66,8 +59,7 @@ namespace ExtendedUI
                 }
             }
         }
-
-        [Button]
+        
         private void RegenerateMarkers()
         {
             DeleteAllMarkers();

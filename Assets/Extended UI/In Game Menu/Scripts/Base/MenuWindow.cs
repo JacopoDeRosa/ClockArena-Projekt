@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using Sirenix.OdinInspector;
 
 namespace ExtendedUI
 {
     [Serializable]
     public sealed class MenuWindow : Menu
     {
-        [TabGroup("Data")]
-        [Searchable]
         [SerializeField] private List<SubMenu> _subMenus;
         private SubMenu GetSubMenu(string name)
         {

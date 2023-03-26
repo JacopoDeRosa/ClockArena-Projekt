@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 public class TakeScreenShot : MonoBehaviour
 {
@@ -9,10 +8,8 @@ public class TakeScreenShot : MonoBehaviour
     [SerializeField] private string _fileName;
 
     [SerializeField]
-    [ReadOnly]
     private string _finalFolderPath;
     
-    [Button]
     public void TakeScreenshot()
     {
         ScreenCapture.CaptureScreenshot(_finalFolderPath);

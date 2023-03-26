@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using Sirenix.OdinInspector;
 
 namespace ExtendedUI
 {
     [Serializable]
     public class Menu
     {
-        [TabGroup("Data")]
         [SerializeField] protected string _name = "Unnamed Menu";
-        [TabGroup("Data")]
         [SerializeField] protected GameObject _target;
-
-        [TabGroup("Events")]
+        
         public UnityEvent onMenuOpen;
-
-        [TabGroup("Events")]
+        
         public UnityEvent onMenuClose;
 
         public bool Equals(string name)

@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using Sirenix.OdinInspector;
 
 namespace ExtendedUI
 {
     public class GameMenu : MonoBehaviour
     {
-        [Searchable]
-        [Space(10)]
-        [PropertyOrder(1)]
         [SerializeField] private List<MenuWindow> _menuWindows;
 
 
@@ -31,11 +27,7 @@ namespace ExtendedUI
             if (window == null) return;
             window.Open();
         }
-
-        [PropertyOrder(0)]
-        [BoxGroup("Controls")]
-        [HorizontalGroup("Controls/Buttons")]
-        [Button(Style = ButtonStyle.Box)]
+        
         private void ResetMenus()
         {
             foreach (MenuWindow menu in _menuWindows)
@@ -43,12 +35,7 @@ namespace ExtendedUI
                 menu.Close();
             }
         }
-
-        [PropertyOrder(0)]
-        [BoxGroup("Controls")]
-        [HorizontalGroup("Controls/Buttons")]
-        [Button(Style = ButtonStyle.FoldoutButton)]
-        [LabelWidth(50)]
+        
         public void OpenMenu(string path)
         {
             ResetMenus();

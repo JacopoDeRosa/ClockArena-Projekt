@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 public class Weapon : GameItem<WeaponData>
 {
@@ -11,8 +10,8 @@ public class Weapon : GameItem<WeaponData>
     [SerializeField] private Vector3 _chestAimOffset;
     [SerializeField] private Socket _targetSocket = Socket.RightHand;
     [SerializeField] private bool _requireIK;
-    [SerializeField] [ShowIf("_requireIK")] private Transform _leftHandPosition, _rightHandPosition;
-    [SerializeField] [ShowIf("_requireIK")] private Transform _leftHandHint, _rightHandHint;
+    [SerializeField] private Transform _leftHandPosition, _rightHandPosition;
+    [SerializeField] private Transform _leftHandHint, _rightHandHint;
     [SerializeField] private float _attackTime;
 
     public AnimatorOverrideController AnimatorOverride { get => _animatorOverride; }

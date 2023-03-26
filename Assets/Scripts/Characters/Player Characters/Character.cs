@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using System;
 
 public class Character : MonoBehaviour
@@ -23,11 +22,9 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterAimController _aimController;
     [SerializeField] private int _exp = 0;
     [SerializeField] private int _level = 1;
-
-    [ShowInInspector][ReadOnly]
+    
     private bool _sleep;
 
-    [ShowInInspector][ReadOnly]
     private int _initiativeLevel = 0;
 
     public string Name { get => _name; }

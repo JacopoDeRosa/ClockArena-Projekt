@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.VFX;
-using Sirenix.OdinInspector;
 
 public class WeatherController : MonoBehaviour
 {
@@ -20,8 +19,7 @@ public class WeatherController : MonoBehaviour
     {
         ReadWeather(_currentWeather);
     }
-
-    [Button]
+    
     public void ChangeWeatherType(WeatherTypes weatherType)
     {
         _currentWeather = weatherType;

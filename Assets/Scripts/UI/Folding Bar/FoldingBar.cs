@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 public class FoldingBar : MonoBehaviour
 {
@@ -42,8 +41,7 @@ public class FoldingBar : MonoBehaviour
     {
         _busy = false;
     }
-
-    [Button]
+    
     public void Toggle(bool open)
     {
         _wantedStatus = open;

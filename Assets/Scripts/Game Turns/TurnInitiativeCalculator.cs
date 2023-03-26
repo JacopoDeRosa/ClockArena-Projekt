@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using UnityEngine.Events;
 
 public class TurnInitiativeCalculator : MonoBehaviour
@@ -10,9 +9,7 @@ public class TurnInitiativeCalculator : MonoBehaviour
 
     public UnityEvent<Character[]> onInitiativeRoll;
 
-    [ShowInInspector][ReadOnly]
     private Queue<Character> _initiativeOrder;
-    [ShowInInspector][ReadOnly]
     private Character[] _charactersByInitiative;
 
     public Character[] CharactersByInitiative { get => _charactersByInitiative; }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace LightPhysics
 {
@@ -10,8 +9,8 @@ namespace LightPhysics
         [SerializeField] private bool _calculateVelocity;
         [SerializeField] private bool _calculateAngularVelocity;
 
-        [ShowInInspector] [ReadOnly] [FoldoutGroup("Info")] private Vector3 _velocity;
-        [ShowInInspector] [ReadOnly] [FoldoutGroup("Info")] private Vector3 _angularVelocity;
+        private Vector3 _velocity;
+        private Vector3 _angularVelocity;
 
         private Vector3 _lastPosition;
         private Vector3 _lastAngle;
@@ -19,7 +18,6 @@ namespace LightPhysics
         public Vector3 Velocity { get => _velocity; }
         public Vector3 AngularVelocity { get => _angularVelocity; }
 
-        [ShowInInspector][ReadOnly][FoldoutGroup("Info")]
         public Vector3 TransformedVelocity { get => transform.TransformDirection(_velocity); }
 
         private void Awake()

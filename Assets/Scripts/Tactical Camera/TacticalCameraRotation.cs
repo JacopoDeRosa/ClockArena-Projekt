@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class TacticalCameraRotation : TacCameraComponent
@@ -50,8 +49,7 @@ public class TacticalCameraRotation : TacCameraComponent
         }
         
     }
-
-    [Button]
+    
     public void RotateLeft()
     {
         if (_busy)
@@ -61,8 +59,7 @@ public class TacticalCameraRotation : TacCameraComponent
         _busy = true;
         StartCoroutine(SmoothRotation(_rotationStep));
     }
-
-    [Button]
+    
     public void RotateRight()
     {
         if (_busy)

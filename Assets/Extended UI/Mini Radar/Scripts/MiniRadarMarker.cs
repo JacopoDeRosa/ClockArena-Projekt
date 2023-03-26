@@ -2,22 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 namespace ExtendedUI
 {
     public class MiniRadarMarker : UIElement
     {
         [SerializeField]
-        [Required]
         private Image _image;
 
         [SerializeField]
-        [Required]
         private Sprite _defaultSprite;
 
-        [SerializeField][ReadOnly] private MiniRadar _parent;
-        [ShowInInspector][ReadOnly] private MiniRadarItem _item;
+        [SerializeField] private MiniRadar _parent;
+         private MiniRadarItem _item;
 
 
         public void UpdatePosition()
